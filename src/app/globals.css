@@ -138,3 +138,30 @@ a {
   background: rgba(99, 242, 210, 0.35);
   color: #04111d;
 }
+
+@keyframes softFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: softFade 700ms ease both;
+}
+
+.reveal-delayed {
+  animation: softFade 900ms ease both;
+  animation-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-delayed {
+    animation: none;
+  }
+}

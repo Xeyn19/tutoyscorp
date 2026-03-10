@@ -1,28 +1,32 @@
 import LandingHeader from "@/components/landingpage/LandingHeader";
+import FeatureSlideshow from "@/components/landingpage/FeatureSlideshow";
 import SectionIntro from "@/components/landingpage/SectionIntro";
 import {
   capabilityCards,
   companyProfile,
+  coreValues,
   featuredSignals,
   heroMetrics,
-  industrySignals,
   operatingModel,
   operatingPrinciples,
+  subsystemHighlights,
   trustPoints,
+  targetMarkets,
   workbenchStats,
 } from "@/data/landingpage-content";
 
 const navigation = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Process", href: "#process" },
-  { label: "Impact", href: "#impact" },
+  { label: "Features", href: "#features" },
+  { label: "Mission", href: "#mission" },
+  { label: "Audience", href: "#audience" },
 ];
 
 const deliveryLayers = [
-  { label: "Strategy", value: 92 },
-  { label: "Architecture", value: 86 },
-  { label: "Product Delivery", value: 81 },
-  { label: "Operations", value: 76 },
+  { label: "Financial management", value: 92 },
+  { label: "Business operations", value: 88 },
+  { label: "Healthcare services", value: 84 },
+  { label: "Education monitoring", value: 86 },
+  { label: "Bookings and transport", value: 90 },
 ];
 
 const primaryButtonClass =
@@ -37,7 +41,7 @@ const sectionPadClass = "px-2 sm:px-4 lg:px-6";
 export default function LandingPage() {
   return (
     <main className="overflow-x-hidden pb-16" id="top">
-      <section className={`${sectionPadClass} pt-4`}>
+      <section className={`${sectionPadClass} pt-4 reveal`}>
         <div className={frameClass}>
           <div className="relative overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[36px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,var(--glow),transparent_26%),radial-gradient(circle_at_90%_22%,var(--accent-soft),transparent_25%)]" />
@@ -76,13 +80,13 @@ export default function LandingPage() {
 
                 <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
                   <a href="#contact" className={`${primaryButtonClass} w-full sm:w-auto`}>
-                    Book a strategy session
+                    Request a demo
                   </a>
                   <a
-                    href="#capabilities"
+                    href="#features"
                     className={`${secondaryButtonClass} w-full sm:w-auto`}
                   >
-                    Explore our capabilities
+                    View key features
                   </a>
                 </div>
 
@@ -112,10 +116,10 @@ export default function LandingPage() {
                     <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
                         <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                          Delivery command center
+                          Integrated command center
                         </p>
                         <h2 className="mt-3 max-w-sm text-lg font-semibold tracking-tight text-[var(--hero-text)] sm:mt-4 sm:text-2xl lg:text-3xl">
-                          Modern product operations, visible in one place.
+                          Unified operations, visible in one place.
                         </h2>
                       </div>
                       <div className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
@@ -124,32 +128,32 @@ export default function LandingPage() {
                     </div>
 
                     <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-                      <div className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm text-[var(--foreground-muted)]">
-                            Roadmap confidence
-                          </p>
-                          <p className="text-3xl font-semibold text-[var(--foreground)]">
-                            92%
+                        <div className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
+                          <div className="flex items-center justify-between">
+                            <p className="text-sm text-[var(--foreground-muted)]">
+                              Subsystem coverage
+                            </p>
+                            <p className="text-3xl font-semibold text-[var(--foreground)]">
+                              5/5
+                            </p>
+                          </div>
+                          <div className="mt-5 h-2 rounded-full bg-[var(--background-secondary)]">
+                            <div className="h-2 w-full rounded-full bg-[linear-gradient(90deg,var(--accent)_0%,var(--accent-strong)_100%)]" />
+                          </div>
+                          <p className="mt-5 text-sm leading-6 text-[var(--foreground-muted)]">
+                            All five service domains are connected within the
+                            same platform.
                           </p>
                         </div>
-                        <div className="mt-5 h-2 rounded-full bg-[var(--background-secondary)]">
-                          <div className="h-2 w-[92%] rounded-full bg-[linear-gradient(90deg,var(--accent)_0%,var(--accent-strong)_100%)]" />
-                        </div>
-                        <p className="mt-5 text-sm leading-6 text-[var(--foreground-muted)]">
-                          Architecture, product scope, and delivery rituals all
-                          visible before execution starts to drift.
-                        </p>
-                      </div>
 
-                      <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 text-[var(--inverse-text)] shadow-[0_18px_50px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
-                        <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--accent)]">
-                          Principles
-                        </p>
-                        <div className="mt-3 space-y-3 sm:mt-4 sm:space-y-4">
-                          {operatingPrinciples.map((principle) => (
-                            <div
-                              key={principle}
+                        <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 text-[var(--inverse-text)] shadow-[0_18px_50px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
+                          <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--accent)]">
+                            Guiding values
+                          </p>
+                          <div className="mt-3 space-y-3 sm:mt-4 sm:space-y-4">
+                            {operatingPrinciples.map((principle) => (
+                              <div
+                                key={principle}
                               className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[var(--inverse-muted)]"
                             >
                               {principle}
@@ -178,10 +182,10 @@ export default function LandingPage() {
                     <div className="mt-3 rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 sm:mt-4 sm:rounded-[26px] sm:p-5">
                       <div className="flex items-center justify-between">
                         <p className="text-sm font-medium text-[var(--hero-text)]">
-                          Core delivery layers
+                          System coverage layers
                         </p>
                         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
-                          synced weekly
+                          synced daily
                         </p>
                       </div>
 
@@ -224,20 +228,20 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className={`${sectionPadClass} py-10`}>
-        <div className={frameClass}>
-          <div className="grid gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 xl:grid-cols-[0.88fr_1.12fr] lg:rounded-[32px] lg:p-8">
+      <section className={`${sectionPadClass} py-10 reveal-delayed`}>
+        <div className={`${frameClass} space-y-4`}>
+          <div className="grid gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch lg:gap-6 lg:rounded-[32px] lg:p-8">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                Designed for modern teams
+                Integrated subsystems
               </p>
               <h2 className="mt-3 max-w-lg text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:mt-4 sm:text-3xl">
-                UX that feels more like a product cockpit than a brochure.
+                Five subsystems coordinated through a shared workflow.
               </h2>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">
-              {industrySignals.map((signal) => (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {subsystemHighlights.map((signal) => (
                 <div
                   key={signal.title}
                   className="rounded-[16px] border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-3 text-sm leading-7 text-[var(--foreground-muted)] sm:rounded-[24px] sm:px-4 sm:py-4"
@@ -250,38 +254,42 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
+
+          <div className="mt-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+            <FeatureSlideshow />
+          </div>
         </div>
       </section>
 
       <section
-        id="capabilities"
-        className={`${sectionPadClass} py-14 lg:py-18`}
+        id="features"
+        className={`${sectionPadClass} py-14 lg:py-18 reveal`}
       >
-        <div className={frameClass}>
-          <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+        <div className={`${frameClass} space-y-4`}>
+          <div className="grid gap-4 lg:grid-cols-[0.48fr_0.52fr] lg:items-stretch lg:gap-6">
             <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
               <SectionIntro
-                eyebrow="Capabilities"
-                title="A more premium, structured presentation of what TUTOYSCORP actually delivers."
-                description="The layout now behaves like a modern technology brand: sharper hierarchy, richer spacing, clearer actions, and reusable content blocks."
+                eyebrow="Key Features"
+                title="Everything needed to run daily operations from one system."
+                description="From secure access to analytics, each feature keeps teams aligned across finance, operations, healthcare, education, and transport services."
               />
             </div>
 
             <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 text-[var(--inverse-text)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
               <p className="font-mono text-xs uppercase tracking-[0.32em] text-[var(--accent)]">
-                Featured advantage
+                Platform advantage
               </p>
               <h3 className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl">
-                One partner across architecture, AI, delivery, and operations.
+                One platform across schools, clinics, businesses, and transport.
               </h3>
               <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--inverse-muted)]">
-                That reduces context switching for stakeholders and keeps the
-                system design aligned with the actual release plan.
+                Shared records and schedules reduce manual work and keep every
+                team aligned with accurate data.
               </p>
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
             {capabilityCards.map((card, index) => (
               <article
                 key={card.title}
@@ -307,81 +315,97 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="process" className={`${sectionPadClass} py-14 lg:py-18`}>
+      <section id="mission" className={`${sectionPadClass} py-14 lg:py-18 reveal-delayed`}>
         <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:rounded-[36px] lg:p-10`}>
           <SectionIntro
-            eyebrow="Execution Model"
-            title="The delivery path is clearer, more visual, and easier to trust."
-            description="Instead of generic marketing sections, the page now explains how TUTOYSCORP works in a way that feels operational and credible."
+            eyebrow="Mission and Vision"
+            title="A platform built to help communities manage daily work."
+            description="Tutoy Corp Integrated System is guided by clear commitments to productivity, care, and reliable service delivery."
             tone="dark"
           />
 
           <div className="mt-6 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
             {operatingModel.map((step) => (
               <article
-                key={step.phase}
+                key={step.label}
                 className="rounded-[18px] border border-white/10 bg-[var(--inverse-card)] p-4 backdrop-blur-xl sm:rounded-[24px] sm:p-6 lg:rounded-[28px]"
               >
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
-                  Phase {step.phase}
+                  {step.label}
                 </p>
                 <h3 className="mt-5 text-2xl font-semibold text-[var(--inverse-text)]">
                   {step.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-[var(--inverse-muted)]">
-                  {step.description}
-                </p>
+                {step.description ? (
+                  <p className="mt-4 text-sm leading-7 text-[var(--inverse-muted)]">
+                    {step.description}
+                  </p>
+                ) : null}
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="impact" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={frameClass}>
-          <div className="grid gap-4 xl:grid-cols-[0.92fr_1.08fr]">
+      <section id="audience" className={`${sectionPadClass} py-14 lg:py-18 reveal`}>
+        <div className={`${frameClass} grid gap-4 lg:grid-cols-[0.45fr_0.55fr]`}>
             <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
               <SectionIntro
-                eyebrow="Impact"
-                title="Built for teams that need cleaner systems, not decorative buzzwords."
-                description="The UX is now more useful for decision-makers: strong scanning, more differentiated sections, and a clearer path from headline to action."
+                eyebrow="Core Values"
+                title="Principles that keep the system practical and trusted."
+                description="These values guide every feature of the platform, from security to usability."
               />
 
               <div className="mt-8 space-y-3">
-                {operatingPrinciples.map((principle) => (
+                {coreValues.map((value) => (
                   <div
-                    key={principle}
+                    key={value.title}
                     className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 text-sm text-[var(--foreground-muted)]"
                   >
-                    {principle}
+                    <span className="font-semibold text-[var(--foreground)]">
+                      {value.title}
+                    </span>
+                    <div className="mt-2">{value.detail}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="grid gap-4">
-              {industrySignals.map((signal) => (
+              <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]">
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                  Target Market
+                </p>
+                <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
+                  Primary and secondary audiences
+                </h3>
+              </div>
+              {targetMarkets.map((market) => (
                 <article
-                  key={signal.title}
+                  key={`${market.label}-${market.title}`}
                   className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]"
                 >
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                    <h3 className="text-xl font-semibold text-[var(--foreground)]">
-                      {signal.title}
-                    </h3>
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                        {market.label} market
+                      </p>
+                      <h3 className="mt-2 text-xl font-semibold text-[var(--foreground)]">
+                        {market.title}
+                      </h3>
+                    </div>
                     <div className="h-px flex-1 bg-[var(--border)] lg:mx-4" />
                     <p className="max-w-md text-sm leading-7 text-[var(--foreground-muted)]">
-                      {signal.detail}
+                      {market.detail}
                     </p>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-        </div>
       </section>
 
-      <section id="contact" className={`${sectionPadClass} pt-10`}>
+      <section id="contact" className={`${sectionPadClass} pt-10 reveal-delayed`}>
         <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] px-4 py-8 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:px-6 sm:py-10 lg:rounded-[36px] lg:px-10`}>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -389,12 +413,11 @@ export default function LandingPage() {
                 Start the conversation
               </p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[var(--hero-text)] sm:text-3xl lg:text-4xl">
-                Build a cleaner, faster technology foundation with TUTOYSCORP.
+                See how Tutoy Corp Integrated System supports your team.
               </h2>
               <p className="mt-4 text-base leading-8 text-[var(--hero-subtext)]">
-                The page is now organized for growth. You can add case studies,
-                testimonials, forms, or service detail pages without rebuilding
-                the structure again.
+                Book a walkthrough to see how the platform unifies finance,
+                operations, healthcare, education, and transport workflows.
               </p>
             </div>
 
@@ -403,7 +426,7 @@ export default function LandingPage() {
                 href="mailto:hello@tutoyscorp.com"
                 className={`${primaryButtonClass} w-full sm:w-auto`}
               >
-                hello@tutoyscorp.com
+                Request a demo
               </a>
               <a href="#top" className={`${secondaryButtonClass} w-full sm:w-auto`}>
                 Back to top

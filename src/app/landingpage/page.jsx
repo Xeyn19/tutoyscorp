@@ -1,9 +1,9 @@
 import LandingPage from "@/components/landingpage/LandingPage";
 
 export const metadata = {
-  title: "Landing Page",
+  title: "Tutoy Corp Integrated System",
   description:
-    "Professional technology company landing page for TUTOYSCORP, focused on digital platforms, AI systems, and delivery operations.",
+    "Unified web-based platform combining financial management, business operations, healthcare services, education monitoring, and booking systems.",
 };
 
 export default function LandingPageRoute() {

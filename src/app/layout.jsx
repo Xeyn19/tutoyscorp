@@ -1,12 +1,12 @@
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono, Sora } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const jetBrainsMono = JetBrains_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -14,11 +14,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata = {
   title: {
-    default: "TUTOYSCORP",
-    template: "%s | TUTOYSCORP",
+    default: "Tutoy Corp Integrated System",
+    template: "%s | Tutoy Corp Integrated System",
   },
   description:
-    "TUTOYSCORP designs scalable digital products, AI workflows, and resilient platforms for modern companies.",
+    "Unified web-based platform combining financial management, business operations, healthcare services, education monitoring, and booking systems.",
+  icons: {
+    icon: "/tutoy-logo.jpeg",
+  },
 };
 
 const themeInitializer = `
@@ -41,7 +44,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} antialiased`}
+        className={`${sora.variable} ${jetBrainsMono.variable} antialiased`}
       >
         {children}
       </body>

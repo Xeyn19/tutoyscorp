@@ -76,7 +76,7 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
               href="#contact"
               className={`${primaryButtonClass} hidden lg:inline-flex`}
             >
-              Start a build sprint
+              Request a demo
             </a>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
               onClick={closeMenu}
               className={`${primaryButtonClass} mt-2 w-full sm:mt-3`}
             >
-              Start a build sprint
+              Request a demo
             </a>
           </div>
         ) : null}
