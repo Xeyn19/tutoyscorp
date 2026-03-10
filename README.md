@@ -123,3 +123,51 @@ After deployment, Vercel will generate a `.vercel.app` URL.
 - This repo is ready for GitHub-to-Vercel auto deployment
 - Pushing updates to the connected branch will trigger a new deploy
 - The landing page can be extended later with a contact form, testimonials, case studies, or service detail pages
+
+## Presentation
+
+### Opening (Landing Header + Hero)
+**Components:** `LandingHeader.jsx`, `LandingPage.jsx`
+
+This page explains the system clearly for different users and industries.
+
+### Project Name + About the System (Hero Text)
+**Component:** `LandingPage.jsx`
+
+The project is called Tutoy Corp Integrated System.  
+It is a web-based platform that combines finance, business operations, healthcare, education, and bookings.  
+It helps working students, small businesses, clinics, schools, and transport teams manage daily tasks.
+
+### Subsystem Overview + Slideshow (Subsystem Section)
+**Components:** `LandingPage.jsx`, `FeatureSlideshow.jsx`
+
+The platform integrates five subsystems: savings goals, inventory, clinic management, student performance, and transport bookings.  
+This slideshow highlights each subsystem so the audience can see the full scope.
+
+### Key Features (Features Section)
+**Component:** `LandingPage.jsx`
+
+First, a unified role-based user system for secure access.  
+Second, a centralized dashboard for quick monitoring.  
+Third, booking, appointment, and order management.  
+Fourth, inventory and record management.  
+Fifth, goal tracking and analytics.
+
+### Mission, Vision, and Tagline (Mission Section)
+**Component:** `LandingPage.jsx`
+
+Our mission is to provide innovative, affordable, and user-friendly digital systems.  
+Our vision is to become a trusted technology company for integrated digital solutions.  
+Our tagline is: “Built to Help, Designed to Care.”
+
+### Core Values + Target Market (Audience Section)
+**Component:** `LandingPage.jsx`
+
+Our core values are innovation, integrity, efficiency, accessibility, and customer focus.  
+Primary users are working students, SMEs, private schools, small clinics, and transport companies.  
+Secondary users are community organizations, start-ups, educational institutions, and service-based enterprises.
+
+### Closing (Contact Section)
+**Component:** `LandingPage.jsx`
+
+In summary, the landing page presents what the system is, who it serves, and why it matters.  
