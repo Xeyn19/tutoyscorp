@@ -338,12 +338,35 @@ export default function LandingPage() {
                   </div>
 
                   <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3">
-                    {trustPoints.map((point) => (
+                    {trustPoints.map((point, index) => (
                       <div
                         key={point}
                         className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-5"
                       >
-                        <div className="h-10 w-10 rounded-2xl bg-[linear-gradient(135deg,var(--accent)_0%,var(--accent-strong)_100%)]" />
+                        <IconBadge>
+                          {index === 0 ? (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="4" y="5" width="16" height="14" rx="2" />
+                              <path d="M8 9h8" />
+                              <path d="M8 13h6" />
+                            </svg>
+                          ) : null}
+                          {index === 1 ? (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M4 12h6l2-3 2 6 2-3h4" />
+                              <path d="M4 6h16" />
+                              <path d="M4 18h16" />
+                            </svg>
+                          ) : null}
+                          {index === 2 ? (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="4" y="4" width="7" height="7" rx="1.5" />
+                              <rect x="13" y="4" width="7" height="7" rx="1.5" />
+                              <rect x="4" y="13" width="7" height="7" rx="1.5" />
+                              <path d="M14 15h6" />
+                            </svg>
+                          ) : null}
+                        </IconBadge>
                         <p className="mt-5 text-sm leading-7 text-[var(--foreground-muted)]">
                           {point}
                         </p>
