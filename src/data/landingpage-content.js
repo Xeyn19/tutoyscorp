@@ -1,29 +1,30 @@
 export const companyProfile = {
-  name: "Tutoy Corp Integrated System",
-  label: "Multi-sector operations platform",
-  headline: "Coordinate finance, care, learning, and transport with one workflow.",
+  name: "TutoY Corp Integrated System",
+  label: "TutoY Corp Integrated System",
+  headline: "One platform for finance, operations, care, learning, and booking.",
+  tagline: "Built to Help, Designed to Care",
   description:
-    "A web-based system for working students, SMEs, clinics, schools, and transport teams to manage savings, inventory, appointments, records, and bookings in a shared workspace.",
+    "A unified web-based platform that combines financial management, business operations, healthcare services, education monitoring, and booking systems into one centralized solution.",
 };
 
 export const heroMetrics = [
   {
-    value: "5 Subsystems",
-    label: "Specialized modules, one platform",
+    value: "5 Integrated Systems",
+    label: "Subsystems working together",
     detail:
-      "Savings goals, inventory, clinic management, student analytics, and transport bookings.",
+      "Five dedicated systems coordinated under one operational platform.",
   },
   {
     value: "Role-Based Access",
-    label: "Separate views for every user type",
+    label: "Secure user control",
     detail:
-      "Admins, staff, students, and customers get scoped access.",
+      "Admins, staff, students, and customers see only what they need.",
   },
   {
-    value: "Action Dashboards",
-    label: "Track activity across departments",
+    value: "Smart Dashboard",
+    label: "Real-time visibility",
     detail:
-      "See savings, orders, appointments, bookings, and performance at a glance.",
+      "Track savings, orders, appointments, bookings, and performance in one place.",
   },
 ];
 
@@ -32,38 +33,38 @@ export const featuredSignals = [
   "Small businesses",
   "Clinics",
   "Schools",
-  "Transport teams",
+  "Transport companies",
 ];
 
 export const capabilityCards = [
   {
     title: "Unified Role-Based User System",
     description:
-      "Secure login for admins, staff, students, and customers with access aligned to responsibilities.",
+      "Secure login for admins, staff, students, and customers with role-based access.",
     tag: "Access",
   },
   {
     title: "Centralized Smart Dashboard",
     description:
-      "Unified overview of savings, orders, appointments, bookings, and performance insights.",
-    tag: "Insights",
+      "Real-time overview of savings, orders, appointments, bookings, and performance with data insights.",
+    tag: "Dashboard",
   },
   {
     title: "Booking, Appointment, and Order Management",
     description:
-      "Tour and bus booking, clinic appointment scheduling, and cashier order entry from one system.",
+      "Tour and bus booking, clinic appointment scheduling, and cashier order entry.",
     tag: "Scheduling",
   },
   {
     title: "Inventory and Record Management",
     description:
-      "Real-time inventory tracking, student record monitoring, and electronic health records.",
+      "Real-time inventory tracking, student records monitoring, and electronic health records.",
     tag: "Records",
   },
   {
     title: "Goal Tracking and Analytics",
     description:
-      "Savings goal tracking, performance statistics, and business sales analytics in one view.",
+      "Savings goal tracking, performance statistics, and business sales analytics.",
     tag: "Analytics",
   },
 ];
@@ -71,27 +72,27 @@ export const capabilityCards = [
 export const operatingModel = [
   {
     label: "Mission",
-    title: "Mission Statement",
+    title: "Our Mission",
     description:
-      "Tutoy Corp aims to provide innovative, affordable, and user-friendly digital systems that simplify operations and improve productivity for businesses, schools, clinics, and working individuals.",
+      "TutoY Corp aims to provide innovative, affordable, and user-friendly digital systems that simplify operations and improve productivity for businesses, schools, clinics, and working individuals.",
   },
   {
     label: "Vision",
-    title: "Vision Statement",
+    title: "Our Vision",
     description:
       "To become a trusted technology company that delivers integrated digital solutions for different industries and communities.",
   },
   {
     label: "Tagline",
-    title: "Built to Help, Designed to Care",
-    description: "",
+    title: "Our Tagline",
+    description: "Built to Help, Designed to Care",
   },
 ];
 
 export const trustPoints = [
-  "Single sign-in across five subsystems",
-  "Connected records, schedules, and orders",
-  "Analytics that guide daily decisions",
+  "One platform reduces duplicate work and operational friction.",
+  "Real-time insights keep teams aligned across services.",
+  "Integrated records improve coordination and accountability.",
 ];
 
 export const workbenchStats = [
@@ -100,64 +101,68 @@ export const workbenchStats = [
     value: "05",
   },
   {
-    label: "Primary user roles supported",
-    value: "04",
+    label: "Service domains unified",
+    value: "05",
   },
   {
-    label: "Core service domains unified",
-    value: "05",
+    label: "Target segments mapped",
+    value: "09",
   },
 ];
 
 export const subsystemHighlights = [
   {
-    title: "Financial management",
-    detail: "Savings goals and performance analytics for working students.",
+    title: "Online Saving Goal System for Working Students",
+    detail:
+      "Track savings targets and daily progress for working learners.",
   },
   {
-    title: "Business operations",
-    detail: "Inventory management and daily operations tracking for SMEs.",
+    title: "Don G. Pastilan Inventory Management System",
+    detail:
+      "Real-time inventory tracking and product control for small businesses.",
   },
   {
-    title: "Healthcare services",
-    detail: "Appointments, electronic health records, and clinic workflows.",
+    title: "AdventCare Maternity Clinic Management System",
+    detail:
+      "Appointment scheduling and electronic health record management.",
   },
   {
-    title: "Education monitoring",
-    detail: "Student records and performance monitoring for schools.",
+    title: "Student Performance Analysis Tool",
+    detail:
+      "Monitor academic performance and learning progress.",
   },
   {
-    title: "Bookings and transport",
-    detail: "Tour scheduling, transport booking, and passenger management.",
+    title: "Online Roma Tours and Transport System",
+    detail:
+      "Tour and transport booking with scheduling support.",
   },
-];
-
-export const operatingPrinciples = [
-  "Secure access for every role",
-  "Connected records and schedules",
-  "Actionable insights for daily decisions",
 ];
 
 export const coreValues = [
   {
     title: "Innovation",
-    detail: "Develop modern and practical digital solutions.",
+    detail:
+      "Develop modern and practical digital solutions.",
   },
   {
     title: "Integrity",
-    detail: "Ensure data security, reliability, and ethical practices.",
+    detail:
+      "Ensure data security, reliability, and ethical practices.",
   },
   {
     title: "Efficiency",
-    detail: "Simplify processes and improve productivity.",
+    detail:
+      "Simplify processes and improve productivity.",
   },
   {
     title: "Accessibility",
-    detail: "Provide systems that are easy to use and affordable.",
+    detail:
+      "Provide systems that are easy to use and affordable.",
   },
   {
     title: "Customer Focus",
-    detail: "Prioritize customer satisfaction and success.",
+    detail:
+      "Prioritize customer satisfaction and success.",
   },
 ];
 
@@ -165,74 +170,91 @@ export const targetMarkets = [
   {
     label: "Primary",
     title: "Working students",
-    detail: "Savings goal tracking and financial management support.",
+    detail:
+      "Support savings goals and daily financial tracking.",
   },
   {
     label: "Primary",
     title: "Small and medium-sized businesses",
-    detail: "Inventory management and daily operations tools.",
+    detail:
+      "Manage operations, inventory, and sales in one system.",
   },
   {
     label: "Primary",
     title: "Private schools and training centers",
-    detail: "Student records and performance monitoring.",
+    detail:
+      "Track student performance and learning records.",
   },
   {
     label: "Primary",
     title: "Maternity and small healthcare clinics",
-    detail: "Appointments and electronic health records.",
+    detail:
+      "Coordinate appointments and electronic health records.",
   },
   {
     label: "Primary",
     title: "Tour and transport companies",
-    detail: "Tour, booking, and transport management.",
+    detail:
+      "Handle bookings, routes, and scheduling.",
   },
   {
     label: "Secondary",
     title: "Community organizations",
-    detail: "Operational tools for local programs and services.",
+    detail:
+      "Manage people-first services with coordinated records.",
   },
   {
     label: "Secondary",
     title: "Start-up businesses",
-    detail: "Affordable systems that scale with growth.",
+    detail:
+      "Launch operations quickly with integrated tools.",
   },
   {
     label: "Secondary",
     title: "Educational institutions",
-    detail: "Unified monitoring and reporting tools.",
+    detail:
+      "Monitor performance and reporting across programs.",
   },
   {
     label: "Secondary",
     title: "Service-based enterprises",
-    detail: "Scheduling, records, and customer management.",
+    detail:
+      "Centralize bookings, orders, and records.",
   },
 ];
 
 export const slideshowSlides = [
   {
-    title: "Savings Goals for Working Students",
+    title: "Online Saving Goal System",
     description:
-      "A focused module that helps working students track and reach savings targets.",
+      "Track savings goals and progress for working students.",
   },
   {
-    title: "Inventory Management for SMEs",
+    title: "Don G. Pastilan Inventory Management",
     description:
-      "Inventory tracking and record management for small businesses.",
+      "Manage inventory levels and product tracking with accuracy.",
   },
   {
-    title: "Maternity Clinic Operations",
+    title: "AdventCare Maternity Clinic Management",
     description:
-      "Appointments and electronic health records organized for small clinics.",
+      "Schedule appointments and maintain electronic health records.",
   },
   {
-    title: "Student Performance Monitoring",
+    title: "Student Performance Analysis Tool",
     description:
-      "Monitoring and analytics for student performance data.",
+      "Monitor academic performance and learning progress.",
   },
   {
-    title: "Tours and Transport Bookings",
+    title: "Online Roma Tours and Transport System",
     description:
-      "Tour scheduling, transport booking, and passenger records in one system.",
+      "Support tour and transport booking with scheduling tools.",
   },
+];
+
+export const targetMarketChart = [
+  { label: "Students", value: 20, color: "#1f6bff" },
+  { label: "SMBs", value: 20, color: "#22b07d" },
+  { label: "Schools", value: 20, color: "#f09f36" },
+  { label: "Clinics", value: 20, color: "#6b5cff" },
+  { label: "Transport", value: 20, color: "#e85c6b" },
 ];

@@ -14,11 +14,11 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata = {
   title: {
-    default: "Tutoy Corp Integrated System",
-    template: "%s | Tutoy Corp Integrated System",
+    default: "TutoY Corp Integrated System",
+    template: "%s | TutoY Corp Integrated System",
   },
   description:
-    "Unified web-based platform combining financial management, business operations, healthcare services, education monitoring, and booking systems.",
+    "Integrated platform for finance, care, learning, and transport operations across organizations.",
   icons: {
     icon: "/tutoy-logo.jpeg",
   },

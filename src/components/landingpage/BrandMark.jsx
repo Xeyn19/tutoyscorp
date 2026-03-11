@@ -5,7 +5,7 @@ export default function BrandMark({ compact = false }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--glow),transparent_45%)]" />
         <img
           src="/tutoy-logo.jpeg"
-          alt="Tutoy Corp logo"
+          alt="TutoY Corp logo"
           className="relative h-full w-full object-cover"
         />
       </div>
