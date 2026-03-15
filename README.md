@@ -171,3 +171,5 @@ Secondary users are start-ups and service-based enterprises.
 **Component:** `LandingPage.jsx`
 
 In summary, the landing page presents what the system is, who it serves, and why it matters.  
+
+Last updated: March 15, 2026
