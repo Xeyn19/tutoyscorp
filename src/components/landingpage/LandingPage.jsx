@@ -12,7 +12,6 @@ import {
   targetMarketChart,
   trustPoints,
   targetMarkets,
-  workbenchStats,
 } from "@/data/landingpage-content";
 
 const navigation = [
@@ -256,7 +255,7 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+                    <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4">
                       <div className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
                         <div className="flex items-center justify-between">
                           <p className="text-sm text-[var(--foreground-muted)]">
@@ -273,22 +272,6 @@ export default function LandingPage() {
                           Core service areas aligned under one platform for
                           consistent operations and management.
                         </p>
-                      </div>
-
-                      <div className="grid gap-3">
-                        {workbenchStats.map((item) => (
-                          <article
-                            key={item.label}
-                            className="rounded-[16px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-3 sm:rounded-[24px] sm:p-5"
-                          >
-                            <p className="text-3xl font-semibold text-[var(--hero-text)]">
-                              {item.value}
-                            </p>
-                            <p className="mt-2 text-sm leading-6 text-[var(--hero-subtext)]">
-                              {item.label}
-                            </p>
-                          </article>
-                        ))}
                       </div>
                     </div>
 
@@ -342,10 +325,10 @@ export default function LandingPage() {
           <div className="grid gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch lg:gap-6 lg:rounded-[32px] lg:p-8">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                Integrated subsystems
+                Subsystem alignment
               </p>
               <h2 className="mt-3 max-w-lg text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:mt-4 sm:text-3xl">
-                Three subsystems unified under one operational platform.
+                Each module feeds a shared operational record.
               </h2>
             </div>
 

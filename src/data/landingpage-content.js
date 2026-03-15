@@ -93,36 +93,21 @@ export const trustPoints = [
   "Integrated records connect financial progress, stock levels, and reservations.",
 ];
 
-export const workbenchStats = [
-  {
-    label: "Integrated subsystems",
-    value: "03",
-  },
-  {
-    label: "Service domains unified",
-    value: "03",
-  },
-  {
-    label: "Target segments mapped",
-    value: "05",
-  },
-];
-
 export const subsystemHighlights = [
   {
     title: "Online Saving Goal System for Working Students",
     detail:
-      "Savings targets and daily financial progress tracking.",
+      "Feeds daily progress into the shared dashboard and reports.",
   },
   {
     title: "Don G. Pastilan Inventory Management System",
     detail:
-      "Real-time inventory tracking and product control.",
+      "Connects stock movement with orders and financial records.",
   },
   {
     title: "Online Roma Tours and Transport System",
     detail:
-      "Tour and transport booking, scheduling, and reservations.",
+      "Links reservations with scheduling and revenue visibility.",
   },
 ];
 

@@ -1,6 +1,6 @@
-# TUTOYSCORP Landing Page
+# TutoY Corp Integrated System Landing Page
 
-Professional landing page for `TUTOYSCORP` built with Next.js App Router, React, and Tailwind CSS.
+Professional landing page for `TutoY Corp Integrated System` built with Next.js App Router, React, and Tailwind CSS.
 
 The project includes:
 
@@ -129,19 +129,19 @@ After deployment, Vercel will generate a `.vercel.app` URL.
 ### Opening (Landing Header + Hero)
 **Components:** `LandingHeader.jsx`, `LandingPage.jsx`
 
-This page explains the system clearly for different users and industries.
+This page explains the system clearly for the target users it serves.
 
 ### Project Name + About the System (Hero Text)
 **Component:** `LandingPage.jsx`
 
 The project is called Tutoy Corp Integrated System.  
-It is a web-based platform that combines finance, business operations, healthcare, education, and bookings.  
-It helps working students, small businesses, clinics, schools, and transport teams manage daily tasks.
+It is a unified web-based platform for finance, operations, and booking.  
+It helps working students, small businesses, and tour/transport teams manage daily tasks.
 
 ### Subsystem Overview + Slideshow (Subsystem Section)
 **Components:** `LandingPage.jsx`, `FeatureSlideshow.jsx`
 
-The platform integrates five subsystems: savings goals, inventory, clinic management, student performance, and transport bookings.  
+The platform integrates three subsystems: savings goals, inventory management, and tour/transport bookings.  
 This slideshow highlights each subsystem so the audience can see the full scope.
 
 ### Key Features (Features Section)
@@ -149,23 +149,23 @@ This slideshow highlights each subsystem so the audience can see the full scope.
 
 First, a unified role-based user system for secure access.  
 Second, a centralized dashboard for quick monitoring.  
-Third, booking, appointment, and order management.  
+Third, booking and order management.  
 Fourth, inventory and record management.  
-Fifth, goal tracking and analytics.
+Fifth, goal tracking and business analytics.
 
 ### Mission, Vision, and Tagline (Mission Section)
 **Component:** `LandingPage.jsx`
 
 Our mission is to provide innovative, affordable, and user-friendly digital systems.  
-Our vision is to become a trusted technology company for integrated digital solutions.  
-Our tagline is: “Built to Help, Designed to Care.”
+Our vision is to become a trusted technology provider for integrated digital solutions.  
+Our tagline is: "Built to Help, Designed to Care".
 
 ### Core Values + Target Market (Audience Section)
 **Component:** `LandingPage.jsx`
 
 Our core values are innovation, integrity, efficiency, accessibility, and customer focus.  
-Primary users are working students, SMEs, private schools, small clinics, and transport companies.  
-Secondary users are community organizations, start-ups, educational institutions, and service-based enterprises.
+Primary users are working students, small and medium businesses, and tour/transport companies.  
+Secondary users are start-ups and service-based enterprises.
 
 ### Closing (Contact Section)
 **Component:** `LandingPage.jsx`
