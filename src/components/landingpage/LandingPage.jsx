@@ -75,7 +75,7 @@ const featureIcons = {
       <path d="M15 13h2" />
     </svg>
   ),
-  "Booking, Appointment, and Order Management": (
+  "Booking and Order Management": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="5" width="16" height="14" rx="2" />
       <path d="M8 3v4" />
@@ -93,7 +93,7 @@ const featureIcons = {
       <path d="M14 18h4" />
     </svg>
   ),
-  "Goal Tracking and Analytics": (
+  "Goal Tracking and Business Analytics": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 19V5" />
       <path d="M10 19V9" />
@@ -120,22 +120,6 @@ const subsystemIcons = {
       <path d="M9 15h4" />
     </svg>
   ),
-  "AdventCare Maternity Clinic Management System": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 5v14" />
-      <path d="M5 12h14" />
-      <circle cx="12" cy="12" r="8" />
-    </svg>
-  ),
-  "Student Performance Analysis Tool": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19V5" />
-      <path d="M8 15v4" />
-      <path d="M12 11v8" />
-      <path d="M16 8v11" />
-      <path d="M3 19h18" />
-    </svg>
-  ),
   "Online Roma Tours and Transport System": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="5" y="7" width="14" height="8" rx="2" />
@@ -153,7 +137,7 @@ const marketIcons = {
       <path d="M7 10v4a5 5 0 0 0 10 0v-4" />
     </svg>
   ),
-  "Small and medium-sized businesses": (
+  "Small & medium businesses": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="7" width="16" height="12" rx="2" />
       <path d="M8 7V5h8v2" />
@@ -161,44 +145,17 @@ const marketIcons = {
       <path d="M14 13h2" />
     </svg>
   ),
-  "Private schools and training centers": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 10l8-4 8 4-8 4-8-4Z" />
-      <path d="M6 12v5h12v-5" />
-    </svg>
-  ),
-  "Maternity and small healthcare clinics": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M12 8v8" />
-      <path d="M8 12h8" />
-    </svg>
-  ),
-  "Tour and transport companies": (
+  "Tour & transport companies": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="5" y="7" width="14" height="8" rx="2" />
       <path d="M7 15v2" />
       <path d="M17 15v2" />
     </svg>
   ),
-  "Community organizations": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 8a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M13 8a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M4 18a4 4 0 0 1 6-3" />
-      <path d="M20 18a4 4 0 0 0-6-3" />
-    </svg>
-  ),
-  "Start-up businesses": (
+  "Start-ups": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 3l4 4-4 4-4-4 4-4Z" />
       <path d="M7 14l5 7 5-7" />
-    </svg>
-  ),
-  "Educational institutions": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 8l9-4 9 4-9 4-9-4Z" />
-      <path d="M5 10v6h14v-6" />
     </svg>
   ),
   "Service-based enterprises": (
@@ -388,7 +345,7 @@ export default function LandingPage() {
                 Integrated subsystems
               </p>
               <h2 className="mt-3 max-w-lg text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:mt-4 sm:text-3xl">
-                Five systems unified under one operational platform.
+                Three subsystems unified under one operational platform.
               </h2>
             </div>
 
@@ -437,11 +394,11 @@ export default function LandingPage() {
                 Platform advantage
               </p>
               <h3 className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl">
-                One platform across business, healthcare, education, and transport operations.
+                One platform across finance, operations, and booking workflows.
               </h3>
               <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--inverse-muted)]">
-                Centralized workflows reduce manual work and keep every team
-                aligned with real-time information and shared records.
+                Centralized workflows reduce manual work and keep teams aligned
+                with shared savings, inventory, and booking data.
               </p>
             </div>
           </div>
@@ -604,8 +561,8 @@ export default function LandingPage() {
                 See how TutoY Corp Integrated System supports your team.
               </h2>
               <p className="mt-4 text-base leading-8 text-[var(--hero-subtext)]">
-                Explore how the platform unifies finance, operations, care,
-                learning, and booking workflows for efficient operations.
+                Explore how the platform unifies finance, operations, and
+                booking workflows for more efficient management.
               </p>
             </div>
  

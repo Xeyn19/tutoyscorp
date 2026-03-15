@@ -1,39 +1,37 @@
 export const companyProfile = {
   name: "TutoY Corp Integrated System",
   label: "TutoY Corp Integrated System",
-  headline: "One platform for finance, operations, care, learning, and booking.",
+  headline: "One platform for finance, operations, and booking.",
   tagline: "Built to Help, Designed to Care",
   description:
-    "A unified web-based platform that combines financial management, business operations, healthcare services, education monitoring, and booking systems into one centralized solution.",
+    "A unified web-based platform that combines financial management, business operations, and booking services into one centralized solution.",
 };
 
 export const heroMetrics = [
   {
-    value: "5 Integrated Systems",
-    label: "Subsystems working together",
+    value: "3 Integrated Subsystems",
+    label: "Unified platform core",
     detail:
-      "Five dedicated systems coordinated under one operational platform.",
+      "Savings, inventory, and booking tools aligned in one system.",
   },
   {
-    value: "Role-Based Access",
-    label: "Secure user control",
+    value: "3 Service Domains",
+    label: "Finance, operations, booking",
     detail:
-      "Admins, staff, students, and customers see only what they need.",
+      "Coverage across money management, business operations, and reservations.",
   },
   {
-    value: "Smart Dashboard",
-    label: "Real-time visibility",
+    value: "5 Target Segments",
+    label: "Audience mapped",
     detail:
-      "Track savings, orders, appointments, bookings, and performance in one place.",
+      "Built for students, SMBs, transport teams, start-ups, and service firms.",
   },
 ];
 
 export const featuredSignals = [
   "Working students",
   "Small businesses",
-  "Clinics",
-  "Schools",
-  "Transport companies",
+  "Tour & transport companies",
 ];
 
 export const capabilityCards = [
@@ -46,25 +44,25 @@ export const capabilityCards = [
   {
     title: "Centralized Smart Dashboard",
     description:
-      "Real-time overview of savings, orders, appointments, bookings, and performance with data insights.",
+      "Real-time overview of savings, inventory, orders, and bookings.",
     tag: "Dashboard",
   },
   {
-    title: "Booking, Appointment, and Order Management",
+    title: "Booking and Order Management",
     description:
-      "Tour and bus booking, clinic appointment scheduling, and cashier order entry.",
+      "Tour and transport reservation, scheduling, and order tools.",
     tag: "Scheduling",
   },
   {
     title: "Inventory and Record Management",
     description:
-      "Real-time inventory tracking, student records monitoring, and electronic health records.",
+      "Real-time inventory and financial record monitoring.",
     tag: "Records",
   },
   {
-    title: "Goal Tracking and Analytics",
+    title: "Goal Tracking and Business Analytics",
     description:
-      "Savings goal tracking, performance statistics, and business sales analytics.",
+      "Savings goals, inventory reports, and booking analytics.",
     tag: "Analytics",
   },
 ];
@@ -74,13 +72,13 @@ export const operatingModel = [
     label: "Mission",
     title: "Our Mission",
     description:
-      "TutoY Corp aims to provide innovative, affordable, and user-friendly digital systems that simplify operations and improve productivity for businesses, schools, clinics, and working individuals.",
+      "Provide innovative, affordable, and user-friendly digital systems that simplify operations and improve productivity for businesses and working individuals.",
   },
   {
     label: "Vision",
     title: "Our Vision",
     description:
-      "To become a trusted technology company that delivers integrated digital solutions for different industries and communities.",
+      "To become a trusted technology provider that delivers integrated digital solutions for businesses and communities.",
   },
   {
     label: "Tagline",
@@ -90,23 +88,23 @@ export const operatingModel = [
 ];
 
 export const trustPoints = [
-  "One platform reduces duplicate work and operational friction.",
-  "Real-time insights keep teams aligned across services.",
-  "Integrated records improve coordination and accountability.",
+  "Reduces duplicate work, operational friction, and improves accountability.",
+  "Real-time insights keep teams aligned across savings, inventory, and bookings.",
+  "Integrated records connect financial progress, stock levels, and reservations.",
 ];
 
 export const workbenchStats = [
   {
     label: "Integrated subsystems",
-    value: "05",
+    value: "03",
   },
   {
     label: "Service domains unified",
-    value: "05",
+    value: "03",
   },
   {
     label: "Target segments mapped",
-    value: "09",
+    value: "05",
   },
 ];
 
@@ -114,27 +112,17 @@ export const subsystemHighlights = [
   {
     title: "Online Saving Goal System for Working Students",
     detail:
-      "Track savings targets and daily progress for working learners.",
+      "Savings targets and daily financial progress tracking.",
   },
   {
     title: "Don G. Pastilan Inventory Management System",
     detail:
-      "Real-time inventory tracking and product control for small businesses.",
-  },
-  {
-    title: "AdventCare Maternity Clinic Management System",
-    detail:
-      "Appointment scheduling and electronic health record management.",
-  },
-  {
-    title: "Student Performance Analysis Tool",
-    detail:
-      "Monitor academic performance and learning progress.",
+      "Real-time inventory tracking and product control.",
   },
   {
     title: "Online Roma Tours and Transport System",
     detail:
-      "Tour and transport booking with scheduling support.",
+      "Tour and transport booking, scheduling, and reservations.",
   },
 ];
 
@@ -175,45 +163,21 @@ export const targetMarkets = [
   },
   {
     label: "Primary",
-    title: "Small and medium-sized businesses",
+    title: "Small & medium businesses",
     detail:
-      "Manage operations, inventory, and sales in one system.",
+      "Manage operations, inventory, and sales with live records.",
   },
   {
     label: "Primary",
-    title: "Private schools and training centers",
+    title: "Tour & transport companies",
     detail:
-      "Track student performance and learning records.",
-  },
-  {
-    label: "Primary",
-    title: "Maternity and small healthcare clinics",
-    detail:
-      "Coordinate appointments and electronic health records.",
-  },
-  {
-    label: "Primary",
-    title: "Tour and transport companies",
-    detail:
-      "Handle bookings, routes, and scheduling.",
+      "Handle bookings, routes, and scheduling in one place.",
   },
   {
     label: "Secondary",
-    title: "Community organizations",
-    detail:
-      "Manage people-first services with coordinated records.",
-  },
-  {
-    label: "Secondary",
-    title: "Start-up businesses",
+    title: "Start-ups",
     detail:
       "Launch operations quickly with integrated tools.",
-  },
-  {
-    label: "Secondary",
-    title: "Educational institutions",
-    detail:
-      "Monitor performance and reporting across programs.",
   },
   {
     label: "Secondary",
@@ -225,36 +189,26 @@ export const targetMarkets = [
 
 export const slideshowSlides = [
   {
-    title: "Online Saving Goal System",
+    title: "Online Saving Goal System for Working Students",
     description:
-      "Track savings goals and progress for working students.",
+      "Savings targets and daily financial progress tracking.",
   },
   {
-    title: "Don G. Pastilan Inventory Management",
+    title: "Don G. Pastilan Inventory Management System",
     description:
-      "Manage inventory levels and product tracking with accuracy.",
-  },
-  {
-    title: "AdventCare Maternity Clinic Management",
-    description:
-      "Schedule appointments and maintain electronic health records.",
-  },
-  {
-    title: "Student Performance Analysis Tool",
-    description:
-      "Monitor academic performance and learning progress.",
+      "Real-time inventory tracking and product control.",
   },
   {
     title: "Online Roma Tours and Transport System",
     description:
-      "Support tour and transport booking with scheduling tools.",
+      "Tour and transport booking, scheduling, and reservations.",
   },
 ];
 
 export const targetMarketChart = [
   { label: "Students", value: 20, color: "#1f6bff" },
   { label: "SMBs", value: 20, color: "#22b07d" },
-  { label: "Schools", value: 20, color: "#f09f36" },
-  { label: "Clinics", value: 20, color: "#6b5cff" },
-  { label: "Transport", value: 20, color: "#e85c6b" },
+  { label: "Transport", value: 20, color: "#f09f36" },
+  { label: "Start-ups", value: 20, color: "#6b5cff" },
+  { label: "Services", value: 20, color: "#e85c6b" },
 ];

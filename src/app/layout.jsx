@@ -18,7 +18,7 @@ export const metadata = {
     template: "%s | TutoY Corp Integrated System",
   },
   description:
-    "Integrated platform for finance, care, learning, and transport operations across organizations.",
+    "Integrated platform for finance, operations, and booking workflows.",
   icons: {
     icon: "/tutoy-logo.jpeg",
   },
