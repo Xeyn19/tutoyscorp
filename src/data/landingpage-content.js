@@ -7,27 +7,6 @@ export const companyProfile = {
     "A unified web-based platform that combines financial management, business operations, and booking services into one centralized solution.",
 };
 
-export const heroMetrics = [
-  {
-    value: "3 Integrated Subsystems",
-    label: "Unified platform core",
-    detail:
-      "Savings, inventory, and booking tools aligned in one system.",
-  },
-  {
-    value: "3 Service Domains",
-    label: "Finance, operations, booking",
-    detail:
-      "Coverage across money management, business operations, and reservations.",
-  },
-  {
-    value: "5 Target Segments",
-    label: "Audience mapped",
-    detail:
-      "Built for students, SMBs, transport teams, start-ups, and service firms.",
-  },
-];
-
 export const featuredSignals = [
   "Working students",
   "Small businesses",
@@ -196,4 +175,55 @@ export const targetMarketChart = [
   { label: "Transport", value: 20, color: "#f09f36" },
   { label: "Start-ups", value: 20, color: "#6b5cff" },
   { label: "Services", value: 20, color: "#e85c6b" },
+];
+
+export const pricingPreviewPlans = [
+  {
+    name: "Starter Package (Basic Plan)",
+    description: "Designed for small businesses and startups.",
+    price: "$10/month",
+    highlights: [
+      "Basic financial tracking and booking system",
+      "Limited storage and user access with standard dashboard reports",
+      "Email support",
+    ],
+  },
+  {
+    name: "Professional Package (Business Plan)",
+    description: "Designed for growing SMEs.",
+    price: "$30/month",
+    highlights: [
+      "Full access to finance, booking, and records systems",
+      "Advanced analytics, reporting, and multi-user collaboration",
+      "Priority support with updates and basic customization",
+    ],
+  },
+  {
+    name: "Enterprise Package (Premium Plan)",
+    description: "Designed for large organizations and institutions.",
+    price: "$100/month",
+    highlights: [
+      "Full system integration: finance, operations, analytics, booking, inventory",
+      "Advanced automation and AI-based reporting tools",
+      "Unlimited users/cloud storage and dedicated technical support",
+    ],
+  },
+  {
+    name: "Custom / Build-to-Order Package",
+    description: "Designed for specialized agency and corporate requirements.",
+    price: "Custom pricing",
+    highlights: [
+      "Fully customized system based on client requirements",
+      "Consultation, planning, and system development",
+      "Available as one-time development or subscription-based model",
+    ],
+  },
+];
+
+export const contactServiceOptions = [
+  "Starter Package (Basic Plan)",
+  "Professional Package (Business Plan)",
+  "Enterprise Package (Premium Plan)",
+  "Custom / Build-to-Order Package",
+  "Freemium trial access",
 ];

@@ -6,9 +6,8 @@ import {
   companyProfile,
   coreValues,
   featuredSignals,
-  heroMetrics,
   operatingModel,
-  subsystemHighlights,
+  pricingPreviewPlans,
   targetMarketChart,
   trustPoints,
   targetMarkets,
@@ -18,6 +17,7 @@ const navigation = [
   { label: "Features", href: "#features" },
   { label: "Mission", href: "#mission" },
   { label: "Audience", href: "#audience" },
+  { label: "Pricing", href: "#pricing" },
 ];
 
 const primaryButtonClass =
@@ -99,32 +99,6 @@ const featureIcons = {
       <path d="M16 19V7" />
       <path d="M3 19h18" />
       <path d="M6 6l4 4 5-5" />
-    </svg>
-  ),
-};
-
-const subsystemIcons = {
-  "Online Saving Goal System for Working Students": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 9a6 6 0 0 1 12 0" />
-      <path d="M6 9v6a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9" />
-      <path d="M10 12h4" />
-    </svg>
-  ),
-  "Don G. Pastilan Inventory Management System": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 7h16" />
-      <path d="M6 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7" />
-      <path d="M9 11h6" />
-      <path d="M9 15h4" />
-    </svg>
-  ),
-  "Online Roma Tours and Transport System": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="5" y="7" width="14" height="8" rx="2" />
-      <path d="M7 15v2" />
-      <path d="M17 15v2" />
-      <path d="M8 11h8" />
     </svg>
   ),
 };
@@ -212,33 +186,9 @@ export default function LandingPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
-                  <a href="#features" className={`${primaryButtonClass} w-full sm:w-auto`}>
-                    View key features
-                  </a>
-                </div>
-
-                <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 sm:grid-cols-2 md:grid-cols-3">
-                  {heroMetrics.map((metric) => (
-                    <article
-                      key={metric.value}
-                      className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 sm:rounded-[26px] sm:p-5"
-                    >
-                      <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--accent-strong)]">
-                        {metric.value}
-                      </p>
-                      <p className="mt-3 text-sm font-medium leading-6 text-[var(--hero-text)]">
-                        {metric.label}
-                      </p>
-                      <p className="mt-3 text-sm leading-6 text-[var(--hero-subtext)]">
-                        {metric.detail}
-                      </p>
-                    </article>
-                  ))}
-                </div>
               </div>
 
-              <div className="relative min-w-0 xl:pl-3">
+              <div className="relative mt-4 min-w-0 sm:mt-6 xl:mt-12 xl:pl-3">
                 <div className="grid gap-4">
                   <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px]">
                     <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
@@ -247,11 +197,11 @@ export default function LandingPage() {
                           Integrated command center
                         </p>
                         <h2 className="mt-3 max-w-sm text-lg font-semibold tracking-tight text-[var(--hero-text)] sm:mt-4 sm:text-2xl lg:text-3xl">
-                          Unified operations, visible in one place.
+                          Unified operations in one clear view.
                         </h2>
                       </div>
                       <div className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
-                        active
+                        Active
                       </div>
                     </div>
 
@@ -259,7 +209,7 @@ export default function LandingPage() {
                       <div className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
                         <div className="flex items-center justify-between">
                           <p className="text-sm text-[var(--foreground-muted)]">
-                            System readiness
+                            Platform readiness
                           </p>
                           <p className="text-3xl font-semibold text-[var(--foreground)]">
                             100%
@@ -269,51 +219,54 @@ export default function LandingPage() {
                           <div className="h-2 w-full rounded-full bg-[linear-gradient(90deg,var(--accent)_0%,var(--accent-strong)_100%)]" />
                         </div>
                         <p className="mt-5 text-sm leading-6 text-[var(--foreground-muted)]">
-                          Core service areas aligned under one platform for
-                          consistent operations and management.
+                          Core finance, operations, and booking workflows stay
+                          aligned in one centralized platform.
                         </p>
                       </div>
                     </div>
 
                   </div>
 
-                  <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3">
-                    {trustPoints.map((point, index) => (
-                      <div
-                        key={point}
-                        className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-5"
-                      >
-                        <IconBadge>
-                          {index === 0 ? (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                              <rect x="4" y="5" width="16" height="14" rx="2" />
-                              <path d="M8 9h8" />
-                              <path d="M8 13h6" />
-                            </svg>
-                          ) : null}
-                          {index === 1 ? (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M4 12h6l2-3 2 6 2-3h4" />
-                              <path d="M4 6h16" />
-                              <path d="M4 18h16" />
-                            </svg>
-                          ) : null}
-                          {index === 2 ? (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                              <rect x="4" y="4" width="7" height="7" rx="1.5" />
-                              <rect x="13" y="4" width="7" height="7" rx="1.5" />
-                              <rect x="4" y="13" width="7" height="7" rx="1.5" />
-                              <path d="M14 15h6" />
-                            </svg>
-                          ) : null}
-                        </IconBadge>
-                        <p className="mt-5 text-sm leading-7 text-[var(--foreground-muted)]">
-                          {point}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 px-4 pb-6 sm:px-8 sm:pb-10 xl:px-10 xl:pb-12">
+              <div className="grid gap-3 sm:gap-4 lg:grid-cols-3">
+                {trustPoints.map((point, index) => (
+                  <div
+                    key={point}
+                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-5"
+                  >
+                    <IconBadge>
+                      {index === 0 ? (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="4" y="5" width="16" height="14" rx="2" />
+                          <path d="M8 9h8" />
+                          <path d="M8 13h6" />
+                        </svg>
+                      ) : null}
+                      {index === 1 ? (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M4 12h6l2-3 2 6 2-3h4" />
+                          <path d="M4 6h16" />
+                          <path d="M4 18h16" />
+                        </svg>
+                      ) : null}
+                      {index === 2 ? (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="4" y="4" width="7" height="7" rx="1.5" />
+                          <rect x="13" y="4" width="7" height="7" rx="1.5" />
+                          <rect x="4" y="13" width="7" height="7" rx="1.5" />
+                          <path d="M14 15h6" />
+                        </svg>
+                      ) : null}
+                    </IconBadge>
+                    <p className="mt-5 text-sm leading-7 text-[var(--foreground-muted)]">
+                      {point}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -322,36 +275,6 @@ export default function LandingPage() {
 
       <section className={`${sectionPadClass} py-10`}>
         <div className={`${frameClass} space-y-4`}>
-          <div className="grid gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch lg:gap-6 lg:rounded-[32px] lg:p-8">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                Subsystem alignment
-              </p>
-              <h2 className="mt-3 max-w-lg text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:mt-4 sm:text-3xl">
-                Each module feeds a shared operational record.
-              </h2>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {subsystemHighlights.map((signal) => (
-                <div
-                  key={signal.title}
-                  className="rounded-[16px] border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-3 text-sm leading-7 text-[var(--foreground-muted)] sm:rounded-[24px] sm:px-4 sm:py-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <IconBadge>
-                      {subsystemIcons[signal.title] ?? null}
-                    </IconBadge>
-                    <span className="font-medium text-[var(--foreground)]">
-                      {signal.title}
-                    </span>
-                  </div>
-                  <div className="mt-2">{signal.detail}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div className="mt-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
             <FeatureSlideshow />
           </div>
@@ -386,14 +309,14 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
+          <div className="flex flex-wrap justify-center gap-4">
             {capabilityCards.map((card, index) => (
               <article
                 key={card.title}
-                className="group rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:rounded-[26px] sm:p-6 lg:rounded-[30px]"
+                className="group w-full max-w-[24rem] rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:w-[calc(50%-0.5rem)] sm:rounded-[26px] sm:p-6 lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <div className="flex items-center justify-center gap-3">
                     <IconBadge>
                       {featureIcons[card.title] ?? null}
                     </IconBadge>
@@ -405,10 +328,10 @@ export default function LandingPage() {
                     0{index + 1}
                   </span>
                 </div>
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-[var(--foreground)]">
+                <h3 className="mt-6 text-center text-xl font-semibold tracking-tight text-[var(--foreground)]">
                   {card.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
+                <p className="mt-4 text-center text-sm leading-7 text-[var(--foreground-muted)]">
                   {card.description}
                 </p>
               </article>
@@ -533,6 +456,42 @@ export default function LandingPage() {
           </div>
       </section>
 
+      <section id="pricing" className={`${sectionPadClass} py-14 lg:py-18`}>
+        <div className={`${frameClass} space-y-6`}>
+          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+            <SectionIntro
+              eyebrow="Pricing Preview"
+              title="Tiered pricing built for startups, SMEs, and enterprises."
+              description="Choose Starter, Professional, Enterprise, or Custom plans based on your operational needs and budget."
+            />
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            {pricingPreviewPlans.map((plan) => (
+              <article
+                key={plan.name}
+                className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]"
+              >
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                  {plan.name}
+                </p>
+                <h3 className="mt-4 text-2xl font-semibold text-[var(--foreground)]">
+                  {plan.price}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                  {plan.description}
+                </p>
+                <ul className="mt-5 space-y-2 text-sm text-[var(--foreground-muted)]">
+                  {plan.highlights.map((point) => (
+                    <li key={point}>- {point}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className={`${sectionPadClass} pt-10`}>
         <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] px-4 py-8 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:px-6 sm:py-10 lg:rounded-[36px] lg:px-10`}>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -551,18 +510,19 @@ export default function LandingPage() {
  
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
-                href="mailto:hello@tutoyscorp.com"
+                href="/contact"
                 className={`${primaryButtonClass} w-full sm:w-auto`}
               >
-                Connect
+                Connect With Us
               </a>
-              <a href="#top" className={`${secondaryButtonClass} w-full sm:w-auto`}>
-                Back to top
+              <a href="#pricing" className={`${secondaryButtonClass} w-full sm:w-auto`}>
+                View Plans
               </a>
             </div>
           </div>
         </div>
       </section>
+
     </main>
   );
 }

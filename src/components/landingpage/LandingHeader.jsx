@@ -73,10 +73,10 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
               <MenuIcon open={menuOpen} />
             </button>
             <a
-              href="#contact"
+              href="/contact"
               className={`${primaryButtonClass} hidden lg:inline-flex`}
             >
-              Connect with us
+              Connect With Us
             </a>
           </div>
         </div>
@@ -97,11 +97,11 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
             </nav>
 
             <a
-              href="#contact"
+              href="/contact"
               onClick={closeMenu}
               className={`${primaryButtonClass} mt-2 w-full sm:mt-3`}
             >
-              Connect with us
+              Connect With Us
             </a>
           </div>
         ) : null}

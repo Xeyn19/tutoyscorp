@@ -46,12 +46,18 @@ npm run lint
 
 - `/` renders the main landing page
 - `/landingpage` renders the same landing page route
+- `/contact` renders the contact/inquiry form page
 
 ## Project Structure
 
 ```text
 src/
   app/
+    api/
+      inquiries/
+        route.js
+    contact/
+      page.jsx
     globals.css
     layout.jsx
     page.jsx
@@ -61,6 +67,8 @@ src/
   components/
     landingpage/
       BrandMark.jsx
+      FeatureSlideshow.jsx
+      InquiryForm.jsx
       LandingHeader.jsx
       LandingPage.jsx
       SectionIntro.jsx
@@ -82,6 +90,15 @@ Update page layout and section composition in:
 Update responsive header and mobile hamburger menu in:
 
 - `src/components/landingpage/LandingHeader.jsx`
+
+Update the contact/inquiry page form UI in:
+
+- `src/components/landingpage/InquiryForm.jsx`
+- `src/app/contact/page.jsx`
+
+Update the inquiry submit backend handler in:
+
+- `src/app/api/inquiries/route.js`
 
 Update light/dark theme styles and global design tokens in:
 
