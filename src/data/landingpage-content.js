@@ -181,7 +181,7 @@ export const pricingPreviewPlans = [
   {
     name: "Starter Package (Basic Plan)",
     description: "Designed for small businesses and startups.",
-    price: "$10/month",
+    price: "₱500",
     highlights: [
       "Basic financial tracking and booking system",
       "Limited storage and user access with standard dashboard reports",
@@ -191,7 +191,7 @@ export const pricingPreviewPlans = [
   {
     name: "Professional Package (Business Plan)",
     description: "Designed for growing SMEs.",
-    price: "$30/month",
+    price: "₱1,500",
     highlights: [
       "Full access to finance, booking, and records systems",
       "Advanced analytics, reporting, and multi-user collaboration",
@@ -201,29 +201,17 @@ export const pricingPreviewPlans = [
   {
     name: "Enterprise Package (Premium Plan)",
     description: "Designed for large organizations and institutions.",
-    price: "$100/month",
+    price: "₱5,000/month",
     highlights: [
       "Full system integration: finance, operations, analytics, booking, inventory",
       "Advanced automation and AI-based reporting tools",
       "Unlimited users/cloud storage and dedicated technical support",
     ],
   },
-  {
-    name: "Custom / Build-to-Order Package",
-    description: "Designed for specialized agency and corporate requirements.",
-    price: "Custom pricing",
-    highlights: [
-      "Fully customized system based on client requirements",
-      "Consultation, planning, and system development",
-      "Available as one-time development or subscription-based model",
-    ],
-  },
 ];
 
 export const contactServiceOptions = [
-  "Starter Package (Basic Plan)",
-  "Professional Package (Business Plan)",
-  "Enterprise Package (Premium Plan)",
-  "Custom / Build-to-Order Package",
-  "Freemium trial access",
+  "Starter Package (Basic Plan) — ₱500",
+  "Professional Package (Business Plan) — ₱1,500",
+  "Enterprise Package (Premium Plan) — ₱5,000/month",
 ];

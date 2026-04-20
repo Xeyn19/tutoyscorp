@@ -118,7 +118,7 @@ export default function InquiryForm({ services }) {
       </div>
 
       <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
-        Selected Package / Service
+        Selected Plan
         <select
           name="selectedService"
           value={form.selectedService}
@@ -126,7 +126,7 @@ export default function InquiryForm({ services }) {
           required
           className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
         >
-          <option value="">Select a package or service</option>
+          <option value="">Select a plan</option>
           {services.map((service) => (
             <option key={service} value={service}>
               {service}

@@ -462,11 +462,11 @@ export default function LandingPage() {
             <SectionIntro
               eyebrow="Pricing Preview"
               title="Tiered pricing built for startups, SMEs, and enterprises."
-              description="Choose Starter, Professional, Enterprise, or Custom plans based on your operational needs and budget."
+              description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
             />
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
             {pricingPreviewPlans.map((plan) => (
               <article
                 key={plan.name}

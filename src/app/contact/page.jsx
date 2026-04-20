@@ -19,7 +19,7 @@ export default function ContactPage() {
               Connect with {companyProfile.name}
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--hero-subtext)] sm:text-base sm:leading-8">
-              Tell us your requirements and preferred product or service. We will
+              Tell us your requirements and preferred plan. We will
               review your request and get back to you.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
