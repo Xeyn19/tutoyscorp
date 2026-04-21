@@ -46,6 +46,30 @@ const targetMarketGradient = targetMarketChart.reduce(
   },
   { stops: [], offset: 0 }
 ).stops.join(", ");
+const targetMarketGroupMeta = {
+  Primary: {
+    eyebrow: "Primary audience",
+    title: "Best-fit market segments",
+    description:
+      "The strongest day-to-day users for the platform's savings, operations, and booking workflows.",
+  },
+  Secondary: {
+    eyebrow: "Secondary audience",
+    title: "Growth-ready opportunities",
+    description:
+      "Adjacent segments that benefit from the same connected workflows as the platform expands.",
+  },
+};
+const targetMarketSummaryStats = [
+  {
+    label: "Primary segments",
+    value: String(targetMarkets.filter((market) => market.label === "Primary").length),
+  },
+  {
+    label: "Secondary segments",
+    value: String(targetMarkets.filter((market) => market.label === "Secondary").length),
+  },
+];
 
 const iconClass = "h-5 w-5 text-[var(--accent-strong)]";
 const iconBadgeClass =
@@ -138,6 +162,7 @@ const coreValueIcons = {
 
 const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
   label,
+  ...targetMarketGroupMeta[label],
   items: targetMarkets.filter((market) => market.label === label),
 }));
 
@@ -421,72 +446,127 @@ export default function LandingPage() {
           </div>
 
           <div className={sectionPanelClass}>
-            <div className="grid gap-6 xl:grid-cols-[0.34fr_0.66fr] xl:items-start">
-              <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5">
+            <div className="grid gap-6 xl:grid-cols-[minmax(18rem,0.36fr)_minmax(0,0.64fr)] xl:items-start xl:gap-8">
+              <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                   Target Market
                 </p>
                 <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
                   Market segments served
                 </h3>
-                <div className="mt-5 grid justify-items-start gap-5">
-                  <div
-                    className="relative h-28 w-28 rounded-full border border-[var(--border)] shadow-[var(--panel-shadow)] sm:h-32 sm:w-32"
-                    style={{ background: `conic-gradient(${targetMarketGradient})` }}
-                    role="img"
-                    aria-label="Target market distribution"
-                  />
-                  <div className="grid w-full gap-2 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-3">
-                    {targetMarketChart.map((segment) => (
-                      <div
-                        key={segment.label}
-                        className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-xs text-[var(--foreground-muted)]"
-                      >
-                        <span
-                          className="h-2.5 w-2.5 rounded-full"
-                          style={{ backgroundColor: segment.color }}
+                <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                  The platform supports five audience groups, led by three primary segments and two secondary expansion opportunities.
+                </p>
+
+                <div className="mt-6 grid gap-4">
+                  <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] sm:rounded-[22px] sm:p-5">
+                    <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+                      <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[var(--border)] shadow-[var(--panel-shadow)] sm:h-36 sm:w-36">
+                        <div
+                          className="absolute inset-0 rounded-full"
+                          style={{ background: `conic-gradient(${targetMarketGradient})` }}
+                          role="img"
+                          aria-label="Target market distribution"
                         />
-                        <span>{segment.label}</span>
+                        <div className="relative flex h-[72%] w-[72%] flex-col items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] text-center shadow-[0_10px_24px_var(--shadow-soft)]">
+                          <span className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">
+                            {targetMarketChart.length}
+                          </span>
+                          <span className="mt-1 text-[11px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                            Segments
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="grid flex-1 gap-2">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
+                          Audience mix
+                        </p>
+                        <div className="grid gap-2">
+                          {targetMarketChart.map((segment) => (
+                            <div
+                              key={segment.label}
+                              className="flex items-center justify-between gap-3 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-2 text-xs text-[var(--foreground-muted)]"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className="h-2.5 w-2.5 rounded-full"
+                                  style={{ backgroundColor: segment.color }}
+                                />
+                                <span>{segment.label}</span>
+                              </div>
+                              <span>{Math.round((segment.value / targetMarketTotal) * 100)}%</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {targetMarketSummaryStats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] px-4 py-4 shadow-[0_12px_32px_var(--shadow-soft)]"
+                      >
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
+                          {stat.label}
+                        </p>
+                        <p className="mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)]">
+                          {stat.value}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="grid gap-4">
+              <div className="grid gap-4 lg:gap-5">
                 {targetMarketGroups.map((group) => (
-                  <div
+                  <section
                     key={group.label}
-                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5"
+                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6"
                   >
-                    <div className="flex items-center gap-3">
-                      <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                        {group.label}
-                      </p>
-                      <div className="h-px flex-1 bg-[var(--border)]" />
+                    <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-4 sm:flex-row sm:items-end sm:justify-between">
+                      <div className="max-w-2xl">
+                        <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                          {group.eyebrow}
+                        </p>
+                        <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)] sm:text-2xl">
+                          {group.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                          {group.description}
+                        </p>
+                      </div>
+
+                      <div className="inline-flex items-center gap-2 self-start rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-xs text-[var(--foreground-muted)] sm:self-auto">
+                        <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent-strong)]" />
+                        <span>{group.items.length} segments</span>
+                      </div>
                     </div>
 
-                    <div className={`mt-5 grid gap-3 ${group.items.length > 2 ? "md:grid-cols-2" : "sm:grid-cols-2"}`}>
-                      {group.items.map((market, index) => (
+                    <div className={`mt-5 grid gap-3 ${
+                      group.items.length > 2
+                        ? "md:grid-cols-2 xl:grid-cols-3"
+                        : "sm:grid-cols-2"
+                    }`}>
+                      {group.items.map((market) => (
                         <article
-                          key={`${market.label}-${market.title}`}
-                          className={`rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] sm:p-5 ${
-                            group.items.length % 2 === 1 && index === group.items.length - 1
-                              ? "md:col-span-2"
-                              : ""
-                          }`}
+                          key={`${group.label}-${market.title}`}
+                          className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] sm:p-5"
                         >
                           <div className="flex items-start gap-3">
                             <IconBadge>
                               {marketIcons[market.title] ?? null}
                             </IconBadge>
                             <div className="min-w-0">
-                              <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                                {market.label}
+                              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
+                                Audience segment
                               </p>
-                              <h3 className="mt-2 text-lg font-semibold text-[var(--foreground)] sm:text-xl">
+                              <h4 className="mt-2 text-lg font-semibold text-[var(--foreground)] sm:text-xl">
                                 {market.title}
-                              </h3>
+                              </h4>
                             </div>
                           </div>
                           <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
@@ -495,7 +575,7 @@ export default function LandingPage() {
                         </article>
                       ))}
                     </div>
-                  </div>
+                  </section>
                 ))}
               </div>
             </div>
