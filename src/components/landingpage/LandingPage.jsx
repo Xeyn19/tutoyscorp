@@ -25,8 +25,10 @@ const primaryButtonClass =
 const secondaryButtonClass =
   "inline-flex items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-xs font-medium text-[var(--foreground)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-strong)] sm:px-6 sm:py-3.5 sm:text-sm";
 
-const frameClass = "mx-auto w-full max-w-[96rem]";
-const sectionPadClass = "px-2 sm:px-4 lg:px-6";
+const frameClass = "mx-auto w-full max-w-[90rem] 2xl:max-w-[92rem]";
+const sectionPadClass = "px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12";
+const sectionPanelClass =
+  "rounded-[20px] border border-[var(--border)] bg-[var(--surface)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:px-7 sm:py-7 lg:rounded-[32px] lg:px-9 lg:py-8";
 const targetMarketTotal = targetMarketChart.reduce(
   (sum, item) => sum + item.value,
   0
@@ -63,55 +65,6 @@ const trustPointTitles = [
 function IconBadge({ children }) {
   return <div className={iconBadgeClass}>{children}</div>;
 }
-
-const featureIcons = {
-  "Unified Role-Based User System": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M13 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
-      <path d="M4 18a4 4 0 0 1 6-3" />
-      <path d="M20 18a4 4 0 0 0-6-3" />
-      <path d="M12 14v7" />
-      <path d="M9.5 18h5" />
-    </svg>
-  ),
-  "Centralized Smart Dashboard": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="14" rx="2" />
-      <path d="M7 9h4" />
-      <path d="M7 13h6" />
-      <path d="M15 9h2" />
-      <path d="M15 13h2" />
-    </svg>
-  ),
-  "Booking and Order Management": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="5" width="16" height="14" rx="2" />
-      <path d="M8 3v4" />
-      <path d="M16 3v4" />
-      <path d="M7 11h10" />
-      <path d="M9 15h6" />
-    </svg>
-  ),
-  "Inventory and Record Management": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="4" width="7" height="7" rx="1.5" />
-      <rect x="13" y="4" width="7" height="7" rx="1.5" />
-      <rect x="4" y="13" width="7" height="7" rx="1.5" />
-      <path d="M14 15h6" />
-      <path d="M14 18h4" />
-    </svg>
-  ),
-  "Goal Tracking and Business Analytics": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19V5" />
-      <path d="M10 19V9" />
-      <path d="M16 19V7" />
-      <path d="M3 19h18" />
-      <path d="M6 6l4 4 5-5" />
-    </svg>
-  ),
-};
 
 const marketIcons = {
   "Working students": (
@@ -190,8 +143,8 @@ const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
 
 export default function LandingPage() {
   return (
-    <main className="overflow-x-hidden pb-16" id="top">
-      <section className={`${sectionPadClass} pt-4`}>
+    <main className="overflow-x-hidden pb-16 sm:pb-20" id="top">
+      <section className={`${sectionPadClass} pt-5 sm:pt-6`}>
         <div className={frameClass}>
           <div className="relative overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[36px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,var(--glow),transparent_26%),radial-gradient(circle_at_90%_22%,var(--accent-soft),transparent_25%)]" />
@@ -203,7 +156,7 @@ export default function LandingPage() {
               primaryButtonClass={primaryButtonClass}
             />
 
-            <div className="relative z-10 grid gap-6 px-4 pb-6 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:items-start xl:px-10 xl:pb-12 xl:pt-16">
+            <div className="relative z-10 grid gap-6 px-5 pb-7 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:gap-8 lg:px-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:items-start xl:px-12 xl:pb-12 xl:pt-16 2xl:px-14">
               <div className="max-w-4xl">
                 <p className="inline-flex items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.32em] text-[var(--accent-strong)] shadow-[0_14px_34px_var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px]">
                   {companyProfile.label}
@@ -231,7 +184,7 @@ export default function LandingPage() {
               </div>
 
               <aside className="min-w-0 xl:pt-6">
-                <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px]">
+                <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:px-6 sm:py-6 lg:rounded-[32px] lg:px-7 lg:py-7">
                   <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                     Why it works
                   </p>
@@ -293,8 +246,8 @@ export default function LandingPage() {
       </section>
 
       <section className={`${sectionPadClass} py-10`}>
-        <div className={`${frameClass} space-y-4`}>
-          <div className="mt-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+        <div className={`${frameClass} space-y-6 sm:space-y-8`}>
+          <div className={`mt-4 ${sectionPanelClass}`}>
             <FeatureSlideshow />
           </div>
         </div>
@@ -304,43 +257,49 @@ export default function LandingPage() {
         id="features"
         className={`${sectionPadClass} py-14 lg:py-18`}
       >
-        <div className={`${frameClass} space-y-4`}>
-          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
-            <div className="mx-auto max-w-4xl text-center">
-              <SectionIntro
-                eyebrow="Key Features"
-                title="Core capabilities that keep teams aligned daily."
-                description=""
-                align="center"
-              />
-            </div>
+        <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
+          <div className="mx-auto max-w-4xl text-center">
+            <SectionIntro
+              eyebrow="Key Features"
+              title="Core capabilities that keep teams aligned daily."
+              description="Explore the platform features that connect user access, dashboards, bookings, inventory, and analytics in one streamlined workflow."
+              align="center"
+            />
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
             {capabilityCards.map((card, index) => (
               <article
                 key={card.title}
-                className="group w-full max-w-[24rem] rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:w-[calc(50%-0.5rem)] sm:rounded-[26px] sm:p-6 lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
+                className="group w-full max-w-[24rem] overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
               >
-                <div className="flex flex-col items-center gap-3 text-center">
-                  <div className="flex items-center justify-center gap-3">
-                    <IconBadge>
-                      {featureIcons[card.title] ?? null}
-                    </IconBadge>
-                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--accent-strong)]">
+                <div
+                  className="relative h-52 overflow-hidden sm:h-56"
+                  role="img"
+                  aria-label={card.imageAlt}
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(6, 12, 24, 0.08) 0%, rgba(6, 12, 24, 0.4) 100%), url('${card.image}')`,
+                    backgroundPosition: card.imagePosition ?? "center center",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4 sm:p-5">
+                    <p className="rounded-full border border-white/35 bg-black/35 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white backdrop-blur-sm">
                       {card.tag}
                     </p>
+                    <span className="rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                      0{index + 1}
+                    </span>
                   </div>
-                  <span className="text-sm text-[var(--foreground-muted)]">
-                    0{index + 1}
-                  </span>
                 </div>
-                <h3 className="mt-6 text-center text-xl font-semibold tracking-tight text-[var(--foreground)]">
-                  {card.title}
-                </h3>
-                <p className="mt-4 text-center text-sm leading-7 text-[var(--foreground-muted)]">
-                  {card.description}
-                </p>
+                <div className="p-5 text-center sm:p-6">
+                  <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
+                    {card.description}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
@@ -348,20 +307,19 @@ export default function LandingPage() {
       </section>
 
       <section id="mission" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={`${frameClass} rounded-[20px] border border-[var(--media-border)] bg-[var(--media-shell)] p-4 shadow-[var(--panel-shadow-strong)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[36px] lg:p-10`}>
+        <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
           <SectionIntro
             eyebrow="Mission and Vision"
             title="Clear direction for a connected operational ecosystem."
             description="Our mission and vision define how the platform supports organizations across industries."
-            tone="media"
             align="center"
           />
 
-          <div className="mt-6 grid gap-4 sm:mt-10 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
             {operatingModel.map((step, index) => (
               <article
                 key={step.label}
-                className="group overflow-hidden rounded-[20px] border border-[var(--media-border)] bg-[var(--inverse-card)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--media-border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
+                className="group overflow-hidden rounded-[20px] border border-[var(--media-border)] bg-transparent shadow-[var(--panel-shadow)] transition hover:-translate-y-1 hover:border-[var(--media-border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
               >
                 <div
                   className="relative h-56 overflow-hidden sm:h-60"
@@ -391,7 +349,7 @@ export default function LandingPage() {
 
                 {step.description ? (
                   <div className="p-5 sm:p-6">
-                    <p className="text-sm leading-7 text-[var(--media-muted)]">
+                    <p className="text-sm leading-7 text-[var(--foreground-muted)]">
                       {step.description}
                     </p>
                   </div>
@@ -403,7 +361,7 @@ export default function LandingPage() {
       </section>
 
       <section id="audience" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={`${frameClass} space-y-4 lg:space-y-6`}>
+        <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
           <div className="relative overflow-hidden rounded-[20px] border border-[var(--media-border)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[32px]">
             <div
               className="absolute inset-0"
@@ -419,7 +377,7 @@ export default function LandingPage() {
               style={{ backgroundImage: "var(--media-accent-overlay)" }}
             />
 
-            <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+            <div className="relative z-10 px-5 py-5 sm:px-7 sm:py-7 lg:px-9 lg:py-8">
               <div className="flex flex-col items-center">
                 <SectionIntro
                   eyebrow="Core Values"
@@ -430,7 +388,7 @@ export default function LandingPage() {
                   descriptionClassName="text-[var(--core-values-description)]"
                 />
 
-                <div className="mt-8 flex w-full max-w-5xl flex-wrap justify-center gap-3 sm:gap-4">
+                <div className="mt-10 flex w-full max-w-5xl flex-wrap justify-center gap-3 sm:mt-12 sm:gap-4">
                   {coreValues.map((value, index) => (
                     <article
                       key={value.title}
@@ -462,7 +420,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+          <div className={sectionPanelClass}>
             <div className="grid gap-6 xl:grid-cols-[0.34fr_0.66fr] xl:items-start">
               <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
@@ -546,15 +504,13 @@ export default function LandingPage() {
       </section>
 
       <section id="pricing" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={`${frameClass} space-y-6`}>
-          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
-            <SectionIntro
-              eyebrow="Pricing Preview"
-              title="Tiered pricing built for startups, SMEs, and enterprises."
-              description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
-              align="center"
-            />
-          </div>
+        <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
+          <SectionIntro
+            eyebrow="Pricing Preview"
+            title="Tiered pricing built for startups, SMEs, and enterprises."
+            description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
+            align="center"
+          />
 
           <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
             {pricingPreviewPlans.map((plan, index) => (
@@ -609,7 +565,7 @@ export default function LandingPage() {
       </section>
 
       <section id="contact" className={`${sectionPadClass} pt-10`}>
-        <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] px-4 py-8 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:px-6 sm:py-10 lg:rounded-[36px] lg:px-10`}>
+        <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] px-5 py-8 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:px-7 sm:py-10 lg:rounded-[36px] lg:px-10 xl:px-12`}>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">

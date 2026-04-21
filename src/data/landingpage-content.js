@@ -28,30 +28,45 @@ export const capabilityCards = [
     description:
       "Secure login for admins, staff, students, and customers with role-based access.",
     tag: "Access",
+    image: "/role.jpg",
+    imageAlt: "Role-based user system workflow",
+    imagePosition: "center 36%",
   },
   {
     title: "Centralized Smart Dashboard",
     description:
       "Real-time overview of savings, inventory, orders, and bookings.",
     tag: "Dashboard",
+    image: "/dashboard.jpg",
+    imageAlt: "Business dashboard analytics screen",
+    imagePosition: "center 34%",
   },
   {
     title: "Booking and Order Management",
     description:
       "Tour and transport reservation, scheduling, and order tools.",
     tag: "Scheduling",
+    image: "/booking.jpg",
+    imageAlt: "Booking and reservation management interface",
+    imagePosition: "center 42%",
   },
   {
     title: "Inventory and Record Management",
     description:
       "Real-time inventory and financial record monitoring.",
     tag: "Records",
+    image: "/inventory.jpg",
+    imageAlt: "Inventory and records tracking workspace",
+    imagePosition: "center 38%",
   },
   {
     title: "Goal Tracking and Business Analytics",
     description:
       "Savings goals, inventory reports, and booking analytics.",
     tag: "Analytics",
+    image: "/savings.jpg",
+    imageAlt: "Savings and performance tracking visuals",
+    imagePosition: "center 36%",
   },
 ];
 
@@ -171,19 +186,40 @@ export const targetMarkets = [
 
 export const slideshowSlides = [
   {
+    id: "saving-goals",
+    label: "Saving Goals",
     title: "Online Saving Goal System for Working Students",
     description:
       "Savings targets and daily financial progress tracking.",
+    detail:
+      "Helps working students monitor targets, contributions, and financial momentum with a clearer daily view.",
+    image: "/savings.jpg",
+    imageAlt: "Savings goal tracking and financial planning tools",
+    imagePosition: "center 36%",
   },
   {
+    id: "inventory-management",
+    label: "Inventory",
     title: "Don G. Pastilan Inventory Management System",
     description:
       "Real-time inventory tracking and product control.",
+    detail:
+      "Keeps stock levels, product movement, and records easier to follow so teams can act faster with fewer manual checks.",
+    image: "/inventory.jpg",
+    imageAlt: "Inventory management dashboard in a warehouse setting",
+    imagePosition: "center 40%",
   },
   {
+    id: "transport-booking",
+    label: "Booking",
     title: "Online Roma Tours and Transport System",
     description:
       "Tour and transport booking, scheduling, and reservations.",
+    detail:
+      "Brings reservation flow, trip scheduling, and booking visibility together in one coordinated operational view.",
+    image: "/booking.jpg",
+    imageAlt: "Booking and transport reservation interface on a tablet",
+    imagePosition: "center 42%",
   },
 ];
 
