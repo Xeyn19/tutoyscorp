@@ -77,7 +77,7 @@ export default function InquiryForm({ services }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid h-full content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[28px] sm:p-6 lg:min-h-[calc(100vh-4rem)] lg:rounded-[32px] lg:p-8"
+      className="grid h-full min-w-0 content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[28px] sm:p-6 lg:gap-5 lg:p-8 xl:min-h-[calc(100vh-4rem)] xl:rounded-[32px]"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
@@ -188,7 +188,7 @@ export default function InquiryForm({ services }) {
       </label>
 
       <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 shadow-[0_12px_32px_var(--shadow-soft)]">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <span className="flex h-5 w-5 items-center justify-center rounded border border-[var(--border-strong)] bg-[var(--surface)]" aria-hidden="true">
               <span className="h-2.5 w-2.5 rounded-sm border border-[var(--border-strong)]" />
@@ -203,7 +203,7 @@ export default function InquiryForm({ services }) {
             </div>
           </div>
 
-          <div className="text-right">
+          <div className="text-left sm:text-right">
             <p className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
               Cloudflare
             </p>

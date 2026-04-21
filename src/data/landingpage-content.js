@@ -235,7 +235,7 @@ export const pricingPreviewPlans = [
   {
     name: "Starter Package (Basic Plan)",
     description: "Designed for small businesses and startups.",
-    price: "PHP 500",
+    price: "₱500",
     highlights: [
       "Basic financial tracking and booking system",
       "Limited storage and user access with standard dashboard reports",
@@ -245,7 +245,7 @@ export const pricingPreviewPlans = [
   {
     name: "Professional Package (Business Plan)",
     description: "Designed for growing SMEs.",
-    price: "PHP 1,500",
+    price: "₱1,500",
     highlights: [
       "Full access to finance, booking, and records systems",
       "Advanced analytics, reporting, and multi-user collaboration",
@@ -255,7 +255,7 @@ export const pricingPreviewPlans = [
   {
     name: "Enterprise Package (Premium Plan)",
     description: "Designed for large organizations and institutions.",
-    price: "PHP 5,000/month",
+    price: "₱5,000/month",
     highlights: [
       "Full system integration: finance, operations, analytics, booking, inventory",
       "Advanced automation and AI-based reporting tools",
@@ -265,7 +265,7 @@ export const pricingPreviewPlans = [
 ];
 
 export const contactServiceOptions = [
-  "Starter Package (Basic Plan) - PHP 500",
-  "Professional Package (Business Plan) - PHP 1,500",
-  "Enterprise Package (Premium Plan) - PHP 5,000/month",
+  "Starter Package (Basic Plan) - ₱500",
+  "Professional Package (Business Plan) - ₱1,500",
+  "Enterprise Package (Premium Plan) - ₱5,000/month",
 ];
