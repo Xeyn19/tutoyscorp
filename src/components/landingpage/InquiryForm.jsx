@@ -9,16 +9,24 @@ const initialForm = {
   companyName: "",
   selectedService: "",
   message: "",
+  consentAccepted: false,
 };
 
+function createInitialForm() {
+  return { ...initialForm };
+}
+
 export default function InquiryForm({ services }) {
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(createInitialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
 
   function onChange(event) {
-    const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
+    const { name, type, value, checked } = event.target;
+    setForm((current) => ({
+      ...current,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   }
 
   async function onSubmit(event) {
@@ -52,7 +60,7 @@ export default function InquiryForm({ services }) {
         message:
           "Success! Your inquiry has been submitted. Our team will contact you soon.",
       });
-      setForm(initialForm);
+      setForm(createInitialForm());
       setIsSubmitting(false);
       return;
     } catch {
@@ -69,14 +77,14 @@ export default function InquiryForm({ services }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8"
+      className="grid h-full content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[28px] sm:p-6 lg:min-h-[calc(100vh-4rem)] lg:rounded-[32px] lg:p-8"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
           Full Name
           <input
             name="fullName"
-            value={form.fullName}
+            value={form.fullName ?? ""}
             onChange={onChange}
             required
             className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
@@ -88,7 +96,7 @@ export default function InquiryForm({ services }) {
           <input
             type="email"
             name="email"
-            value={form.email}
+            value={form.email ?? ""}
             onChange={onChange}
             required
             className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
@@ -99,7 +107,7 @@ export default function InquiryForm({ services }) {
           Contact Number
           <input
             name="contactNumber"
-            value={form.contactNumber}
+            value={form.contactNumber ?? ""}
             onChange={onChange}
             required
             className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
@@ -110,7 +118,7 @@ export default function InquiryForm({ services }) {
           Company Name (optional)
           <input
             name="companyName"
-            value={form.companyName}
+            value={form.companyName ?? ""}
             onChange={onChange}
             className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
           />
@@ -121,7 +129,7 @@ export default function InquiryForm({ services }) {
         Selected Plan
         <select
           name="selectedService"
-          value={form.selectedService}
+          value={form.selectedService ?? ""}
           onChange={onChange}
           required
           className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
@@ -139,13 +147,72 @@ export default function InquiryForm({ services }) {
         Message / Requirements
         <textarea
           name="message"
-          value={form.message}
+          value={form.message ?? ""}
           onChange={onChange}
           required
           rows={5}
           className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
         />
       </label>
+
+      <label className="flex items-start gap-3 rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 text-sm leading-7 text-[var(--foreground-muted)]">
+        <input
+          type="checkbox"
+          name="consentAccepted"
+          checked={Boolean(form.consentAccepted)}
+          onChange={onChange}
+          required
+          className="mt-1 h-4 w-4 rounded border border-[var(--border-strong)] accent-[var(--accent-strong)]"
+        />
+        <span>
+          By checking this box, you confirm that you have read and agree to
+          our{" "}
+          <span
+            role="link"
+            aria-disabled="true"
+            className="font-semibold text-[var(--foreground)] underline underline-offset-4 decoration-[var(--border-strong)] cursor-default"
+          >
+            Terms of Use
+          </span>{" "}
+          and that you consent to our processing of your Personal Data in
+          accordance with our{" "}
+          <span
+            role="link"
+            aria-disabled="true"
+            className="font-semibold text-[var(--foreground)] underline underline-offset-4 decoration-[var(--border-strong)] cursor-default"
+          >
+            Privacy Policy
+          </span>
+          .
+        </span>
+      </label>
+
+      <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 shadow-[0_12px_32px_var(--shadow-soft)]">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-5 w-5 items-center justify-center rounded border border-[var(--border-strong)] bg-[var(--surface)]" aria-hidden="true">
+              <span className="h-2.5 w-2.5 rounded-sm border border-[var(--border-strong)]" />
+            </span>
+            <div>
+              <p className="text-sm font-medium text-[var(--foreground)]">
+                Verify you are human
+              </p>
+              <p className="text-xs text-[var(--foreground-muted)]">
+                Static Cloudflare UI placeholder
+              </p>
+            </div>
+          </div>
+
+          <div className="text-right">
+            <p className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
+              Cloudflare
+            </p>
+            <p className="text-[11px] text-[var(--foreground-muted)]">
+              Turnstile
+            </p>
+          </div>
+        </div>
+      </div>
 
       {status.message ? (
         <p

@@ -19,6 +19,10 @@ function validatePayload(payload) {
     return `Missing required field(s): ${missing.join(", ")}`;
   }
 
+  if (payload.consentAccepted !== true) {
+    return "Consent is required before submitting the inquiry.";
+  }
+
   return null;
 }
 
@@ -48,6 +52,7 @@ export async function POST(request) {
     companyName: typeof payload.companyName === "string" ? payload.companyName.trim() : "",
     selectedService: payload.selectedService.trim(),
     message: payload.message.trim(),
+    consentAccepted: true,
     createdAt: new Date().toISOString(),
   };
 
