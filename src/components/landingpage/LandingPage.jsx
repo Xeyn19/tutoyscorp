@@ -220,11 +220,12 @@ export default function LandingPage() {
                 ) : null}
 
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <a href="#features" className={primaryButtonClass} style={{ color: "#000" }}>
+                  <a
+                    href="#features"
+                    className={`${primaryButtonClass} min-w-[12rem] sm:min-w-[13.5rem]`}
+                    style={{ color: "#000" }}
+                  >
                     Explore Features
-                  </a>
-                  <a href="/contact" className={secondaryButtonClass}>
-                    Request a Demo
                   </a>
                 </div>
               </div>
