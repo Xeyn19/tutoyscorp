@@ -1,16 +1,25 @@
 export const companyProfile = {
   name: "TutoY Corp Integrated System",
   label: "TutoY Corp Integrated System",
-  headline: "One platform for finance, operations, and booking.",
+  headline: "Manage finance, operations, and bookings in one connected system.",
   tagline: "Built to Help, Designed to Care",
   description:
-    "A unified web-based platform that combines financial management, business operations, and booking services into one centralized solution.",
+    "TutoY Corp Integrated System brings financial tracking, daily operations, and reservation workflows into a single workspace so teams can move faster with less manual coordination.",
 };
 
 export const featuredSignals = [
-  "Working students",
-  "Small businesses",
-  "Tour & transport companies",
+  {
+    title: "Working students",
+    detail: "Track savings goals and everyday financial progress in one place.",
+  },
+  {
+    title: "Small & medium businesses",
+    detail: "Manage records, inventory, and operations with clearer visibility.",
+  },
+  {
+    title: "Tour & transport companies",
+    detail: "Handle bookings, schedules, and service coordination without friction.",
+  },
 ];
 
 export const capabilityCards = [
@@ -50,18 +59,27 @@ export const operatingModel = [
   {
     label: "Mission",
     title: "Our Mission",
+    image: "/mission.jpg",
+    imageAlt: "TutoY Corp mission presentation",
+    imagePosition: "center 36%",
     description:
       "Provide innovative, affordable, and user-friendly digital systems that simplify operations and improve productivity for businesses and working individuals.",
   },
   {
     label: "Vision",
     title: "Our Vision",
+    image: "/vision.jpg",
+    imageAlt: "TutoY Corp vision presentation",
+    imagePosition: "center 42%",
     description:
       "To become a trusted technology provider that delivers integrated digital solutions for businesses and communities.",
   },
   {
     label: "Tagline",
     title: "Our Tagline",
+    image: "/tagline.jpg",
+    imageAlt: "TutoY Corp tagline presentation",
+    imagePosition: "center 42%",
     description: "Built to Help, Designed to Care",
   },
 ];
@@ -181,7 +199,7 @@ export const pricingPreviewPlans = [
   {
     name: "Starter Package (Basic Plan)",
     description: "Designed for small businesses and startups.",
-    price: "₱500",
+    price: "PHP 500",
     highlights: [
       "Basic financial tracking and booking system",
       "Limited storage and user access with standard dashboard reports",
@@ -191,7 +209,7 @@ export const pricingPreviewPlans = [
   {
     name: "Professional Package (Business Plan)",
     description: "Designed for growing SMEs.",
-    price: "₱1,500",
+    price: "PHP 1,500",
     highlights: [
       "Full access to finance, booking, and records systems",
       "Advanced analytics, reporting, and multi-user collaboration",
@@ -201,7 +219,7 @@ export const pricingPreviewPlans = [
   {
     name: "Enterprise Package (Premium Plan)",
     description: "Designed for large organizations and institutions.",
-    price: "₱5,000/month",
+    price: "PHP 5,000/month",
     highlights: [
       "Full system integration: finance, operations, analytics, booking, inventory",
       "Advanced automation and AI-based reporting tools",
@@ -211,7 +229,7 @@ export const pricingPreviewPlans = [
 ];
 
 export const contactServiceOptions = [
-  "Starter Package (Basic Plan) — ₱500",
-  "Professional Package (Business Plan) — ₱1,500",
-  "Enterprise Package (Premium Plan) — ₱5,000/month",
+  "Starter Package (Basic Plan) - PHP 500",
+  "Professional Package (Business Plan) - PHP 1,500",
+  "Enterprise Package (Premium Plan) - PHP 5,000/month",
 ];

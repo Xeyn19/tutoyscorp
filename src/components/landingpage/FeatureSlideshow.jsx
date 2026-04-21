@@ -53,69 +53,85 @@ export default function FeatureSlideshow() {
   }, [slides.length]);
 
   return (
-    <div>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-            System walkthrough
-          </p>
-          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--foreground)]">
-            Subsystem spotlight
-          </h3>
-          <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-            A rotating view of the integrated modules that power the platform.
-          </p>
-        </div>
-        <div className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
-          {activeIndex + 1} / {slides.length}
-        </div>
-      </div>
+    <div className="relative overflow-hidden rounded-[20px] border border-[var(--media-border)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[32px]">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, var(--media-overlay-start) 0%, var(--media-overlay-end) 100%), url('/centralized.jpg')",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{ backgroundImage: "var(--media-accent-overlay)" }}
+      />
 
-      <div className="mt-6 overflow-hidden rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] sm:rounded-[24px]">
-        <div
-          className="flex transition-transform duration-700 ease-out"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {slides.map((slide) => (
-            <div key={slide.title} className="min-w-full p-5 sm:p-6">
-              <div className="rounded-[16px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[20px] sm:p-6">
-                <div className="flex items-center gap-3">
-                  <div className={iconBadgeClass}>
-                    {slideIcons[slide.title] ?? null}
+      <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--media-pill-text)]">
+              System walkthrough
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--media-text)]">
+              Subsystem spotlight
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[var(--media-muted)]">
+              A rotating view of the integrated modules that power the platform.
+            </p>
+          </div>
+          <div className="rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--media-pill-text)] backdrop-blur-md">
+            {activeIndex + 1} / {slides.length}
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[18px] border border-[var(--media-border)] bg-[var(--media-pill-bg)] backdrop-blur-sm sm:rounded-[24px]">
+          <div
+            className="flex transition-transform duration-700 ease-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {slides.map((slide) => (
+              <div key={slide.title} className="min-w-full p-5 sm:p-6">
+                <div className="rounded-[16px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[20px] sm:p-6">
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <div className={`${iconBadgeClass} border-[var(--media-border)] bg-[var(--media-pill-bg)]`}>
+                      {slideIcons[slide.title] ?? null}
+                    </div>
+                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--media-pill-text)]">
+                      {slide.title}
+                    </p>
                   </div>
-                  <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--accent-strong)]">
-                    {slide.title}
+                  <p className="mt-3 text-center text-sm leading-7 text-[var(--media-muted)]">
+                    {slide.description}
                   </p>
                 </div>
-                <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-                  {slide.description}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {slides.map((slide, index) => {
-          const isActive = index === activeIndex;
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          {slides.map((slide, index) => {
+            const isActive = index === activeIndex;
 
-          return (
-            <button
-              key={slide.title}
-              type="button"
-              aria-label={`Show slide ${index + 1}: ${slide.title}`}
+            return (
+              <button
+                key={slide.title}
+                type="button"
+                aria-label={`Show slide ${index + 1}: ${slide.title}`}
               onClick={() => setActiveIndex(index)}
-              className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+              className={`rounded-full border px-3 py-1 text-xs font-medium transition backdrop-blur-md ${
                 isActive
-                  ? "border-[var(--accent-strong)] bg-[var(--accent-soft)] text-[var(--foreground)]"
-                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground-muted)] hover:border-[var(--border-strong)]"
+                  ? "border-[var(--media-border-strong)] bg-[var(--media-surface-strong)] text-[var(--media-text)]"
+                  : "border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-muted)] hover:border-[var(--media-border-strong)]"
               }`}
             >
               {slide.title}
-            </button>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

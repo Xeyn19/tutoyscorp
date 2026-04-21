@@ -75,6 +75,7 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
             <a
               href="/contact"
               className={`${primaryButtonClass} hidden lg:inline-flex`}
+              style={{ color: "#000" }}
             >
               Connect With Us
             </a>
@@ -100,6 +101,7 @@ export default function LandingHeader({ navigation, primaryButtonClass }) {
               href="/contact"
               onClick={closeMenu}
               className={`${primaryButtonClass} mt-2 w-full sm:mt-3`}
+              style={{ color: "#000" }}
             >
               Connect With Us
             </a>

@@ -38,9 +38,28 @@
   --hero-card: rgba(255, 255, 255, 0.68);
   --hero-card-strong: #ffffff;
   --hero-card-border: rgba(7, 17, 31, 0.08);
+  --primary-button-text: #07111f;
   --inverse-card: rgba(7, 18, 31, 0.96);
   --inverse-text: #e7eef8;
   --inverse-muted: #97a6ba;
+  --media-border: rgba(7, 17, 31, 0.14);
+  --media-border-strong: rgba(7, 17, 31, 0.22);
+  --media-overlay-start: rgba(7, 17, 31, 0.1);
+  --media-overlay-end: rgba(7, 17, 31, 0.34);
+  --media-accent-overlay:
+    radial-gradient(circle at top, rgba(107, 255, 209, 0.05), transparent 35%),
+    linear-gradient(135deg, rgba(32, 99, 247, 0.08) 0%, transparent 45%, rgba(255, 255, 255, 0.03) 100%);
+  --media-shell: rgba(255, 255, 255, 0.82);
+  --media-surface: rgba(7, 17, 31, 0.52);
+  --media-surface-strong: rgba(255, 255, 255, 0.16);
+  --media-text: #ffffff;
+  --media-muted: rgba(255, 255, 255, 0.82);
+  --media-pill-bg: rgba(7, 17, 31, 0.34);
+  --media-pill-text: rgba(255, 255, 255, 0.84);
+  --media-intro-accent: #1547c9;
+  --media-intro-text: #07111f;
+  --media-intro-muted: #425267;
+  --core-values-description: #ffffff;
 }
 
 html[data-theme="dark"] {
@@ -81,9 +100,28 @@ html[data-theme="dark"] {
   --hero-card: rgba(255, 255, 255, 0.04);
   --hero-card-strong: rgba(255, 255, 255, 0.08);
   --hero-card-border: rgba(255, 255, 255, 0.08);
+  --primary-button-text: #000000;
   --inverse-card: rgba(255, 255, 255, 0.04);
   --inverse-text: #edf3fb;
   --inverse-muted: #9aacbf;
+  --media-border: rgba(255, 255, 255, 0.1);
+  --media-border-strong: rgba(255, 255, 255, 0.18);
+  --media-overlay-start: rgba(6, 17, 32, 0.7);
+  --media-overlay-end: rgba(6, 17, 32, 0.84);
+  --media-accent-overlay:
+    radial-gradient(circle at top, rgba(103, 245, 213, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(95, 136, 255, 0.16) 0%, transparent 45%, rgba(255, 255, 255, 0.06) 100%);
+  --media-shell: #08111d;
+  --media-surface: rgba(7, 18, 31, 0.68);
+  --media-surface-strong: rgba(255, 255, 255, 0.08);
+  --media-text: #ffffff;
+  --media-muted: rgba(255, 255, 255, 0.76);
+  --media-pill-bg: rgba(255, 255, 255, 0.1);
+  --media-pill-text: rgba(255, 255, 255, 0.8);
+  --media-intro-accent: #67f5d5;
+  --media-intro-text: #edf3fb;
+  --media-intro-muted: #9aacbf;
+  --core-values-description: #9aacbf;
 }
 
 @theme inline {

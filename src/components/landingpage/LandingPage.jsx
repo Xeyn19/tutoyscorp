@@ -5,7 +5,6 @@ import {
   capabilityCards,
   companyProfile,
   coreValues,
-  featuredSignals,
   operatingModel,
   pricingPreviewPlans,
   targetMarketChart,
@@ -21,7 +20,7 @@ const navigation = [
 ];
 
 const primaryButtonClass =
-  "inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-xs font-semibold text-slate-950 shadow-[0_20px_50px_var(--glow)] transition hover:-translate-y-0.5 sm:px-6 sm:py-3.5 sm:text-sm";
+  "inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-xs font-semibold text-black shadow-[0_20px_50px_var(--glow)] transition hover:-translate-y-0.5 sm:px-6 sm:py-3.5 sm:text-sm";
 
 const secondaryButtonClass =
   "inline-flex items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-xs font-medium text-[var(--foreground)] transition hover:-translate-y-0.5 hover:bg-[var(--surface-strong)] sm:px-6 sm:py-3.5 sm:text-sm";
@@ -49,6 +48,17 @@ const targetMarketGradient = targetMarketChart.reduce(
 const iconClass = "h-5 w-5 text-[var(--accent-strong)]";
 const iconBadgeClass =
   "flex h-10 w-10 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] shadow-[var(--panel-shadow)]";
+const pricingImagePaths = [
+  "/starter.jpg",
+  "/professional.jpg",
+  "/enterprise.jpg",
+];
+const pricingImagePositions = ["center 30%", "center center", "center center"];
+const trustPointTitles = [
+  "Less duplicate work",
+  "Shared live visibility",
+  "Connected records",
+];
 
 function IconBadge({ children }) {
   return <div className={iconBadgeClass}>{children}</div>;
@@ -140,6 +150,44 @@ const marketIcons = {
   ),
 };
 
+const coreValueIcons = {
+  Innovation: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3l2.8 5.7L21 9.6l-4.5 4.3 1 6.1L12 17l-5.5 3 1-6.1L3 9.6l6.2-.9L12 3Z" />
+    </svg>
+  ),
+  Integrity: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3l7 3v5c0 4.4-2.9 8.5-7 10-4.1-1.5-7-5.6-7-10V6l7-3Z" />
+      <path d="m9.5 12 1.7 1.7 3.3-3.7" />
+    </svg>
+  ),
+  Efficiency: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 4v8l5 3" />
+      <circle cx="12" cy="12" r="8" />
+    </svg>
+  ),
+  Accessibility: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="5" r="2" />
+      <path d="M5 9h14" />
+      <path d="M12 7v12" />
+      <path d="m8 21 4-7 4 7" />
+    </svg>
+  ),
+  "Customer Focus": (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20s-6-3.8-8.1-7.2C2.3 10.1 3.6 6.7 7 6.1c2-.4 3.6.5 5 2 1.4-1.5 3-2.4 5-2 3.4.6 4.7 4 3.1 6.7C18 16.2 12 20 12 20Z" />
+    </svg>
+  ),
+};
+
+const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
+  label,
+  items: targetMarkets.filter((market) => market.label === label),
+}));
+
 export default function LandingPage() {
   return (
     <main className="overflow-x-hidden pb-16" id="top">
@@ -155,119 +203,89 @@ export default function LandingPage() {
               primaryButtonClass={primaryButtonClass}
             />
 
-            <div className="relative z-10 grid gap-8 px-4 pb-6 pt-8 sm:gap-10 sm:px-8 sm:pb-10 sm:pt-12 lg:gap-12 xl:grid-cols-[1.15fr_0.85fr] xl:items-start xl:px-10 xl:pb-12 xl:pt-16">
-              <div className="max-w-3xl xl:max-w-none xl:pr-6">
+            <div className="relative z-10 grid gap-6 px-4 pb-6 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:items-start xl:px-10 xl:pb-12 xl:pt-16">
+              <div className="max-w-4xl">
                 <p className="inline-flex items-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.32em] text-[var(--accent-strong)] shadow-[0_14px_34px_var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px]">
                   {companyProfile.label}
                 </p>
 
-                <h1 className="mt-6 text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[var(--hero-text)] sm:mt-8 sm:text-4xl sm:leading-tight md:text-5xl lg:text-6xl 2xl:text-7xl">
+                <h1 className="mt-5 max-w-4xl text-[1.8rem] font-semibold leading-[1.08] tracking-[-0.05em] text-[var(--hero-text)] sm:text-4xl sm:leading-tight md:text-5xl lg:text-6xl 2xl:text-7xl">
                   {companyProfile.headline}
                 </h1>
 
                 {companyProfile.tagline ? (
-                  <p className="mt-4 text-sm font-semibold text-[var(--hero-text)] sm:text-base">
+                  <p className="mt-5 inline-flex rounded-full border border-[var(--hero-card-border)] bg-[var(--hero-card)] px-4 py-2 text-sm font-semibold text-[var(--hero-text)] shadow-[0_14px_34px_var(--shadow-soft)] sm:text-base">
                     {companyProfile.tagline}
                   </p>
                 ) : null}
 
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--hero-subtext)] sm:mt-5 sm:text-base sm:leading-8 md:text-lg">
-                  {companyProfile.description}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
-                  {featuredSignals.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs text-[var(--foreground-muted)] shadow-[0_10px_24px_var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-sm"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-              </div>
-
-              <div className="relative mt-4 min-w-0 sm:mt-6 xl:mt-12 xl:pl-3">
-                <div className="grid gap-4">
-                  <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px]">
-                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="min-w-0">
-                        <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                          Integrated command center
-                        </p>
-                        <h2 className="mt-3 max-w-sm text-lg font-semibold tracking-tight text-[var(--hero-text)] sm:mt-4 sm:text-2xl lg:text-3xl">
-                          Unified operations in one clear view.
-                        </h2>
-                      </div>
-                      <div className="rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
-                        Active
-                      </div>
-                    </div>
-
-                    <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4">
-                      <div className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[26px] sm:p-5">
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm text-[var(--foreground-muted)]">
-                            Platform readiness
-                          </p>
-                          <p className="text-3xl font-semibold text-[var(--foreground)]">
-                            100%
-                          </p>
-                        </div>
-                        <div className="mt-5 h-2 rounded-full bg-[var(--background-secondary)]">
-                          <div className="h-2 w-full rounded-full bg-[linear-gradient(90deg,var(--accent)_0%,var(--accent-strong)_100%)]" />
-                        </div>
-                        <p className="mt-5 text-sm leading-6 text-[var(--foreground-muted)]">
-                          Core finance, operations, and booking workflows stay
-                          aligned in one centralized platform.
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a href="#features" className={primaryButtonClass} style={{ color: "#000" }}>
+                    Explore Features
+                  </a>
+                  <a href="/contact" className={secondaryButtonClass}>
+                    Request a Demo
+                  </a>
                 </div>
               </div>
-            </div>
 
-            <div className="relative z-10 px-4 pb-6 sm:px-8 sm:pb-10 xl:px-10 xl:pb-12">
-              <div className="grid gap-3 sm:gap-4 lg:grid-cols-3">
-                {trustPoints.map((point, index) => (
-                  <div
-                    key={point}
-                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-5"
-                  >
-                    <IconBadge>
-                      {index === 0 ? (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="4" y="5" width="16" height="14" rx="2" />
-                          <path d="M8 9h8" />
-                          <path d="M8 13h6" />
-                        </svg>
-                      ) : null}
-                      {index === 1 ? (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M4 12h6l2-3 2 6 2-3h4" />
-                          <path d="M4 6h16" />
-                          <path d="M4 18h16" />
-                        </svg>
-                      ) : null}
-                      {index === 2 ? (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="4" y="4" width="7" height="7" rx="1.5" />
-                          <rect x="13" y="4" width="7" height="7" rx="1.5" />
-                          <rect x="4" y="13" width="7" height="7" rx="1.5" />
-                          <path d="M14 15h6" />
-                        </svg>
-                      ) : null}
-                    </IconBadge>
-                    <p className="mt-5 text-sm leading-7 text-[var(--foreground-muted)]">
-                      {point}
-                    </p>
+              <aside className="min-w-0 xl:pt-6">
+                <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px]">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                    Why it works
+                  </p>
+                  <h2 className="mt-3 text-xl font-semibold tracking-tight text-[var(--hero-text)] sm:text-2xl">
+                    Clear benefits at a glance.
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-[var(--hero-subtext)] sm:text-base">
+                    The platform reduces manual coordination and keeps key workflows easier to manage day to day.
+                  </p>
+
+                  <div className="mt-5 grid gap-3 sm:mt-6">
+                    {trustPoints.map((point, index) => (
+                      <div
+                        key={point}
+                        className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5"
+                      >
+                        <div className="flex items-start gap-3">
+                          <IconBadge>
+                            {index === 0 ? (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="4" y="5" width="16" height="14" rx="2" />
+                                <path d="M8 9h8" />
+                                <path d="M8 13h6" />
+                              </svg>
+                            ) : null}
+                            {index === 1 ? (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M4 12h6l2-3 2 6 2-3h4" />
+                                <path d="M4 6h16" />
+                                <path d="M4 18h16" />
+                              </svg>
+                            ) : null}
+                            {index === 2 ? (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="4" y="4" width="7" height="7" rx="1.5" />
+                                <rect x="13" y="4" width="7" height="7" rx="1.5" />
+                                <rect x="4" y="13" width="7" height="7" rx="1.5" />
+                                <path d="M14 15h6" />
+                              </svg>
+                            ) : null}
+                          </IconBadge>
+                          <div className="min-w-0">
+                            <h3 className="text-sm font-semibold text-[var(--foreground)] sm:text-base">
+                              {trustPointTitles[index]}
+                            </h3>
+                            <p className="mt-2 text-sm leading-7 text-[var(--foreground-muted)]">
+                              {point}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
@@ -286,26 +304,14 @@ export default function LandingPage() {
         className={`${sectionPadClass} py-14 lg:py-18`}
       >
         <div className={`${frameClass} space-y-4`}>
-          <div className="grid gap-4 lg:grid-cols-[0.48fr_0.52fr] lg:items-stretch lg:gap-6">
-            <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+            <div className="mx-auto max-w-4xl text-center">
               <SectionIntro
                 eyebrow="Key Features"
                 title="Core capabilities that keep teams aligned daily."
-                description="Role-based access, smart dashboards, booking tools, record management, and analytics work together in one platform."
+                description=""
+                align="center"
               />
-            </div>
-
-            <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 text-[var(--inverse-text)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.32em] text-[var(--accent)]">
-                Platform advantage
-              </p>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl">
-                One platform across finance, operations, and booking workflows.
-              </h3>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--inverse-muted)]">
-                Centralized workflows reduce manual work and keep teams aligned
-                with shared savings, inventory, and booking data.
-              </p>
             </div>
           </div>
 
@@ -341,30 +347,53 @@ export default function LandingPage() {
       </section>
 
       <section id="mission" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--surface-inverse)] p-4 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:rounded-[36px] lg:p-10`}>
+        <div className={`${frameClass} rounded-[20px] border border-[var(--media-border)] bg-[var(--media-shell)] p-4 shadow-[var(--panel-shadow-strong)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[36px] lg:p-10`}>
           <SectionIntro
             eyebrow="Mission and Vision"
             title="Clear direction for a connected operational ecosystem."
             description="Our mission and vision define how the platform supports organizations across industries."
-            tone="dark"
+            tone="media"
+            align="center"
           />
 
-          <div className="mt-6 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {operatingModel.map((step) => (
+          <div className="mt-6 grid gap-4 sm:mt-10 md:grid-cols-2 xl:grid-cols-3">
+            {operatingModel.map((step, index) => (
               <article
                 key={step.label}
-                className="rounded-[18px] border border-white/10 bg-[var(--inverse-card)] p-4 backdrop-blur-xl sm:rounded-[24px] sm:p-6 lg:rounded-[28px]"
+                className="group overflow-hidden rounded-[20px] border border-[var(--media-border)] bg-[var(--inverse-card)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--media-border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
-                  {step.label}
-                </p>
-                <h3 className="mt-5 text-2xl font-semibold text-[var(--inverse-text)]">
-                  {step.title}
-                </h3>
+                <div
+                  className="relative h-56 overflow-hidden sm:h-60"
+                  role="img"
+                  aria-label={step.imageAlt}
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, var(--media-overlay-start) 0%, var(--media-overlay-end) 100%), url('${step.image}')`,
+                    backgroundPosition: step.imagePosition ?? "center center",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <div
+                    className="absolute inset-0 transition duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: "var(--media-accent-overlay)" }}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 sm:p-6">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-[var(--media-text)]">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <span className="rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--media-pill-text)]">
+                      0{index + 1}
+                    </span>
+                  </div>
+                </div>
+
                 {step.description ? (
-                  <p className="mt-4 text-sm leading-7 text-[var(--inverse-muted)]">
-                    {step.description}
-                  </p>
+                  <div className="p-5 sm:p-6">
+                    <p className="text-sm leading-7 text-[var(--media-muted)]">
+                      {step.description}
+                    </p>
+                  </div>
                 ) : null}
               </article>
             ))}
@@ -373,47 +402,87 @@ export default function LandingPage() {
       </section>
 
       <section id="audience" className={`${sectionPadClass} py-14 lg:py-18`}>
-        <div className={`${frameClass} grid gap-4 lg:grid-cols-[0.45fr_0.55fr]`}>
-            <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
-              <SectionIntro
-                eyebrow="Core Values"
-                title="The values that shape how the platform is built."
-                description="Innovation, integrity, efficiency, accessibility, and customer focus guide every decision."
-              />
+        <div className={`${frameClass} space-y-4 lg:space-y-6`}>
+          <div className="relative overflow-hidden rounded-[20px] border border-[var(--media-border)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[32px]">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(180deg, var(--media-overlay-start) 0%, var(--media-overlay-end) 100%), url('/core-values.jpg')",
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{ backgroundImage: "var(--media-accent-overlay)" }}
+            />
 
-              <div className="mt-8 space-y-3">
-                {coreValues.map((value) => (
-                  <div
-                    key={value.title}
-                    className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 text-sm text-[var(--foreground-muted)]"
-                  >
-                    <span className="font-semibold text-[var(--foreground)]">
-                      {value.title}
-                    </span>
-                    <div className="mt-2">{value.detail}</div>
-                  </div>
-                ))}
+            <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+              <div className="flex flex-col items-center">
+                <SectionIntro
+                  eyebrow="Core Values"
+                  title="The values that shape how the platform is built."
+                  description="Innovation, integrity, efficiency, accessibility, and customer focus guide every decision."
+                  tone="dark"
+                  align="center"
+                  descriptionClassName="text-[var(--core-values-description)]"
+                />
+
+                <div className="mt-8 flex w-full max-w-5xl flex-wrap justify-center gap-3 sm:gap-4">
+                  {coreValues.map((value, index) => (
+                    <article
+                      key={value.title}
+                      className="w-full rounded-[18px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] backdrop-blur-xl sm:w-[calc(50%-0.5rem)] sm:rounded-[24px] sm:p-5 lg:w-[calc(33.333%-0.75rem)]"
+                    >
+                      <div className={`flex gap-3 ${
+                        value.title === "Customer Focus"
+                          ? "items-center justify-center text-center"
+                          : "items-center"
+                      }`}>
+                        <IconBadge>
+                          {coreValueIcons[value.title] ?? null}
+                        </IconBadge>
+                        <h3 className="text-lg font-semibold text-[var(--media-text)]">
+                          {value.title}
+                        </h3>
+                      </div>
+                      <p className={`mt-4 text-sm leading-7 text-[var(--media-muted)] ${
+                        value.title === "Customer Focus"
+                          ? "text-center"
+                          : ""
+                      }`}>
+                        {value.detail}
+                      </p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="grid gap-4">
-              <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]">
+          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:p-6 lg:rounded-[32px] lg:p-8">
+            <div className="grid gap-6 xl:grid-cols-[0.34fr_0.66fr] xl:items-start">
+              <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                   Target Market
                 </p>
                 <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
                   Market segments served
                 </h3>
-                <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                <div className="mt-5 grid justify-items-start gap-5">
                   <div
                     className="relative h-28 w-28 rounded-full border border-[var(--border)] shadow-[var(--panel-shadow)] sm:h-32 sm:w-32"
                     style={{ background: `conic-gradient(${targetMarketGradient})` }}
                     role="img"
                     aria-label="Target market distribution"
                   />
-                  <div className="grid gap-2 text-xs text-[var(--foreground-muted)]">
+                  <div className="grid w-full gap-2 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-3">
                     {targetMarketChart.map((segment) => (
-                      <div key={segment.label} className="flex items-center gap-2">
+                      <div
+                        key={segment.label}
+                        className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-xs text-[var(--foreground-muted)]"
+                      >
                         <span
                           className="h-2.5 w-2.5 rounded-full"
                           style={{ backgroundColor: segment.color }}
@@ -424,36 +493,55 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              {targetMarkets.map((market) => (
-                <article
-                  key={`${market.label}-${market.title}`}
-                  className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]"
-                >
-                  <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <IconBadge>
-                          {marketIcons[market.title] ?? null}
-                        </IconBadge>
-                        <div>
-                          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                            {market.label}
-                          </p>
-                          <h3 className="mt-2 text-xl font-semibold text-[var(--foreground)]">
-                            {market.title}
-                          </h3>
-                        </div>
-                      </div>
+
+              <div className="grid gap-4">
+                {targetMarketGroups.map((group) => (
+                  <div
+                    key={group.label}
+                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5"
+                  >
+                    <div className="flex items-center gap-3">
+                      <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                        {group.label}
+                      </p>
+                      <div className="h-px flex-1 bg-[var(--border)]" />
                     </div>
-                    <div className="h-px flex-1 bg-[var(--border)] lg:mx-4" />
-                    <p className="max-w-md text-sm leading-7 text-[var(--foreground-muted)]">
-                      {market.detail}
-                    </p>
+
+                    <div className={`mt-5 grid gap-3 ${group.items.length > 2 ? "md:grid-cols-2" : "sm:grid-cols-2"}`}>
+                      {group.items.map((market, index) => (
+                        <article
+                          key={`${market.label}-${market.title}`}
+                          className={`rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] sm:p-5 ${
+                            group.items.length % 2 === 1 && index === group.items.length - 1
+                              ? "md:col-span-2"
+                              : ""
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <IconBadge>
+                              {marketIcons[market.title] ?? null}
+                            </IconBadge>
+                            <div className="min-w-0">
+                              <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                                {market.label}
+                              </p>
+                              <h3 className="mt-2 text-lg font-semibold text-[var(--foreground)] sm:text-xl">
+                                {market.title}
+                              </h3>
+                            </div>
+                          </div>
+                          <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
+                            {market.detail}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
                   </div>
-                </article>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
+        </div>
       </section>
 
       <section id="pricing" className={`${sectionPadClass} py-14 lg:py-18`}>
@@ -463,29 +551,56 @@ export default function LandingPage() {
               eyebrow="Pricing Preview"
               title="Tiered pricing built for startups, SMEs, and enterprises."
               description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
+              align="center"
             />
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-            {pricingPreviewPlans.map((plan) => (
+            {pricingPreviewPlans.map((plan, index) => (
               <article
                 key={plan.name}
-                className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[26px] sm:p-6 lg:rounded-[30px]"
+                className="group overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                  {plan.name}
-                </p>
-                <h3 className="mt-4 text-2xl font-semibold text-[var(--foreground)]">
-                  {plan.price}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-                  {plan.description}
-                </p>
-                <ul className="mt-5 space-y-2 text-sm text-[var(--foreground-muted)]">
-                  {plan.highlights.map((point) => (
-                    <li key={point}>- {point}</li>
-                  ))}
-                </ul>
+                <div
+                  className="relative h-52 overflow-hidden sm:h-56"
+                  style={{
+                    backgroundImage:
+                      `linear-gradient(180deg, var(--media-overlay-start) 0%, var(--media-overlay-end) 100%), url('${pricingImagePaths[index] ?? "/starter.jpg"}')`,
+                    backgroundPosition:
+                      pricingImagePositions[index] ?? "center center",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <div
+                    className="absolute inset-0 transition duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: "var(--media-accent-overlay)" }}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--media-pill-text)]">
+                      Pricing Plan
+                    </p>
+                    <h3 className="mt-3 max-w-[15rem] text-xl font-semibold leading-tight text-[var(--media-text)] sm:text-2xl">
+                      {plan.name}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="p-5 sm:p-6">
+                  <p className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">
+                    {plan.price}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                    {plan.description}
+                  </p>
+                  <ul className="mt-5 space-y-3 text-sm text-[var(--foreground-muted)]">
+                    {plan.highlights.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <span className="mt-1.5 h-2 w-2 flex-none rounded-full bg-[var(--accent-strong)]" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
@@ -512,6 +627,7 @@ export default function LandingPage() {
               <a
                 href="/contact"
                 className={`${primaryButtonClass} w-full sm:w-auto`}
+                style={{ color: "#000" }}
               >
                 Connect With Us
               </a>
