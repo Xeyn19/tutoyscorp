@@ -1,3 +1,8 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import LandingHeader from "@/components/landingpage/LandingHeader";
 import FeatureSlideshow from "@/components/landingpage/FeatureSlideshow";
 import SectionIntro from "@/components/landingpage/SectionIntro";
@@ -167,19 +172,50 @@ const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
 }));
 
 export default function LandingPage() {
+  const [isHomeVisible, setIsHomeVisible] = useState(true);
+
+  useEffect(() => {
+    const homeSection = document.getElementById("home-section");
+
+    if (!homeSection) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHomeVisible(entry.isIntersecting);
+      },
+      {
+        rootMargin: "-104px 0px -38% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(homeSection);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const heroCtaWrapperClass = `overflow-hidden transition-all ${
+    isHomeVisible
+      ? "mt-7 max-h-24 opacity-100"
+      : "mt-0 max-h-0 pointer-events-none opacity-0"
+  }`;
+
   return (
-    <main className="overflow-x-hidden pb-16 sm:pb-20" id="top">
-      <section className={`${sectionPadClass} pt-5 sm:pt-6`}>
+    <main className="overflow-x-hidden pb-16 pt-20 sm:pb-20 sm:pt-24 lg:pt-28" id="top">
+      <LandingHeader
+        navigation={navigation}
+        primaryButtonClass={primaryButtonClass}
+        isHomeVisible={isHomeVisible}
+      />
+
+      <section id="home-section" className={sectionPadClass}>
         <div className={frameClass}>
           <div className="relative overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[36px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,var(--glow),transparent_26%),radial-gradient(circle_at_90%_22%,var(--accent-soft),transparent_25%)]" />
             <div className="absolute -left-20 top-28 h-56 w-56 rounded-full bg-[var(--accent-soft)] blur-3xl" />
             <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[var(--glow)] blur-3xl" />
-
-            <LandingHeader
-              navigation={navigation}
-              primaryButtonClass={primaryButtonClass}
-            />
 
             <div className="relative z-10 grid gap-6 px-5 pb-7 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:gap-8 lg:px-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:items-start xl:px-12 xl:pb-12 xl:pt-16 2xl:px-14">
               <div className="max-w-4xl">
@@ -197,14 +233,16 @@ export default function LandingPage() {
                   </p>
                 ) : null}
 
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <a
-                    href="#features"
-                    className={`${primaryButtonClass} min-w-[12rem] sm:min-w-[13.5rem]`}
-                    style={{ color: "#000" }}
-                  >
-                    Explore Features
-                  </a>
+                <div className={heroCtaWrapperClass}>
+                  <div className="flex flex-wrap gap-3">
+                    <Link
+                      href="/contact"
+                      className={`${primaryButtonClass} min-w-[12rem] sm:min-w-[13.5rem]`}
+                      style={{ color: "#000" }}
+                    >
+                      Connect With Us
+                    </Link>
+                  </div>
                 </div>
               </div>
 
@@ -414,7 +452,7 @@ export default function LandingPage() {
                 />
 
                 <div className="mt-10 flex w-full max-w-5xl flex-wrap justify-center gap-3 sm:mt-12 sm:gap-4">
-                  {coreValues.map((value, index) => (
+                  {coreValues.map((value) => (
                     <article
                       key={value.title}
                       className="w-full rounded-[18px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] backdrop-blur-xl sm:w-[calc(50%-0.5rem)] sm:rounded-[24px] sm:p-5 lg:w-[calc(33.333%-0.75rem)]"
@@ -659,15 +697,15 @@ export default function LandingPage() {
                 booking workflows for more efficient management.
               </p>
             </div>
- 
+
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a
+              <Link
                 href="/contact"
                 className={`${primaryButtonClass} w-full sm:w-auto`}
                 style={{ color: "#000" }}
               >
                 Connect With Us
-              </a>
+              </Link>
               <a href="#pricing" className={`${secondaryButtonClass} w-full sm:w-auto`}>
                 View Plans
               </a>
