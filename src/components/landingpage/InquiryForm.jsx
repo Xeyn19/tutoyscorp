@@ -77,9 +77,9 @@ export default function InquiryForm({ services }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid h-full min-w-0 content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:rounded-[28px] sm:p-6 lg:gap-5 lg:p-8 xl:min-h-[calc(100vh-4rem)] xl:rounded-[32px]"
+      className="grid h-full min-w-0 content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:gap-5 sm:rounded-[28px] sm:p-6 lg:gap-5 lg:p-8 xl:min-h-[calc(100vh-4rem)] xl:rounded-[32px]"
     >
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
           Full Name
           <input
