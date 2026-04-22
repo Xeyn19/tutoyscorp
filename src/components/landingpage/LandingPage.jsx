@@ -243,7 +243,7 @@ export default function LandingPage() {
 
       <section className={`${sectionPadClass} py-10`}>
         <div className={`${frameClass} space-y-6 sm:space-y-8`}>
-          <ScrollReveal className={`mt-4 ${sectionPanelClass}`}>
+          <ScrollReveal className="mt-4">
             <FeatureSlideshow />
           </ScrollReveal>
         </div>
