@@ -190,7 +190,7 @@ export default function LandingPage() {
   }`;
 
   return (
-    <main className="overflow-x-hidden pb-16 pt-20 sm:pb-20 sm:pt-24 lg:pt-28" id="top">
+    <main className="overflow-x-hidden pb-16 pt-24 sm:pb-20 sm:pt-24 lg:pt-28" id="top">
       <LandingHeader
         navigation={navigation}
         primaryButtonClass={primaryButtonClass}
@@ -233,7 +233,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <aside className="flex w-full min-w-0 items-center justify-center pt-7 sm:pt-5 xl:w-auto xl:self-center xl:pt-8">
+              <aside className="flex w-full min-w-0 items-center justify-center pt-10 sm:pt-5 xl:w-auto xl:self-center xl:pt-8">
                 <WhyItWorksCardDeck items={whyItWorksCards} />
               </aside>
             </div>

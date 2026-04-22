@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import CardSwap, { Card } from "@/components/landingpage/CardSwap";
 
 function BenefitIcon({ variant }) {
@@ -61,15 +63,28 @@ function BenefitIcon({ variant }) {
 }
 
 export default function WhyItWorksCardDeck({ items }) {
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    function syncCompactMode() {
+      setIsCompact(window.innerWidth < 640);
+    }
+
+    syncCompactMode();
+    window.addEventListener("resize", syncCompactMode);
+
+    return () => window.removeEventListener("resize", syncCompactMode);
+  }, []);
+
   return (
     <CardSwap
       width="100%"
-      height="clamp(15.75rem, 60vw, 19.25rem)"
-      cardDistance={26}
-      verticalDistance={20}
+      height={isCompact ? 228 : "clamp(15.75rem, 60vw, 19.25rem)"}
+      cardDistance={isCompact ? 16 : 26}
+      verticalDistance={isCompact ? 12 : 20}
       skewAmount={0}
       easing="power2.out"
-      className="mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[30rem]"
+      className="mx-auto w-full max-w-[19.5rem] sm:max-w-[26rem] lg:max-w-[30rem]"
       stackClassName="mx-auto w-full"
       buttonClassName="w-full justify-center bg-[var(--hero-card-strong)] sm:w-auto"
     >

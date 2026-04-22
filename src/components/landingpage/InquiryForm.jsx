@@ -77,21 +77,21 @@ export default function InquiryForm({ services }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid h-full min-w-0 content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:gap-5 sm:rounded-[28px] sm:p-6 lg:gap-5 lg:p-8 xl:max-h-[calc(100vh-4rem)] xl:overflow-y-auto xl:rounded-[32px]"
+      className="grid h-full min-w-0 overflow-hidden content-start gap-4 rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] sm:gap-5 sm:rounded-[28px] sm:p-6 lg:gap-5 lg:p-8 xl:max-h-[calc(100vh-4rem)] xl:overflow-y-auto xl:rounded-[32px]"
     >
       <div className="grid gap-4 lg:grid-cols-2">
-        <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+        <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
           Full Name
           <input
             name="fullName"
             value={form.fullName ?? ""}
             onChange={onChange}
             required
-            className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+            className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
           />
         </label>
 
-        <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+        <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
           Email Address
           <input
             type="email"
@@ -99,40 +99,40 @@ export default function InquiryForm({ services }) {
             value={form.email ?? ""}
             onChange={onChange}
             required
-            className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+            className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
           />
         </label>
 
-        <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+        <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
           Contact Number
           <input
             name="contactNumber"
             value={form.contactNumber ?? ""}
             onChange={onChange}
             required
-            className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+            className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
           />
         </label>
 
-        <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+        <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
           Company Name (optional)
           <input
             name="companyName"
             value={form.companyName ?? ""}
             onChange={onChange}
-            className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+            className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
           />
         </label>
       </div>
 
-      <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+      <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
         Selected Plan
         <select
           name="selectedService"
           value={form.selectedService ?? ""}
           onChange={onChange}
           required
-          className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+          className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
         >
           <option value="">Select a plan</option>
           {services.map((service) => (
@@ -143,7 +143,7 @@ export default function InquiryForm({ services }) {
         </select>
       </label>
 
-      <label className="grid gap-2 text-sm text-[var(--foreground-muted)]">
+      <label className="grid min-w-0 gap-2 text-sm text-[var(--foreground-muted)]">
         Message / Requirements
         <textarea
           name="message"
@@ -151,7 +151,7 @@ export default function InquiryForm({ services }) {
           onChange={onChange}
           required
           rows={5}
-          className="rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
+          className="w-full min-w-0 rounded-xl border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent-strong)]"
         />
       </label>
 
