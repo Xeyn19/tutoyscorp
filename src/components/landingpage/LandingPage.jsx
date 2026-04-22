@@ -13,7 +13,6 @@ import {
   coreValues,
   operatingModel,
   pricingPreviewPlans,
-  targetMarketChart,
   trustPoints,
   targetMarkets,
 } from "@/data/landingpage-content";
@@ -35,47 +34,20 @@ const frameClass = "mx-auto w-full max-w-[90rem] 2xl:max-w-[92rem]";
 const sectionPadClass = "px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12";
 const sectionPanelClass =
   "rounded-[20px] border border-[var(--border)] bg-[var(--surface)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:px-7 sm:py-7 lg:rounded-[32px] lg:px-9 lg:py-8";
-const targetMarketTotal = targetMarketChart.reduce(
-  (sum, item) => sum + item.value,
-  0
-);
-const targetMarketGradient = targetMarketChart.reduce(
-  (acc, item) => {
-    const start = acc.offset;
-    const slice = (item.value / targetMarketTotal) * 100;
-    const end = start + slice;
-    acc.stops.push(
-      `${item.color} ${start.toFixed(2)}% ${end.toFixed(2)}%`
-    );
-    acc.offset = end;
-    return acc;
-  },
-  { stops: [], offset: 0 }
-).stops.join(", ");
 const targetMarketGroupMeta = {
   Primary: {
     eyebrow: "Primary audience",
     title: "Best-fit market segments",
     description:
-      "The strongest day-to-day users for the platform's savings, operations, and booking workflows.",
+      "The strongest everyday fit for the platform's connected workflows.",
   },
   Secondary: {
     eyebrow: "Secondary audience",
-    title: "Growth-ready opportunities",
+    title: "Growth-ready segments",
     description:
-      "Adjacent segments that benefit from the same connected workflows as the platform expands.",
+      "Adjacent audiences that benefit from the same connected system approach.",
   },
 };
-const targetMarketSummaryStats = [
-  {
-    label: "Primary segments",
-    value: String(targetMarkets.filter((market) => market.label === "Primary").length),
-  },
-  {
-    label: "Secondary segments",
-    value: String(targetMarkets.filter((market) => market.label === "Secondary").length),
-  },
-];
 
 const iconClass = "h-5 w-5 text-[var(--accent-strong)]";
 const iconBadgeClass =
@@ -99,36 +71,44 @@ function IconBadge({ children }) {
 const marketIcons = {
   "Working students": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 7l9-4 9 4-9 4-9-4Z" />
-      <path d="M7 10v4a5 5 0 0 0 10 0v-4" />
+      <path d="M3 8l9-4 9 4-9 4-9-4Z" />
+      <path d="M7 10.5V14a5 5 0 0 0 10 0v-3.5" />
+      <circle cx="18" cy="16.5" r="2.5" />
     </svg>
   ),
   "Small & medium businesses": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="7" width="16" height="12" rx="2" />
-      <path d="M8 7V5h8v2" />
-      <path d="M8 13h2" />
-      <path d="M14 13h2" />
+      <path d="M5 10h14" />
+      <path d="M6 10V7.5L8 6h8l2 1.5V10" />
+      <path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8" />
+      <path d="M10 14h4" />
+      <path d="M12 10v10" />
     </svg>
   ),
   "Tour & transport companies": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="5" y="7" width="14" height="8" rx="2" />
-      <path d="M7 15v2" />
-      <path d="M17 15v2" />
+      <path d="M5 18c2.2-5.3 5.3-8 9.4-8H16" />
+      <path d="m14 6 2-2 2 2" />
+      <rect x="4" y="13" width="8" height="5" rx="1.5" />
+      <path d="M6 18v2" />
+      <path d="M10 18v2" />
     </svg>
   ),
   "Start-ups": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3l4 4-4 4-4-4 4-4Z" />
-      <path d="M7 14l5 7 5-7" />
+      <path d="M14 4c2.8 1 4.6 3.8 4.6 6.8 0 4.2-3.4 7.6-7.6 7.6-1.3 0-2.6-.3-3.7-.9" />
+      <path d="m10 14-3 6 6-3" />
+      <path d="M9 11l4-4" />
+      <circle cx="15.5" cy="8.5" r="1.5" />
     </svg>
   ),
   "Service-based enterprises": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="6" width="16" height="12" rx="2" />
-      <path d="M8 10h8" />
-      <path d="M8 14h6" />
+      <rect x="6" y="4" width="12" height="16" rx="2" />
+      <path d="M9 8h6" />
+      <path d="M9 12h6" />
+      <path d="M9 16h4" />
+      <path d="m16.5 15.5 1 1 2-2.5" />
     </svg>
   ),
 };
@@ -494,79 +474,14 @@ export default function LandingPage() {
           </ScrollReveal>
 
           <ScrollReveal id="target-market" className={sectionPanelClass}>
-            <div className="grid gap-6 xl:grid-cols-[minmax(18rem,0.36fr)_minmax(0,0.64fr)] xl:items-start xl:gap-8">
-              <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6">
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                  Target Market
-                </p>
-                <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
-                  Market segments served
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-                  The platform supports five audience groups, led by three primary segments and two secondary expansion opportunities.
-                </p>
-
-                <div className="mt-6 grid gap-4">
-                  <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] sm:rounded-[22px] sm:p-5">
-                    <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
-                      <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[var(--border)] shadow-[var(--panel-shadow)] sm:h-36 sm:w-36">
-                        <div
-                          className="absolute inset-0 rounded-full"
-                          style={{ background: `conic-gradient(${targetMarketGradient})` }}
-                          role="img"
-                          aria-label="Target market distribution"
-                        />
-                        <div className="relative flex h-[72%] w-[72%] flex-col items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] text-center shadow-[0_10px_24px_var(--shadow-soft)]">
-                          <span className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">
-                            {targetMarketChart.length}
-                          </span>
-                          <span className="mt-1 text-[11px] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
-                            Segments
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="grid flex-1 gap-2">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
-                          Audience mix
-                        </p>
-                        <div className="grid gap-2">
-                          {targetMarketChart.map((segment) => (
-                            <div
-                              key={segment.label}
-                              className="flex items-center justify-between gap-3 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-3 py-2 text-xs text-[var(--foreground-muted)]"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span
-                                  className="h-2.5 w-2.5 rounded-full"
-                                  style={{ backgroundColor: segment.color }}
-                                />
-                                <span>{segment.label}</span>
-                              </div>
-                              <span>{Math.round((segment.value / targetMarketTotal) * 100)}%</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {targetMarketSummaryStats.map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] px-4 py-4 shadow-[0_12px_32px_var(--shadow-soft)]"
-                      >
-                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
-                          {stat.label}
-                        </p>
-                        <p className="mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)]">
-                          {stat.value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            <div className="grid gap-8">
+              <div className="mx-auto max-w-3xl text-center">
+                <SectionIntro
+                  eyebrow="Target Market"
+                  title="Built for clear, connected daily workflows."
+                  description="Designed for audiences that benefit most from connected savings, operations, booking, and record management."
+                  align="center"
+                />
               </div>
 
               <div className="grid gap-4 lg:gap-5">
@@ -577,8 +492,8 @@ export default function LandingPage() {
                     delay={groupIndex * 100}
                     className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6"
                   >
-                    <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-4 sm:flex-row sm:items-end sm:justify-between">
-                      <div className="max-w-2xl">
+                    <div className="border-b border-[var(--border)] pb-4">
+                      <div className="mx-auto max-w-2xl text-center">
                         <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                           {group.eyebrow}
                         </p>
@@ -588,11 +503,6 @@ export default function LandingPage() {
                         <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
                           {group.description}
                         </p>
-                      </div>
-
-                      <div className="inline-flex items-center gap-2 self-start rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-xs text-[var(--foreground-muted)] sm:self-auto">
-                        <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent-strong)]" />
-                        <span>{group.items.length} segments</span>
                       </div>
                     </div>
 
@@ -613,17 +523,14 @@ export default function LandingPage() {
                               {marketIcons[market.title] ?? null}
                             </IconBadge>
                             <div className="min-w-0">
-                              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--foreground-muted)]">
-                                Audience segment
-                              </p>
-                              <h4 className="mt-2 text-lg font-semibold text-[var(--foreground)] sm:text-xl">
+                              <h4 className="text-lg font-semibold text-[var(--foreground)] sm:text-xl">
                                 {market.title}
                               </h4>
+                              <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                                {market.detail}
+                              </p>
                             </div>
                           </div>
-                          <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
-                            {market.detail}
-                          </p>
                         </ScrollReveal>
                       ))}
                     </div>

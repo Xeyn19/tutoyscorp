@@ -156,31 +156,31 @@ export const targetMarkets = [
     label: "Primary",
     title: "Working students",
     detail:
-      "Support savings goals and daily financial tracking.",
+      "Track savings goals and daily financial progress more clearly.",
   },
   {
     label: "Primary",
     title: "Small & medium businesses",
     detail:
-      "Manage operations, inventory, and sales with live records.",
+      "Manage operations, inventory, and records with better visibility.",
   },
   {
     label: "Primary",
     title: "Tour & transport companies",
     detail:
-      "Handle bookings, routes, and scheduling in one place.",
+      "Handle bookings, schedules, and route coordination in one place.",
   },
   {
     label: "Secondary",
     title: "Start-ups",
     detail:
-      "Launch operations quickly with integrated tools.",
+      "Launch core workflows faster with connected tools from the start.",
   },
   {
     label: "Secondary",
     title: "Service-based enterprises",
     detail:
-      "Centralize bookings, orders, and records.",
+      "Centralize bookings, service updates, and business records.",
   },
 ];
 
@@ -221,14 +221,6 @@ export const slideshowSlides = [
     imageAlt: "Booking and transport reservation interface on a tablet",
     imagePosition: "center 42%",
   },
-];
-
-export const targetMarketChart = [
-  { label: "Students", value: 20, color: "#1f6bff" },
-  { label: "SMBs", value: 20, color: "#22b07d" },
-  { label: "Transport", value: 20, color: "#f09f36" },
-  { label: "Start-ups", value: 20, color: "#6b5cff" },
-  { label: "Services", value: 20, color: "#e85c6b" },
 ];
 
 export const pricingPreviewPlans = [
