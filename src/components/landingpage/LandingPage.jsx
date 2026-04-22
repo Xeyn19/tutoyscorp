@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import LandingHeader from "@/components/landingpage/LandingHeader";
 import FeatureSlideshow from "@/components/landingpage/FeatureSlideshow";
+import ScrollReveal from "@/components/landingpage/ScrollReveal";
 import SectionIntro from "@/components/landingpage/SectionIntro";
 import {
   capabilityCards,
@@ -310,9 +311,9 @@ export default function LandingPage() {
 
       <section className={`${sectionPadClass} py-10`}>
         <div className={`${frameClass} space-y-6 sm:space-y-8`}>
-          <div className={`mt-4 ${sectionPanelClass}`}>
+          <ScrollReveal className={`mt-4 ${sectionPanelClass}`}>
             <FeatureSlideshow />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -321,19 +322,21 @@ export default function LandingPage() {
         className={`${sectionPadClass} py-14 lg:py-18`}
       >
         <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
-          <div className="mx-auto max-w-4xl text-center">
+          <ScrollReveal className="mx-auto max-w-4xl text-center">
             <SectionIntro
               eyebrow="Key Features"
               title="Core capabilities that keep teams aligned daily."
               description="Explore the platform features that connect user access, dashboards, bookings, inventory, and analytics in one streamlined workflow."
               align="center"
             />
-          </div>
+          </ScrollReveal>
 
           <div className="flex flex-wrap justify-center gap-4">
             {capabilityCards.map((card, index) => (
-              <article
+              <ScrollReveal
+                as="article"
                 key={card.title}
+                delay={index * 90}
                 className="group w-full max-w-[24rem] overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
               >
                 <div
@@ -363,7 +366,7 @@ export default function LandingPage() {
                     {card.description}
                   </p>
                 </div>
-              </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -371,17 +374,21 @@ export default function LandingPage() {
 
       <section id="mission" className={`${sectionPadClass} py-14 lg:py-18`}>
         <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
-          <SectionIntro
-            eyebrow="Mission and Vision"
-            title="Clear direction for a connected operational ecosystem."
-            description="Our mission and vision define how the platform supports organizations across industries."
-            align="center"
-          />
+          <ScrollReveal className="mx-auto max-w-4xl text-center">
+            <SectionIntro
+              eyebrow="Mission and Vision"
+              title="Clear direction for a connected operational ecosystem."
+              description="Our mission and vision define how the platform supports organizations across industries."
+              align="center"
+            />
+          </ScrollReveal>
 
           <div className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
             {operatingModel.map((step, index) => (
-              <article
+              <ScrollReveal
+                as="article"
                 key={step.label}
+                delay={index * 90}
                 className="group overflow-hidden rounded-[20px] border border-[var(--media-border)] bg-transparent shadow-[var(--panel-shadow)] transition hover:-translate-y-1 hover:border-[var(--media-border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
               >
                 <div
@@ -417,7 +424,7 @@ export default function LandingPage() {
                     </p>
                   </div>
                 ) : null}
-              </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -425,7 +432,7 @@ export default function LandingPage() {
 
       <section id="audience" className={`${sectionPadClass} py-14 lg:py-18`}>
         <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
-          <div className="relative overflow-hidden rounded-[20px] border border-[var(--media-border)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[32px]">
+          <ScrollReveal className="relative overflow-hidden rounded-[20px] border border-[var(--media-border)] shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] lg:rounded-[32px]">
             <div
               className="absolute inset-0"
               style={{
@@ -452,9 +459,11 @@ export default function LandingPage() {
                 />
 
                 <div className="mt-10 flex w-full max-w-5xl flex-wrap justify-center gap-3 sm:mt-12 sm:gap-4">
-                  {coreValues.map((value) => (
-                    <article
+                  {coreValues.map((value, index) => (
+                    <ScrollReveal
+                      as="article"
                       key={value.title}
+                      delay={index * 90}
                       className="w-full rounded-[18px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] backdrop-blur-xl sm:w-[calc(50%-0.5rem)] sm:rounded-[24px] sm:p-5 lg:w-[calc(33.333%-0.75rem)]"
                     >
                       <div className={`flex gap-3 ${
@@ -476,14 +485,14 @@ export default function LandingPage() {
                       }`}>
                         {value.detail}
                       </p>
-                    </article>
+                    </ScrollReveal>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className={sectionPanelClass}>
+          <ScrollReveal className={sectionPanelClass}>
             <div className="grid gap-6 xl:grid-cols-[minmax(18rem,0.36fr)_minmax(0,0.64fr)] xl:items-start xl:gap-8">
               <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
@@ -560,9 +569,11 @@ export default function LandingPage() {
               </div>
 
               <div className="grid gap-4 lg:gap-5">
-                {targetMarketGroups.map((group) => (
-                  <section
+                {targetMarketGroups.map((group, groupIndex) => (
+                  <ScrollReveal
+                    as="section"
                     key={group.label}
+                    delay={groupIndex * 100}
                     className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6"
                   >
                     <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-4 sm:flex-row sm:items-end sm:justify-between">
@@ -589,9 +600,11 @@ export default function LandingPage() {
                         ? "md:grid-cols-2 xl:grid-cols-3"
                         : "sm:grid-cols-2"
                     }`}>
-                      {group.items.map((market) => (
-                        <article
+                      {group.items.map((market, marketIndex) => (
+                        <ScrollReveal
+                          as="article"
                           key={`${group.label}-${market.title}`}
+                          delay={groupIndex * 100 + marketIndex * 80}
                           className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] sm:p-5"
                         >
                           <div className="flex items-start gap-3">
@@ -610,30 +623,34 @@ export default function LandingPage() {
                           <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
                             {market.detail}
                           </p>
-                        </article>
+                        </ScrollReveal>
                       ))}
                     </div>
-                  </section>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section id="pricing" className={`${sectionPadClass} py-14 lg:py-18`}>
         <div className={`${frameClass} space-y-8 sm:space-y-10 lg:space-y-12`}>
-          <SectionIntro
-            eyebrow="Pricing Preview"
-            title="Tiered pricing built for startups, SMEs, and enterprises."
-            description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
-            align="center"
-          />
+          <ScrollReveal className="mx-auto max-w-4xl text-center">
+            <SectionIntro
+              eyebrow="Pricing Preview"
+              title="Tiered pricing built for startups, SMEs, and enterprises."
+              description="Choose Starter, Professional, or Enterprise plans based on your operational needs and budget."
+              align="center"
+            />
+          </ScrollReveal>
 
           <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
             {pricingPreviewPlans.map((plan, index) => (
-              <article
+              <ScrollReveal
+                as="article"
                 key={plan.name}
+                delay={index * 90}
                 className="group overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:rounded-[26px] lg:rounded-[30px]"
               >
                 <div
@@ -676,13 +693,17 @@ export default function LandingPage() {
                     ))}
                   </ul>
                 </div>
-              </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className={`${sectionPadClass} pt-10`}>
+      <ScrollReveal
+        as="section"
+        id="contact"
+        className={`${sectionPadClass} pt-10`}
+      >
         <div className={`${frameClass} rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] px-5 py-8 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:px-7 sm:py-10 lg:rounded-[36px] lg:px-10 xl:px-12`}>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -712,7 +733,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </ScrollReveal>
 
     </main>
   );
