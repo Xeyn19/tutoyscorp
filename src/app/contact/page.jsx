@@ -12,7 +12,7 @@ export default function ContactPage() {
     <main className="min-h-screen overflow-x-hidden py-4 sm:py-6 lg:py-8">
       <section className="px-4 sm:px-4 lg:px-6">
         <div className="mx-auto grid w-full max-w-[120rem] gap-4 sm:gap-6 xl:min-h-[calc(100vh-4rem)] xl:grid-cols-[minmax(18rem,0.42fr)_minmax(0,0.58fr)] xl:items-stretch">
-          <div className="order-2 rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] p-4 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:p-8 xl:order-1 xl:sticky xl:top-8 xl:min-h-[calc(100vh-4rem)] xl:rounded-[32px] xl:p-10">
+          <div className="rounded-[20px] border border-[var(--border)] bg-[var(--hero-background)] p-4 shadow-[var(--panel-shadow-strong)] sm:rounded-[28px] sm:p-6 lg:p-8 xl:min-h-[calc(100vh-4rem)] xl:rounded-[32px] xl:p-10">
             <div className="flex h-full flex-col">
               <div>
                 <div className="mb-6 grid gap-3 sm:mb-8 sm:flex sm:flex-wrap">
@@ -56,7 +56,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="order-1 min-w-0 xl:order-2 xl:min-h-[calc(100vh-4rem)]">
+          <div className="min-w-0 xl:sticky xl:top-8 xl:self-start">
             <InquiryForm services={contactServiceOptions} />
           </div>
         </div>

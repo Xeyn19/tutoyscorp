@@ -233,7 +233,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <aside className="flex w-full min-w-0 items-center justify-center pt-4 sm:pt-5 xl:w-auto xl:self-center xl:pt-8">
+              <aside className="flex w-full min-w-0 items-center justify-center pt-7 sm:pt-5 xl:w-auto xl:self-center xl:pt-8">
                 <WhyItWorksCardDeck items={whyItWorksCards} />
               </aside>
             </div>
