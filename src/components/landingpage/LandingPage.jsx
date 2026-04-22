@@ -7,6 +7,7 @@ import LandingHeader from "@/components/landingpage/LandingHeader";
 import FeatureSlideshow from "@/components/landingpage/FeatureSlideshow";
 import ScrollReveal from "@/components/landingpage/ScrollReveal";
 import SectionIntro from "@/components/landingpage/SectionIntro";
+import WhyItWorksCardDeck from "@/components/landingpage/WhyItWorksCardDeck";
 import {
   capabilityCards,
   companyProfile,
@@ -63,6 +64,10 @@ const trustPointTitles = [
   "Shared live visibility",
   "Connected records",
 ];
+const whyItWorksCards = trustPointTitles.map((title, index) => ({
+  title,
+  description: trustPoints[index],
+}));
 
 function IconBadge({ children }) {
   return <div className={iconBadgeClass}>{children}</div>;
@@ -240,48 +245,8 @@ export default function LandingPage() {
                     The platform reduces manual coordination and keeps key workflows easier to manage day to day.
                   </p>
 
-                  <div className="mt-5 grid gap-3 sm:mt-6">
-                    {trustPoints.map((point, index) => (
-                      <div
-                        key={point}
-                        className="rounded-[18px] border border-[var(--hero-card-border)] bg-[var(--hero-card-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5"
-                      >
-                        <div className="flex items-start gap-3">
-                          <IconBadge>
-                            {index === 0 ? (
-                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <rect x="4" y="5" width="16" height="14" rx="2" />
-                                <path d="M8 9h8" />
-                                <path d="M8 13h6" />
-                              </svg>
-                            ) : null}
-                            {index === 1 ? (
-                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M4 12h6l2-3 2 6 2-3h4" />
-                                <path d="M4 6h16" />
-                                <path d="M4 18h16" />
-                              </svg>
-                            ) : null}
-                            {index === 2 ? (
-                              <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <rect x="4" y="4" width="7" height="7" rx="1.5" />
-                                <rect x="13" y="4" width="7" height="7" rx="1.5" />
-                                <rect x="4" y="13" width="7" height="7" rx="1.5" />
-                                <path d="M14 15h6" />
-                              </svg>
-                            ) : null}
-                          </IconBadge>
-                          <div className="min-w-0">
-                            <h3 className="text-sm font-semibold text-[var(--foreground)] sm:text-base">
-                              {trustPointTitles[index]}
-                            </h3>
-                            <p className="mt-2 text-sm leading-7 text-[var(--foreground-muted)]">
-                              {point}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="mt-6">
+                    <WhyItWorksCardDeck items={whyItWorksCards} />
                   </div>
                 </div>
               </aside>
