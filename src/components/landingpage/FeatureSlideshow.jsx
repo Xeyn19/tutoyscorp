@@ -250,17 +250,17 @@ export default function FeatureSlideshow() {
             </div>
           </article>
 
-          <aside className="grid gap-3 sm:gap-4">
-            <div className="rounded-[20px] border border-[var(--media-border)] bg-[var(--media-pill-bg)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-md sm:rounded-[24px] sm:p-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--media-pill-text)]">
+          <aside className="mt-2 grid gap-3 sm:mt-3 sm:gap-4 xl:mt-5">
+            <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-md sm:rounded-[24px] sm:p-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--accent-strong)]">
                 Modules
               </p>
-              <p className="mt-3 text-sm leading-7 text-[var(--media-muted)]">
+              <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
                 Choose a subsystem to inspect, or let the spotlight rotate automatically through the platform.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
+            <div className="mt-2 grid gap-3 sm:mt-3 sm:grid-cols-3 xl:mt-4 xl:grid-cols-1">
               {slides.map((slide, index) => {
                 const isActive = index === activeIndex;
 
@@ -273,39 +273,33 @@ export default function FeatureSlideshow() {
                     onClick={() => handleManualSelect(index)}
                     className={`rounded-[20px] border p-4 text-left shadow-[var(--panel-shadow)] backdrop-blur-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] sm:rounded-[22px] ${
                       isActive
-                        ? "border-[var(--media-border-strong)] bg-[var(--media-surface)] text-[var(--media-text)]"
-                        : "border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-muted)] hover:border-[var(--media-border-strong)] hover:bg-[var(--media-surface-strong)]"
+                        ? "border-[var(--border-strong)] bg-[var(--surface-strong)] text-[var(--foreground)]"
+                        : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)]"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <p className={`font-mono text-[11px] uppercase tracking-[0.24em] ${
-                          isActive ? "text-[var(--media-pill-text)]" : "text-[var(--media-pill-text)]"
-                        }`}>
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
                           0{index + 1} {slide.label}
                         </p>
-                        <h4 className={`mt-3 text-base font-semibold leading-6 sm:text-lg ${
-                          isActive ? "text-[var(--media-text)]" : "text-[var(--media-text)]"
-                        }`}>
+                        <h4 className="mt-3 text-base font-semibold leading-6 text-[var(--foreground)] sm:text-lg">
                           {slide.title}
                         </h4>
                       </div>
                       <span className={`mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-full border ${
                         isActive
-                          ? "border-[var(--media-border-strong)] bg-[var(--media-surface-strong)] text-[var(--media-text)]"
-                          : "border-[var(--media-border)] bg-transparent text-[var(--media-pill-text)]"
+                          ? "border-[var(--border-strong)] bg-[var(--surface)] text-[var(--foreground)]"
+                          : "border-[var(--border)] bg-[var(--surface-strong)] text-[var(--foreground-muted)]"
                       }`}>
                         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                           <path d="m9 18 6-6-6-6" />
                         </svg>
                       </span>
                     </div>
-                    <p className={`mt-3 text-sm leading-7 ${
-                      isActive ? "text-[var(--media-muted)]" : "text-[var(--media-pill-text)]"
-                    }`}>
+                    <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
                       {slide.description}
                     </p>
-                    <div className="mt-4 h-1.5 rounded-full bg-white/10">
+                    <div className="mt-4 h-1.5 rounded-full bg-[var(--border)]">
                       <span
                         className={`block h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-out motion-reduce:transition-none ${
                           isActive ? "w-full" : "w-0"

@@ -234,18 +234,18 @@ export default function LandingPage() {
               </div>
 
               <aside className="min-w-0 xl:pt-6">
-                <div className="rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:px-6 sm:py-6 lg:rounded-[32px] lg:px-7 lg:py-7">
+                <div className="space-y-4 rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:space-y-5 sm:rounded-[28px] sm:px-6 sm:py-6 lg:rounded-[32px] lg:px-7 lg:py-7">
                   <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                     Why it works
                   </p>
-                  <h2 className="mt-3 text-xl font-semibold tracking-tight text-[var(--hero-text)] sm:text-2xl">
+                  <h2 className="text-xl font-semibold tracking-tight text-[var(--hero-text)] sm:text-2xl">
                     Clear benefits at a glance.
                   </h2>
-                  <p className="mt-3 text-sm leading-7 text-[var(--hero-subtext)] sm:text-base">
+                  <p className="text-sm leading-7 text-[var(--hero-subtext)] sm:text-base">
                     The platform reduces manual coordination and keeps key workflows easier to manage day to day.
                   </p>
 
-                  <div className="mt-6">
+                  <div>
                     <WhyItWorksCardDeck items={whyItWorksCards} />
                   </div>
                 </div>
@@ -457,21 +457,21 @@ export default function LandingPage() {
                     delay={groupIndex * 100}
                     className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6"
                   >
-                    <div className="border-b border-[var(--border)] pb-4">
+                    <div className="border-b border-[var(--border)] pb-5 sm:pb-6">
                       <div className="mx-auto max-w-2xl text-center">
                         <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
                           {group.eyebrow}
                         </p>
-                        <h3 className="mt-3 text-xl font-semibold text-[var(--foreground)] sm:text-2xl">
+                        <h3 className="mt-4 text-xl font-semibold text-[var(--foreground)] sm:text-2xl">
                           {group.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                        <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
                           {group.description}
                         </p>
                       </div>
                     </div>
 
-                    <div className={`mt-5 grid gap-3 ${
+                    <div className={`mt-6 grid gap-3 ${
                       group.items.length > 2
                         ? "md:grid-cols-2 xl:grid-cols-3"
                         : "sm:grid-cols-2"
