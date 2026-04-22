@@ -93,7 +93,7 @@ export default function WhyItWorksCardDeck({ items }) {
           key={item.title}
           customClass="w-full bg-[linear-gradient(180deg,var(--hero-card-strong)_0%,var(--surface)_100%)]"
         >
-          <article className="flex h-full flex-col gap-4 rounded-[22px] border border-white/40 bg-[var(--hero-card-strong)]/95 p-5 backdrop-blur-xl sm:gap-5 sm:p-6">
+          <article className="flex h-full flex-col gap-4 rounded-[22px] border border-white/40 bg-[var(--hero-card-strong)]/95 px-5 pb-7 pt-5 backdrop-blur-xl sm:gap-5 sm:p-6">
             <div className="flex items-start gap-4">
               <div className="flex h-11 w-11 flex-none items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)]">
                 <BenefitIcon variant={index} />
