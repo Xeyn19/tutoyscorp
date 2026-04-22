@@ -156,7 +156,7 @@ export default function FeatureSlideshow() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 xl:justify-end">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 xl:justify-end">
             <div className="rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--media-pill-text)] backdrop-blur-md">
               {activeIndex + 1} / {slides.length}
             </div>
@@ -168,7 +168,7 @@ export default function FeatureSlideshow() {
                 type="button"
                 aria-label="Show previous subsystem"
                 onClick={() => handleStep(-1)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-text)] transition hover:border-[var(--media-border-strong)] hover:bg-[var(--media-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-text)] transition hover:border-[var(--media-border-strong)] hover:bg-[var(--media-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] sm:h-11 sm:w-11"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 18-6-6 6-6" />
@@ -178,7 +178,7 @@ export default function FeatureSlideshow() {
                 type="button"
                 aria-label="Show next subsystem"
                 onClick={() => handleStep(1)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-text)] transition hover:border-[var(--media-border-strong)] hover:bg-[var(--media-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--media-border)] bg-[var(--media-pill-bg)] text-[var(--media-text)] transition hover:border-[var(--media-border-strong)] hover:bg-[var(--media-surface-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] sm:h-11 sm:w-11"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6" />
@@ -188,8 +188,8 @@ export default function FeatureSlideshow() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 xl:grid-cols-[minmax(0,1.16fr)_minmax(19rem,0.84fr)] xl:gap-5">
-          <article className="relative min-h-[25rem] overflow-hidden rounded-[22px] border border-[var(--media-border)] bg-[var(--media-pill-bg)] shadow-[var(--panel-shadow)] backdrop-blur-sm sm:min-h-[28rem] sm:rounded-[28px]">
+        <div className="mt-8 grid gap-4 lg:gap-5 xl:grid-cols-[minmax(0,1.16fr)_minmax(19rem,0.84fr)] xl:gap-5">
+          <article className="relative min-h-[22rem] overflow-hidden rounded-[22px] border border-[var(--media-border)] bg-[var(--media-pill-bg)] shadow-[var(--panel-shadow)] backdrop-blur-sm sm:min-h-[25rem] sm:rounded-[28px] lg:min-h-[28rem]">
             {slides.map((slide, index) => {
               const isActive = index === activeIndex;
 
@@ -250,7 +250,7 @@ export default function FeatureSlideshow() {
             </div>
           </article>
 
-          <aside className="mt-2 grid gap-3 sm:mt-3 sm:gap-4 xl:mt-5">
+          <aside className="mt-3 grid gap-3 sm:mt-4 sm:gap-4 xl:mt-5">
             <div className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--panel-shadow)] backdrop-blur-md sm:rounded-[24px] sm:p-5">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--accent-strong)]">
                 Modules
@@ -260,7 +260,7 @@ export default function FeatureSlideshow() {
               </p>
             </div>
 
-            <div className="mt-2 grid gap-3 sm:mt-3 sm:grid-cols-3 xl:mt-4 xl:grid-cols-1">
+            <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-2 lg:grid-cols-3 xl:mt-4 xl:grid-cols-1">
               {slides.map((slide, index) => {
                 const isActive = index === activeIndex;
 

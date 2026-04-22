@@ -63,15 +63,15 @@ function BenefitIcon({ variant }) {
 export default function WhyItWorksCardDeck({ items }) {
   return (
     <CardSwap
-      width="min(100%, 30rem)"
-      height="clamp(17.5rem, 31vw, 19.25rem)"
+      width="100%"
+      height="clamp(15.75rem, 60vw, 19.25rem)"
       cardDistance={26}
       verticalDistance={20}
       skewAmount={0}
       easing="power2.out"
-      className="mx-auto w-full max-w-[30rem]"
+      className="mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[30rem]"
       stackClassName="mx-auto w-full"
-      buttonClassName="bg-[var(--hero-card-strong)]"
+      buttonClassName="w-full justify-center bg-[var(--hero-card-strong)] sm:w-auto"
     >
       {items.map((item, index) => (
         <Card

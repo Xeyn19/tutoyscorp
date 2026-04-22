@@ -224,7 +224,7 @@ export default function LandingPage() {
                   <div className="flex flex-wrap gap-3">
                     <Link
                       href="/contact"
-                      className={`${primaryButtonClass} min-w-[12rem] sm:min-w-[13.5rem]`}
+                      className={`${primaryButtonClass} w-full sm:w-auto sm:min-w-[13.5rem]`}
                       style={{ color: "#000" }}
                     >
                       Connect With Us
@@ -233,7 +233,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <aside className="flex min-w-0 items-center justify-center pt-4 sm:pt-5 xl:self-center xl:pt-8">
+              <aside className="flex w-full min-w-0 items-center justify-center pt-4 sm:pt-5 xl:w-auto xl:self-center xl:pt-8">
                 <WhyItWorksCardDeck items={whyItWorksCards} />
               </aside>
             </div>
@@ -269,7 +269,7 @@ export default function LandingPage() {
                 as="article"
                 key={card.title}
                 delay={index * 90}
-                className="group w-full max-w-[24rem] overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] sm:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
+                className="group w-full max-w-[24rem] overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] md:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
               >
                 <div
                   className="relative h-52 overflow-hidden sm:h-56"
@@ -396,7 +396,7 @@ export default function LandingPage() {
                       as="article"
                       key={value.title}
                       delay={index * 90}
-                      className="w-full rounded-[18px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] backdrop-blur-xl sm:w-[calc(50%-0.5rem)] sm:rounded-[24px] sm:p-5 lg:w-[calc(33.333%-0.75rem)]"
+                      className="w-full rounded-[18px] border border-[var(--media-border)] bg-[var(--media-surface)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] backdrop-blur-xl md:w-[calc(50%-0.5rem)] sm:rounded-[24px] sm:p-5 lg:w-[calc(33.333%-0.75rem)]"
                     >
                       <div className={`flex gap-3 ${
                         value.title === "Customer Focus"
