@@ -16,7 +16,7 @@ export default function ScrollReveal({
   className = "",
   delay = 0,
   initialVisible = false,
-  once = true,
+  once = false,
   rootMargin = "0px 0px -12% 0px",
   style,
   threshold = 0.14,

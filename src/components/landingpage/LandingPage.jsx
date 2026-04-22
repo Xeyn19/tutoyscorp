@@ -21,7 +21,7 @@ import {
 const navigation = [
   { label: "Features", href: "#features" },
   { label: "Mission", href: "#mission" },
-  { label: "Audience", href: "#audience" },
+  { label: "Audience", href: "#target-market" },
   { label: "Pricing", href: "#pricing" },
 ];
 
@@ -174,6 +174,7 @@ const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
 
 export default function LandingPage() {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const homeSection = document.getElementById("home-section");
@@ -492,7 +493,7 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal className={sectionPanelClass}>
+          <ScrollReveal id="target-market" className={sectionPanelClass}>
             <div className="grid gap-6 xl:grid-cols-[minmax(18rem,0.36fr)_minmax(0,0.64fr)] xl:items-start xl:gap-8">
               <div className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
@@ -732,6 +733,17 @@ export default function LandingPage() {
               </a>
             </div>
           </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal as="footer" className={`${sectionPadClass} pb-6 pt-6 sm:pb-8`}>
+        <div className={`${frameClass} text-center`}>
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--foreground-muted)]">
+            &copy; {currentYear} TutoY Corp
+          </p>
+          <p className="mt-3 text-sm text-[var(--foreground-muted)] sm:text-base">
+            Landing page designed and developed by Edgar Orosa.
+          </p>
         </div>
       </ScrollReveal>
 
