@@ -233,22 +233,8 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <aside className="min-w-0 xl:pt-6">
-                <div className="space-y-4 rounded-[20px] border border-[var(--hero-card-border)] bg-[var(--hero-card)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:space-y-5 sm:rounded-[28px] sm:px-6 sm:py-6 lg:rounded-[32px] lg:px-7 lg:py-7">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                    Why it works
-                  </p>
-                  <h2 className="text-xl font-semibold tracking-tight text-[var(--hero-text)] sm:text-2xl">
-                    Clear benefits at a glance.
-                  </h2>
-                  <p className="text-sm leading-7 text-[var(--hero-subtext)] sm:text-base">
-                    The platform reduces manual coordination and keeps key workflows easier to manage day to day.
-                  </p>
-
-                  <div>
-                    <WhyItWorksCardDeck items={whyItWorksCards} />
-                  </div>
-                </div>
+              <aside className="flex min-w-0 items-center justify-center pt-4 sm:pt-5 xl:self-center xl:pt-8">
+                <WhyItWorksCardDeck items={whyItWorksCards} />
               </aside>
             </div>
           </div>

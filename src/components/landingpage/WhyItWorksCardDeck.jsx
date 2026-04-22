@@ -8,7 +8,7 @@ function BenefitIcon({ variant }) {
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-5 w-5 text-[var(--accent-strong)]"
+        className="h-5 w-5 text-[var(--accent)]"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.8"
@@ -27,7 +27,7 @@ function BenefitIcon({ variant }) {
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-5 w-5 text-[var(--accent-strong)]"
+        className="h-5 w-5 text-[var(--accent)]"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.8"
@@ -45,7 +45,7 @@ function BenefitIcon({ variant }) {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className="h-5 w-5 text-[var(--accent-strong)]"
+      className="h-5 w-5 text-[var(--accent)]"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -63,13 +63,14 @@ function BenefitIcon({ variant }) {
 export default function WhyItWorksCardDeck({ items }) {
   return (
     <CardSwap
-      width="100%"
-      height={248}
+      width="min(100%, 30rem)"
+      height="clamp(17.5rem, 31vw, 19.25rem)"
       cardDistance={26}
-      verticalDistance={22}
+      verticalDistance={20}
       skewAmount={0}
       easing="power2.out"
-      stackClassName="h-[248px] w-full max-w-[29rem]"
+      className="mx-auto w-full max-w-[30rem]"
+      stackClassName="mx-auto w-full"
       buttonClassName="bg-[var(--hero-card-strong)]"
     >
       {items.map((item, index) => (
@@ -77,21 +78,21 @@ export default function WhyItWorksCardDeck({ items }) {
           key={item.title}
           customClass="w-full bg-[linear-gradient(180deg,var(--hero-card-strong)_0%,var(--surface)_100%)]"
         >
-          <article className="flex h-full flex-col gap-5 rounded-[22px] border border-white/40 bg-[var(--hero-card-strong)]/95 p-5 backdrop-blur-xl sm:gap-6 sm:p-6">
+          <article className="flex h-full flex-col gap-4 rounded-[22px] border border-white/40 bg-[var(--hero-card-strong)]/95 p-5 backdrop-blur-xl sm:gap-5 sm:p-6">
             <div className="flex items-start gap-4">
               <div className="flex h-11 w-11 flex-none items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)]">
                 <BenefitIcon variant={index} />
               </div>
               <div className="min-w-0 space-y-2.5">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)]">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent)]">
                   Why it works
                 </p>
-                <h3 className="text-lg font-semibold tracking-tight text-[var(--foreground)] sm:text-xl">
+                <h3 className="text-lg font-semibold tracking-tight text-[var(--hero-text)] sm:text-xl">
                   {item.title}
                 </h3>
               </div>
             </div>
-            <p className="text-sm leading-7 text-[var(--foreground-muted)] sm:text-[0.95rem]">
+            <p className="text-sm leading-7 text-[var(--hero-subtext)] sm:text-[0.95rem]">
               {item.description}
             </p>
           </article>

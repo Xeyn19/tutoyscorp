@@ -100,9 +100,9 @@ export const operatingModel = [
 ];
 
 export const trustPoints = [
-  "Reduces duplicate work, operational friction, and improves accountability.",
-  "Real-time insights keep teams aligned across savings, inventory, and bookings.",
-  "Integrated records connect financial progress, stock levels, and reservations.",
+  "Reduces duplicate work, operational friction, and improves accountability. Teams spend less time repeating manual updates and more time focusing on the actions that keep daily operations moving.",
+  "Real-time insights keep teams aligned across savings, inventory, and bookings. Shared visibility makes it easier to spot changes early, coordinate faster, and respond with better timing.",
+  "Integrated records connect financial progress, stock levels, and reservations. That connection helps users follow activity more clearly without jumping between disconnected tools and records.",
 ];
 
 export const subsystemHighlights = [
