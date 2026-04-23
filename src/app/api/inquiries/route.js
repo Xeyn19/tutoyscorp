@@ -1,5 +1,4 @@
-import { mkdir, appendFile } from "node:fs/promises";
-import path from "node:path";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
 
 function validatePayload(payload) {
   const requiredFields = [
@@ -45,27 +44,40 @@ export async function POST(request) {
     return Response.json({ error: validationError }, { status: 400 });
   }
 
+  const companyName =
+    typeof payload.companyName === "string" ? payload.companyName.trim() : "";
   const entry = {
-    fullName: payload.fullName.trim(),
+    full_name: payload.fullName.trim(),
     email: payload.email.trim(),
-    contactNumber: payload.contactNumber.trim(),
-    companyName: typeof payload.companyName === "string" ? payload.companyName.trim() : "",
-    selectedService: payload.selectedService.trim(),
+    contact_number: payload.contactNumber.trim(),
+    company_name: companyName || null,
+    selected_service: payload.selectedService.trim(),
     message: payload.message.trim(),
-    consentAccepted: true,
-    createdAt: new Date().toISOString(),
+    consent_accepted: true,
   };
 
-  const dataDir = path.join(process.cwd(), "data");
-  const filePath = path.join(dataDir, "inquiries.ndjson");
+  try {
+    const supabase = createSupabaseServerClient();
+    const { error } = await supabase.from("contact_inquiries").insert([entry]);
 
-  await mkdir(dataDir, { recursive: true });
-  await appendFile(filePath, `${JSON.stringify(entry)}\n`, "utf8");
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return Response.json(
+        { error: "Failed to save inquiry to Supabase." },
+        { status: 500 }
+      );
+    }
 
-  // Integrate your email provider here (Resend, SendGrid, Nodemailer, etc.).
-  console.info(
-    `[Inquiry Notification] New inquiry from ${entry.fullName} <${entry.email}> for "${entry.selectedService}".`
-  );
+    console.info(
+      `[Inquiry Notification] New inquiry from ${payload.fullName.trim()} <${payload.email.trim()}> for "${payload.selectedService.trim()}".`
+    );
 
-  return Response.json({ ok: true });
+    return Response.json({ ok: true });
+  } catch (error) {
+    console.error("Inquiry route error:", error);
+    return Response.json(
+      { error: "Unexpected server error while saving inquiry." },
+      { status: 500 }
+    );
+  }
 }
