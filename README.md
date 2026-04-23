@@ -1,6 +1,6 @@
-# TutoY Corp Integrated System Landing Page
+# TutoY Corp Integrated System
 
-Professional landing page for `TutoY Corp Integrated System` built with Next.js App Router, React, and Tailwind CSS.
+Marketing site and inquiry flow for `TutoY Corp Integrated System`, built with Next.js App Router, React, Tailwind CSS, Supabase, and React Toastify.
 
 The project includes:
 
@@ -8,6 +8,9 @@ The project includes:
 - light mode and dark mode with persistent theme toggle
 - reusable landing page components
 - centralized content file for easy copy updates
+- contact/inquiry form with server-side validation
+- Supabase-backed inquiry storage
+- toast-based submission feedback
 - Vercel-ready Next.js setup
 
 ## Tech Stack
@@ -15,6 +18,8 @@ The project includes:
 - `Next.js 16`
 - `React 19`
 - `Tailwind CSS 4`
+- `Supabase`
+- `React Toastify`
 - `ESLint`
 
 ## Run Locally
@@ -24,6 +29,15 @@ Install dependencies if needed:
 ```bash
 npm install
 ```
+
+Create `.env.local` in the project root:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+SUPABASE_SECRET_KEY=your_secret_key
+```
+
+The inquiry API also accepts `SUPABASE_SERVICE_ROLE_KEY` as a fallback if that is what your Supabase project currently uses.
 
 Start the dev server:
 
@@ -47,6 +61,7 @@ npm run lint
 - `/` renders the main landing page
 - `/landingpage` renders the same landing page route
 - `/contact` renders the contact/inquiry form page
+- `/api/inquiries` validates the form submission and inserts it into Supabase
 
 ## Project Structure
 
@@ -65,6 +80,7 @@ src/
       loading.jsx
       page.jsx
   components/
+    ToastProvider.jsx
     landingpage/
       BrandMark.jsx
       FeatureSlideshow.jsx
@@ -73,9 +89,33 @@ src/
       LandingPage.jsx
       SectionIntro.jsx
       ThemeToggle.jsx
+  lib/
+    supabase-server.js
   data/
     landingpage-content.js
 ```
+
+## Inquiry Flow
+
+The contact page uses this flow:
+
+1. `src/app/contact/page.jsx` renders the inquiry form.
+2. `src/components/landingpage/InquiryForm.jsx` sends a `POST` request to `/api/inquiries`.
+3. `src/app/api/inquiries/route.js` validates the payload.
+4. `src/lib/supabase-server.js` creates a server-side Supabase client.
+5. The inquiry is inserted into the `contact_inquiries` table in Supabase.
+6. The user sees toast feedback for loading, success, or failure.
+
+Expected Supabase table columns:
+
+- `full_name`
+- `email`
+- `contact_number`
+- `company_name`
+- `selected_service`
+- `message`
+- `consent_accepted`
+- `created_at`
 
 ## Where To Edit
 
@@ -96,9 +136,10 @@ Update the contact/inquiry page form UI in:
 - `src/components/landingpage/InquiryForm.jsx`
 - `src/app/contact/page.jsx`
 
-Update the inquiry submit backend handler in:
+Update inquiry submission and backend handling in:
 
 - `src/app/api/inquiries/route.js`
+- `src/lib/supabase-server.js`
 
 Update light/dark theme styles and global design tokens in:
 
@@ -107,6 +148,10 @@ Update light/dark theme styles and global design tokens in:
 Update theme bootstrapping and global metadata in:
 
 - `src/app/layout.jsx`
+
+Update toast container behavior in:
+
+- `src/components/ToastProvider.jsx`
 
 ## Theme Behavior
 
@@ -139,7 +184,9 @@ After deployment, Vercel will generate a `.vercel.app` URL.
 
 - This repo is ready for GitHub-to-Vercel auto deployment
 - Pushing updates to the connected branch will trigger a new deploy
-- The landing page can be extended later with a contact form, testimonials, case studies, or service detail pages
+- The contact form now stores inquiries in Supabase through the Next.js API route
+- Submission feedback is shown with toast notifications in the top-right corner
+- Keep Supabase secret keys server-side only and never expose them in client components
 
 ## Presentation
 
@@ -189,5 +236,5 @@ Secondary users are start-ups and service-based enterprises.
 
 In summary, the landing page presents what the system is, who it serves, and why it matters.  
 
-Last updated: March 15, 2026
+Last updated: April 23, 2026
 
