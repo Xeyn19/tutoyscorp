@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 const initialForm = {
   fullName: "",
@@ -16,10 +17,125 @@ function createInitialForm() {
   return { ...initialForm };
 }
 
+function ToastContent({
+  tone,
+  title,
+  message,
+  durationMs = 0,
+}) {
+  const badgeLabel =
+    tone === "success" ? "SUCCESS" : tone === "error" ? "!" : "...";
+  const [remainingMs, setRemainingMs] = useState(durationMs);
+  const lastTickRef = useRef(0);
+
+  useEffect(() => {
+    if (!durationMs) {
+      return undefined;
+    }
+
+    lastTickRef.current = Date.now();
+
+    const intervalId = window.setInterval(() => {
+      const now = Date.now();
+      const elapsed = now - lastTickRef.current;
+      lastTickRef.current = now;
+
+      setRemainingMs((current) => Math.max(0, current - elapsed));
+    }, 100);
+
+    return () => window.clearInterval(intervalId);
+  }, [durationMs]);
+
+  const progressWidth = durationMs
+    ? `${Math.max(0, (remainingMs / durationMs) * 100)}%`
+    : "100%";
+
+  return (
+    <div className={`tutoy-toast-card tutoy-toast-card--${tone}`}>
+      <span
+        className={`tutoy-toast-card__badge tutoy-toast-card__badge--${tone}`}
+        aria-hidden="true"
+      >
+        {badgeLabel}
+      </span>
+      <div className="min-w-0">
+        <p className="tutoy-toast-card__title">{title}</p>
+        <p className="tutoy-toast-card__message">{message}</p>
+        {durationMs ? (
+          <div className="tutoy-toast-card__timer" aria-hidden="true">
+            <div className="tutoy-toast-card__track">
+              <span
+                className={`tutoy-toast-card__fill tutoy-toast-card__fill--${tone}`}
+                style={{ width: progressWidth }}
+              />
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export default function InquiryForm({ services }) {
   const [form, setForm] = useState(createInitialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState({ type: "", message: "" });
+
+  function showPendingToast() {
+    return toast.loading(
+      <ToastContent
+        tone="loading"
+        title="Submitting inquiry"
+        message="Please wait while we send your details."
+      />,
+      {
+        icon: false,
+        closeButton: false,
+        autoClose: false,
+      }
+    );
+  }
+
+  function updateToastToSuccess(toastId, message) {
+    const durationMs = 4700;
+
+    toast.update(toastId, {
+      render: (
+        <ToastContent
+          key={`success-${durationMs}`}
+          tone="success"
+          title="Inquiry submitted"
+          message={message}
+          durationMs={durationMs}
+        />
+      ),
+      type: "success",
+      isLoading: false,
+      autoClose: durationMs,
+      closeButton: true,
+      icon: false,
+    });
+  }
+
+  function updateToastToError(toastId, message) {
+    const durationMs = 4700;
+
+    toast.update(toastId, {
+      render: (
+        <ToastContent
+          key={`error-${durationMs}`}
+          tone="error"
+          title="Inquiry not sent"
+          message={message}
+          durationMs={durationMs}
+        />
+      ),
+      type: "error",
+      isLoading: false,
+      autoClose: durationMs,
+      closeButton: true,
+      icon: false,
+    });
+  }
 
   function onChange(event) {
     const { name, type, value, checked } = event.target;
@@ -32,7 +148,7 @@ export default function InquiryForm({ services }) {
   async function onSubmit(event) {
     event.preventDefault();
     setIsSubmitting(true);
-    setStatus({ type: "", message: "" });
+    const toastId = showPendingToast();
 
     try {
       const response = await fetch("/api/inquiries", {
@@ -44,33 +160,29 @@ export default function InquiryForm({ services }) {
       const data = await response.json();
 
       if (!response.ok) {
-        setStatus({
-          type: "error",
-          message:
-            typeof data.error === "string"
-              ? data.error
-              : "Submission failed. Please check your details and try again.",
-        });
-        setIsSubmitting(false);
+        updateToastToError(
+          toastId,
+          typeof data.error === "string"
+            ? data.error
+            : "Submission failed. Please check your details and try again."
+        );
         return;
       }
 
-      setStatus({
-        type: "success",
-        message:
-          "Success! Your inquiry has been submitted. Our team will contact you soon.",
-      });
+      updateToastToSuccess(
+        toastId,
+        "Your inquiry has been submitted. Our team will contact you soon."
+      );
       setForm(createInitialForm());
-      setIsSubmitting(false);
       return;
     } catch {
-      setStatus({
-        type: "error",
-        message:
-          "Network error while submitting. Please check your connection and try again.",
-      });
-      setIsSubmitting(false);
+      updateToastToError(
+        toastId,
+        "Network error while submitting. Please check your connection and try again."
+      );
       return;
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -213,18 +325,6 @@ export default function InquiryForm({ services }) {
           </div>
         </div>
       </div>
-
-      {status.message ? (
-        <p
-          className={`rounded-xl border px-3 py-2 text-sm ${
-            status.type === "success"
-              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-              : "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300"
-          }`}
-        >
-          {status.message}
-        </p>
-      ) : null}
 
       <button
         type="submit"

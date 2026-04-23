@@ -1,5 +1,7 @@
 import { JetBrains_Mono, Sora } from "next/font/google";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import ToastProvider from "@/components/ToastProvider";
 
 const sora = Sora({
   variable: "--font-space-grotesk",
@@ -39,7 +41,7 @@ const themeInitializer = `
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
       </head>
@@ -47,6 +49,7 @@ export default function RootLayout({ children }) {
         className={`${sora.variable} ${jetBrainsMono.variable} antialiased`}
       >
         {children}
+        <ToastProvider />
       </body>
     </html>
   );
