@@ -9,7 +9,9 @@ The project includes:
 - reusable landing page components
 - centralized content file for easy copy updates
 - contact/inquiry form with server-side validation
+- Cloudflare Turnstile human verification
 - Supabase-backed inquiry storage
+- Gmail/Nodemailer confirmation emails
 - toast-based submission feedback
 - Vercel-ready Next.js setup
 
@@ -34,10 +36,14 @@ Create `.env.local` in the project root:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_project_url
-SUPABASE_SECRET_KEY=your_secret_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
+TURNSTILE_SECRET_KEY=your_turnstile_secret_key
+GMAIL_SMTP_USER=your-account@gmail.com
+GMAIL_SMTP_PASS=your-gmail-app-password
+MAIL_FROM="TutoY Corp Integrated System <your-account@gmail.com>"
+MAIL_REPLY_TO=your-account@gmail.com
 ```
-
-The inquiry API also accepts `SUPABASE_SERVICE_ROLE_KEY` as a fallback if that is what your Supabase project currently uses.
 
 Start the dev server:
 
@@ -61,7 +67,7 @@ npm run lint
 - `/` renders the main landing page
 - `/landingpage` renders the same landing page route
 - `/contact` renders the contact/inquiry form page
-- `/api/inquiries` validates the form submission and inserts it into Supabase
+- `/api/inquiries` verifies Turnstile, inserts the inquiry into Supabase, and sends the confirmation email
 
 ## Project Structure
 
@@ -101,10 +107,12 @@ The contact page uses this flow:
 
 1. `src/app/contact/page.jsx` renders the inquiry form.
 2. `src/components/landingpage/InquiryForm.jsx` sends a `POST` request to `/api/inquiries`.
-3. `src/app/api/inquiries/route.js` validates the payload.
-4. `src/lib/supabase-server.js` creates a server-side Supabase client.
-5. The inquiry is inserted into the `contact_inquiries` table in Supabase.
-6. The user sees toast feedback for loading, success, or failure.
+3. The form includes a Cloudflare Turnstile token with the request.
+4. `src/app/api/inquiries/route.js` verifies the token and validates the payload.
+5. `src/lib/supabase-server.js` creates a server-side Supabase client.
+6. The inquiry is inserted into the `contact_inquiries` table in Supabase.
+7. `src/lib/inquiry-mail.js` sends the confirmation email.
+8. The user sees toast feedback for loading, success, or failure.
 
 Expected Supabase table columns:
 

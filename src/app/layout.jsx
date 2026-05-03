@@ -1,4 +1,5 @@
 import { JetBrains_Mono, Sora } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import ToastProvider from "@/components/ToastProvider";
@@ -43,7 +44,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitializer }} />
+        <Script id="theme-initializer" strategy="beforeInteractive">
+          {themeInitializer}
+        </Script>
       </head>
       <body
         className={`${sora.variable} ${jetBrainsMono.variable} antialiased`}
