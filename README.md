@@ -8,6 +8,7 @@ The project includes:
 - light mode and dark mode with persistent theme toggle
 - reusable landing page components
 - centralized content file for easy copy updates
+- admin login and protected dashboard routes
 - contact/inquiry form with server-side validation
 - Cloudflare Turnstile human verification
 - Supabase-backed inquiry storage
@@ -36,6 +37,7 @@ Create `.env.local` in the project root:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_or_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
 TURNSTILE_SECRET_KEY=your_turnstile_secret_key
@@ -67,6 +69,8 @@ npm run lint
 - `/` renders the main landing page
 - `/landingpage` renders the same landing page route
 - `/contact` renders the contact/inquiry form page
+- `/login` renders the admin login page
+- `/dashboard` renders the protected contact inquiry dashboard
 - `/api/inquiries` verifies Turnstile, inserts the inquiry into Supabase, and sends the confirmation email
 
 ## Project Structure
@@ -79,13 +83,20 @@ src/
         route.js
     contact/
       page.jsx
+    dashboard/
+      page.jsx
     globals.css
     layout.jsx
+    login/
+      page.jsx
     page.jsx
     landingpage/
       loading.jsx
       page.jsx
   components/
+    auth/
+      AdminLoginForm.jsx
+      AuthSignOutButton.jsx
     ToastProvider.jsx
     landingpage/
       BrandMark.jsx
@@ -96,9 +107,15 @@ src/
       SectionIntro.jsx
       ThemeToggle.jsx
   lib/
+    admin-auth.js
+    supabase-auth-server.js
+    supabase-browser.js
+    supabase-config.js
+    supabase-proxy.js
     supabase-server.js
   data/
     landingpage-content.js
+  proxy.js
 ```
 
 ## Inquiry Flow
@@ -125,6 +142,11 @@ Expected Supabase table columns:
 - `consent_accepted`
 - `created_at`
 
+Admin dashboard authorization table:
+
+- `admin_users.email`
+- `admin_users.created_at`
+
 ## Where To Edit
 
 Update company copy, metrics, labels, and card content in:
@@ -148,6 +170,13 @@ Update inquiry submission and backend handling in:
 
 - `src/app/api/inquiries/route.js`
 - `src/lib/supabase-server.js`
+
+Update admin login and dashboard access in:
+
+- `src/app/login/page.jsx`
+- `src/app/dashboard/page.jsx`
+- `src/components/auth/AdminLoginForm.jsx`
+- `src/lib/admin-auth.js`
 
 Update light/dark theme styles and global design tokens in:
 
@@ -193,8 +222,10 @@ After deployment, Vercel will generate a `.vercel.app` URL.
 - This repo is ready for GitHub-to-Vercel auto deployment
 - Pushing updates to the connected branch will trigger a new deploy
 - The contact form now stores inquiries in Supabase through the Next.js API route
+- Admin dashboard access is controlled through Supabase Auth plus the `admin_users` table
 - Submission feedback is shown with toast notifications in the top-right corner
 - Keep Supabase secret keys server-side only and never expose them in client components
+- See `dashboard-auth.md` for admin setup and first-user provisioning
 
 ## Presentation
 
