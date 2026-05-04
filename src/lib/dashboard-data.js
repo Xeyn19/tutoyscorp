@@ -13,8 +13,9 @@ export {
   getUniqueCompanyCount,
   truncateText,
 } from "@/lib/dashboard-utils";
+import { filterInquiriesByQuery } from "@/lib/dashboard-utils";
 
-export async function getInquiryRows() {
+export async function getInquiryRows(query = "") {
   const supabase = createSupabaseServerClient();
   const { data, error } = await supabase
     .from("contact_inquiries")
@@ -23,8 +24,10 @@ export async function getInquiryRows() {
     )
     .order("created_at", { ascending: false });
 
+  const inquiries = filterInquiriesByQuery(data ?? [], query);
+
   return {
-    inquiries: data ?? [],
+    inquiries,
     error: error?.message ?? "",
   };
 }
