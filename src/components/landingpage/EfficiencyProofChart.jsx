@@ -104,50 +104,52 @@ export default function EfficiencyProofChart({ data }) {
         </span>
       </div>
 
-      <div className="mt-5 h-[25rem] w-full rounded-[20px] border border-[var(--border)] bg-[var(--surface-strong)] p-3 shadow-[var(--panel-shadow)] sm:rounded-[24px] sm:p-4">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            layout="vertical"
-            margin={{ top: 10, right: 16, left: 72, bottom: 6 }}
-            barCategoryGap={18}
-          >
-            <CartesianGrid stroke="rgba(255,255,255,0.08)" horizontal={false} />
-            <XAxis
-              type="number"
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "rgba(154,172,191,0.92)", fontSize: 11 }}
-              unit="m"
-            />
-            <YAxis
-              type="category"
-              dataKey="task"
-              tickLine={false}
-              axisLine={false}
-              width={138}
-              tick={<TaskAxisTick />}
-            />
-            <Tooltip
-              cursor={{ fill: "rgba(255,255,255,0.04)" }}
-              content={<EfficiencyTooltip />}
-            />
-            <Bar
-              dataKey="manualMinutes"
-              name="Manual Method"
-              fill={manualColor}
-              radius={[0, 8, 8, 0]}
-              barSize={12}
-            />
-            <Bar
-              dataKey="systemMinutes"
-              name="TutoY Corp System"
-              fill={systemColor}
-              radius={[0, 8, 8, 0]}
-              barSize={12}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+      <div className="mt-5 overflow-x-auto pb-2">
+        <div className="h-[22rem] min-w-[38rem] rounded-[20px] border border-[var(--border)] bg-[var(--surface-strong)] p-3 shadow-[var(--panel-shadow)] sm:h-[25rem] sm:min-w-0 sm:rounded-[24px] sm:p-4">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={data}
+              layout="vertical"
+              margin={{ top: 10, right: 16, left: 72, bottom: 6 }}
+              barCategoryGap={18}
+            >
+              <CartesianGrid stroke="rgba(255,255,255,0.08)" horizontal={false} />
+              <XAxis
+                type="number"
+                tickLine={false}
+                axisLine={false}
+                tick={{ fill: "rgba(154,172,191,0.92)", fontSize: 11 }}
+                unit="m"
+              />
+              <YAxis
+                type="category"
+                dataKey="task"
+                tickLine={false}
+                axisLine={false}
+                width={138}
+                tick={<TaskAxisTick />}
+              />
+              <Tooltip
+                cursor={{ fill: "rgba(255,255,255,0.04)" }}
+                content={<EfficiencyTooltip />}
+              />
+              <Bar
+                dataKey="manualMinutes"
+                name="Manual Method"
+                fill={manualColor}
+                radius={[0, 8, 8, 0]}
+                barSize={12}
+              />
+              <Bar
+                dataKey="systemMinutes"
+                name="TutoY Corp System"
+                fill={systemColor}
+                radius={[0, 8, 8, 0]}
+                barSize={12}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );

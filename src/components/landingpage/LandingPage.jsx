@@ -363,15 +363,22 @@ export default function LandingPage() {
                     }`}
                   >
                     <div
-                      className="relative h-full w-full rounded-[20px] [transform-style:preserve-3d] transition-transform duration-[900ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:rounded-[26px] lg:rounded-[30px]"
+                      className="relative h-full w-full rounded-[20px] transform-gpu [transform-style:preserve-3d] transition-transform duration-[900ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:rounded-[26px] lg:rounded-[30px]"
                       style={{
                         transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                        transformStyle: "preserve-3d",
+                        WebkitTransformStyle: "preserve-3d",
                       }}
                     >
                       <div
                         className="absolute inset-0 overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] [backface-visibility:hidden] sm:rounded-[26px] lg:rounded-[30px]"
                         role="img"
                         aria-label={card.imageAlt}
+                        style={{
+                          backfaceVisibility: "hidden",
+                          WebkitBackfaceVisibility: "hidden",
+                          transform: "rotateY(0deg) translateZ(1px)",
+                        }}
                       >
                         <div
                           className="absolute inset-0 transition duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:transform-none"
@@ -399,6 +406,11 @@ export default function LandingPage() {
 
                       <div
                         className="absolute inset-0 overflow-hidden rounded-[20px] border border-[var(--border-strong)] bg-[linear-gradient(180deg,var(--surface-strong)_0%,var(--surface)_100%)] p-5 shadow-[0_20px_48px_var(--shadow-soft)] [backface-visibility:hidden] sm:rounded-[26px] sm:p-6 lg:rounded-[30px] [transform:rotateY(180deg)]"
+                        style={{
+                          backfaceVisibility: "hidden",
+                          WebkitBackfaceVisibility: "hidden",
+                          transform: "rotateY(180deg) translateZ(1px)",
+                        }}
                       >
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--glow),transparent_34%)] opacity-80" />
                         <div className="relative flex h-full flex-col">
