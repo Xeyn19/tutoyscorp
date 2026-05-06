@@ -153,35 +153,43 @@ export const coreValues = [
 
 export const targetMarkets = [
   {
-    label: "Primary",
-    title: "Working students",
+    title: "Transport Companies",
     detail:
-      "Track savings goals and daily financial progress more clearly.",
+      "Coordinate routes, schedules, bookings, and service updates from one connected workspace.",
   },
   {
-    label: "Primary",
-    title: "Small & medium businesses",
+    title: "Tourism Agencies",
     detail:
-      "Manage operations, inventory, and records with better visibility.",
+      "Manage tour packages, reservations, customer requests, and travel records with clearer visibility.",
   },
   {
-    label: "Primary",
-    title: "Tour & transport companies",
+    title: "Booking Services",
     detail:
-      "Handle bookings, schedules, and route coordination in one place.",
+      "Track reservations, confirmations, calendars, and service fulfillment without scattered records.",
   },
-  {
-    label: "Secondary",
-    title: "Start-ups",
-    detail:
-      "Launch core workflows faster with connected tools from the start.",
-  },
-  {
-    label: "Secondary",
-    title: "Service-based enterprises",
-    detail:
-      "Centralize bookings, service updates, and business records.",
-  },
+];
+
+function createEfficiencyComparisonRow(task, manualMinutes, systemMinutes) {
+  const minutesSaved = manualMinutes - systemMinutes;
+  const reductionPercent = Number(
+    ((minutesSaved / manualMinutes) * 100).toFixed(1)
+  );
+
+  return {
+    task,
+    manualMinutes,
+    systemMinutes,
+    minutesSaved,
+    reductionPercent,
+  };
+}
+
+export const efficiencyComparisonData = [
+  createEfficiencyComparisonRow("Comprehensive Compliance Report", 60, 3),
+  createEfficiencyComparisonRow("Fleet & Trip Scheduling", 25, 5),
+  createEfficiencyComparisonRow("Inventory & Asset Tracking", 15, 2),
+  createEfficiencyComparisonRow("Financial Target Monitoring", 12, 1),
+  createEfficiencyComparisonRow("Booking Search & Retrieval", 8, 0.5),
 ];
 
 export const slideshowSlides = [

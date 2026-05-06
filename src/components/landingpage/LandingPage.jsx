@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import LandingHeader from "@/components/landingpage/LandingHeader";
+import EfficiencyProofChart from "@/components/landingpage/EfficiencyProofChart";
 import FeatureSlideshow from "@/components/landingpage/FeatureSlideshow";
 import ScrollReveal from "@/components/landingpage/ScrollReveal";
 import SectionIntro from "@/components/landingpage/SectionIntro";
@@ -12,6 +13,7 @@ import {
   capabilityCards,
   companyProfile,
   coreValues,
+  efficiencyComparisonData,
   operatingModel,
   pricingPreviewPlans,
   trustPoints,
@@ -35,20 +37,6 @@ const frameClass = "mx-auto w-full max-w-[90rem] 2xl:max-w-[92rem]";
 const sectionPadClass = "px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12";
 const sectionPanelClass =
   "rounded-[20px] border border-[var(--border)] bg-[var(--surface)] px-5 py-5 shadow-[var(--panel-shadow)] backdrop-blur-xl sm:rounded-[28px] sm:px-7 sm:py-7 lg:rounded-[32px] lg:px-9 lg:py-8";
-const targetMarketGroupMeta = {
-  Primary: {
-    eyebrow: "Primary audience",
-    title: "Best-fit market segments",
-    description:
-      "The strongest everyday fit for the platform's connected workflows.",
-  },
-  Secondary: {
-    eyebrow: "Secondary audience",
-    title: "Growth-ready segments",
-    description:
-      "Adjacent audiences that benefit from the same connected system approach.",
-  },
-};
 
 const iconClass = "h-5 w-5 text-[var(--accent-strong)]";
 const iconBadgeClass =
@@ -69,51 +57,37 @@ const whyItWorksCards = trustPointTitles.map((title, index) => ({
   description: trustPoints[index],
 }));
 
+const targetMarketGridClass = "grid gap-3 md:grid-cols-2 xl:grid-cols-3";
+
 function IconBadge({ children }) {
   return <div className={iconBadgeClass}>{children}</div>;
 }
 
 const marketIcons = {
-  "Working students": (
+  "Transport Companies": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 8l9-4 9 4-9 4-9-4Z" />
-      <path d="M7 10.5V14a5 5 0 0 0 10 0v-3.5" />
-      <circle cx="18" cy="16.5" r="2.5" />
+      <rect x="4" y="7" width="12" height="9" rx="2" />
+      <path d="M16 10h2.5l1.5 2v4H16" />
+      <circle cx="8" cy="18" r="1.5" />
+      <circle cx="17" cy="18" r="1.5" />
+      <path d="M6 11h6" />
     </svg>
   ),
-  "Small & medium businesses": (
+  "Tourism Agencies": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 10h14" />
-      <path d="M6 10V7.5L8 6h8l2 1.5V10" />
-      <path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8" />
-      <path d="M10 14h4" />
-      <path d="M12 10v10" />
+      <path d="M12 3v18" />
+      <path d="m12 6 6 2.5v7L12 13" />
+      <path d="m12 6-6 2.5v7l6-2.5" />
+      <path d="M12 13v8" />
     </svg>
   ),
-  "Tour & transport companies": (
+  "Booking Services": (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 18c2.2-5.3 5.3-8 9.4-8H16" />
-      <path d="m14 6 2-2 2 2" />
-      <rect x="4" y="13" width="8" height="5" rx="1.5" />
-      <path d="M6 18v2" />
-      <path d="M10 18v2" />
-    </svg>
-  ),
-  "Start-ups": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 4c2.8 1 4.6 3.8 4.6 6.8 0 4.2-3.4 7.6-7.6 7.6-1.3 0-2.6-.3-3.7-.9" />
-      <path d="m10 14-3 6 6-3" />
-      <path d="M9 11l4-4" />
-      <circle cx="15.5" cy="8.5" r="1.5" />
-    </svg>
-  ),
-  "Service-based enterprises": (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="6" y="4" width="12" height="16" rx="2" />
-      <path d="M9 8h6" />
-      <path d="M9 12h6" />
-      <path d="M9 16h4" />
-      <path d="m16.5 15.5 1 1 2-2.5" />
+      <rect x="4" y="5" width="16" height="15" rx="2" />
+      <path d="M8 3v4" />
+      <path d="M16 3v4" />
+      <path d="M4 10h16" />
+      <path d="m9.5 15 2 2 4-4" />
     </svg>
   ),
 };
@@ -151,12 +125,6 @@ const coreValueIcons = {
   ),
 };
 
-const targetMarketGroups = ["Primary", "Secondary"].map((label) => ({
-  label,
-  ...targetMarketGroupMeta[label],
-  items: targetMarkets.filter((market) => market.label === label),
-}));
-
 export default function LandingPage() {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
   const currentYear = new Date().getFullYear();
@@ -182,7 +150,6 @@ export default function LandingPage() {
 
     return () => observer.disconnect();
   }, []);
-
   const heroCtaWrapperClass = `overflow-hidden transition-all ${
     isHomeVisible
       ? "mt-7 max-h-24 opacity-100"
@@ -301,6 +268,27 @@ export default function LandingPage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={`${sectionPadClass} py-14 lg:py-18`}>
+        <div className={frameClass}>
+          <ScrollReveal className={sectionPanelClass}>
+            <div className="mx-auto w-full max-w-6xl space-y-6">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
+                  Efficiency Proof
+                </p>
+                <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl lg:text-4xl">
+                  Compare manual work against TutoY Corp System speed.
+                </h2>
+                <p className="mt-4 text-base leading-8 text-[var(--foreground-muted)]">
+                  A direct time comparison across daily workflows, shown in minutes.
+                </p>
+              </div>
+                <EfficiencyProofChart data={efficiencyComparisonData} />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -429,61 +417,32 @@ export default function LandingPage() {
               <div className="mx-auto max-w-3xl text-center">
                 <SectionIntro
                   eyebrow="Target Market"
-                  title="Built for clear, connected daily workflows."
-                  description="Designed for audiences that benefit most from connected savings, operations, booking, and record management."
+                  title="Built for transport, tourism, and booking operations."
+                  description="Designed for service-driven businesses that need connected scheduling, reservations, coordination, and records in one system."
                   align="center"
                 />
               </div>
 
-              <div className="grid gap-4 lg:gap-5">
-                {targetMarketGroups.map((group, groupIndex) => (
+              <div className={targetMarketGridClass}>
+                {targetMarkets.map((market, marketIndex) => (
                   <ScrollReveal
-                    as="section"
-                    key={group.label}
-                    delay={groupIndex * 100}
-                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] sm:rounded-[24px] sm:p-5 lg:p-6"
+                    as="article"
+                    key={market.title}
+                    delay={marketIndex * 80}
+                    className="rounded-[18px] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_16px_40px_var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] sm:rounded-[24px] sm:p-5 lg:p-6"
                   >
-                    <div className="border-b border-[var(--border)] pb-5 sm:pb-6">
-                      <div className="mx-auto max-w-2xl text-center">
-                        <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--accent-strong)]">
-                          {group.eyebrow}
-                        </p>
-                        <h3 className="mt-4 text-xl font-semibold text-[var(--foreground)] sm:text-2xl">
-                          {group.title}
+                    <div className="flex items-start gap-3">
+                      <IconBadge>
+                        {marketIcons[market.title] ?? null}
+                      </IconBadge>
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-semibold text-[var(--foreground)] sm:text-xl">
+                          {market.title}
                         </h3>
-                        <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
-                          {group.description}
+                        <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
+                          {market.detail}
                         </p>
                       </div>
-                    </div>
-
-                    <div className={`mt-6 grid gap-3 ${
-                      group.items.length > 2
-                        ? "md:grid-cols-2 xl:grid-cols-3"
-                        : "sm:grid-cols-2"
-                    }`}>
-                      {group.items.map((market, marketIndex) => (
-                        <ScrollReveal
-                          as="article"
-                          key={`${group.label}-${market.title}`}
-                          delay={groupIndex * 100 + marketIndex * 80}
-                          className="rounded-[18px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_12px_32px_var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-[var(--border-strong)] sm:p-5"
-                        >
-                          <div className="flex items-start gap-3">
-                            <IconBadge>
-                              {marketIcons[market.title] ?? null}
-                            </IconBadge>
-                            <div className="min-w-0">
-                              <h4 className="text-lg font-semibold text-[var(--foreground)] sm:text-xl">
-                                {market.title}
-                              </h4>
-                              <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-                                {market.detail}
-                              </p>
-                            </div>
-                          </div>
-                        </ScrollReveal>
-                      ))}
                     </div>
                   </ScrollReveal>
                 ))}
@@ -579,13 +538,6 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className={`${primaryButtonClass} w-full sm:w-auto`}
-                style={{ color: "#000" }}
-              >
-                Connect With Us
-              </Link>
               <a href="#pricing" className={`${secondaryButtonClass} w-full sm:w-auto`}>
                 View Plans
               </a>
