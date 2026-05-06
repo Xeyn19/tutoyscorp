@@ -5,6 +5,8 @@ Marketing site, inquiry flow, and admin dashboard for `TutoY Corp Integrated Sys
 ## Current Scope
 
 - landing page with reusable content-driven sections
+- target market section focused on transport companies, tourism agencies, and booking services
+- efficiency proof bar chart comparing manual workflows against TutoY Corp System processing time
 - dedicated contact page with inquiry submission
 - admin login with Supabase email/password auth
 - protected dashboard shell with fixed sidebar and shared layout
@@ -226,6 +228,7 @@ Update landing page copy and sections:
 
 - `src/data/landingpage-content.js`
 - `src/components/landingpage/LandingPage.jsx`
+- `src/components/landingpage/EfficiencyProofChart.jsx`
 
 Update the contact form UI and submission feedback:
 
@@ -265,6 +268,7 @@ Update records table behavior:
 - Toast notifications are configured globally and currently display in the top-right corner.
 - The login page handles missing Supabase browser config gracefully and shows a user-facing message instead of crashing.
 - `contact_inquiries` is queried server-side for the dashboard.
+- The landing page efficiency chart uses curated static data in `src/data/landingpage-content.js`, not runtime Excel parsing.
 - The dashboard shell uses the shared mascot logo from `public/tutoy-logo.jpeg`.
 - Lint currently passes with one existing warning in `src/components/landingpage/BrandMark.jsx` for using `<img>` instead of `next/image`.
 - See `dashboard-auth.md` for a shorter admin setup guide focused on Supabase login provisioning.
