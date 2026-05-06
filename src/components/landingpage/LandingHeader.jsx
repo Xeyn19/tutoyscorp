@@ -91,6 +91,7 @@ export default function LandingHeader({
   navigation,
   primaryButtonClass,
   isHomeVisible = true,
+  activeSection = null,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -125,13 +126,32 @@ export default function LandingHeader({
               <div className="hidden items-center gap-8 lg:flex">
                 <nav className="flex items-center gap-7 text-sm text-[var(--foreground-muted)]">
                   {navigation.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="transition hover:text-[var(--foreground)]"
-                    >
-                      {item.label}
-                    </a>
+                    (() => {
+                      const sectionId = item.href.startsWith("#")
+                        ? item.href.slice(1)
+                        : item.href;
+                      const isActive = activeSection === sectionId;
+
+                      return (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          aria-current={isActive ? "location" : undefined}
+                          className={`relative px-3 py-2 transition ${
+                            isActive
+                              ? "text-[var(--foreground)]"
+                              : "text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                          }`}
+                        >
+                          <span
+                            className={`absolute inset-x-3 bottom-1 h-px bg-[var(--accent-strong)] transition ${
+                              isActive ? "opacity-100" : "opacity-0"
+                            }`}
+                          />
+                          <span className="relative z-10">{item.label}</span>
+                        </a>
+                      );
+                    })()
                   ))}
                 </nav>
               </div>
@@ -157,14 +177,28 @@ export default function LandingHeader({
               <div className="mt-3 border-t border-[var(--header-border)] pt-3 sm:mt-4 sm:pt-4 lg:hidden">
                 <nav className="grid gap-1.5 sm:gap-2">
                   {navigation.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 py-2.5 text-sm font-medium text-[var(--foreground)] transition hover:border-[var(--border-strong)] sm:rounded-2xl sm:px-4 sm:py-3"
-                    >
-                      {item.label}
-                    </a>
+                    (() => {
+                      const sectionId = item.href.startsWith("#")
+                        ? item.href.slice(1)
+                        : item.href;
+                      const isActive = activeSection === sectionId;
+
+                      return (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          onClick={closeMenu}
+                          aria-current={isActive ? "location" : undefined}
+                          className={`border px-3 py-2.5 text-sm font-medium transition sm:px-4 sm:py-3 ${
+                            isActive
+                              ? "border-[var(--border-strong)] text-[var(--foreground)]"
+                              : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--border-strong)]"
+                          }`}
+                        >
+                          {item.label}
+                        </a>
+                      );
+                    })()
                   ))}
                 </nav>
 

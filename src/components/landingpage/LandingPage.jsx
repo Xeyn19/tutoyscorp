@@ -56,7 +56,6 @@ const whyItWorksCards = trustPointTitles.map((title, index) => ({
   title,
   description: trustPoints[index],
 }));
-
 const targetMarketGridClass = "grid gap-3 md:grid-cols-2 xl:grid-cols-3";
 
 function IconBadge({ children }) {
@@ -127,6 +126,9 @@ const coreValueIcons = {
 
 export default function LandingPage() {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
+  const [supportsFeatureHover, setSupportsFeatureHover] = useState(true);
+  const [activeFeatureCard, setActiveFeatureCard] = useState(null);
+  const [activeSection, setActiveSection] = useState(null);
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -150,6 +152,80 @@ export default function LandingPage() {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    function syncFeatureInteractionMode() {
+      const canHover = mediaQuery.matches;
+
+      setSupportsFeatureHover(canHover);
+      setActiveFeatureCard((current) => (canHover ? null : current));
+    }
+
+    syncFeatureInteractionMode();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", syncFeatureInteractionMode);
+
+      return () =>
+        mediaQuery.removeEventListener("change", syncFeatureInteractionMode);
+    }
+
+    mediaQuery.addListener(syncFeatureInteractionMode);
+
+    return () => mediaQuery.removeListener(syncFeatureInteractionMode);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navigation
+      .map((item) => (item.href.startsWith("#") ? item.href.slice(1) : item.href))
+      .filter(Boolean);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return undefined;
+    }
+
+    let frameId = 0;
+
+    function syncActiveSection() {
+      const scrollMarker = window.scrollY + 170;
+      let currentSection = null;
+
+      for (const section of sections) {
+        if (scrollMarker >= section.offsetTop) {
+          currentSection = section.id;
+        }
+      }
+
+      setActiveSection(currentSection);
+    }
+
+    function handleScroll() {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      frameId = window.requestAnimationFrame(syncActiveSection);
+    }
+
+    syncActiveSection();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   const heroCtaWrapperClass = `overflow-hidden transition-all ${
     isHomeVisible
       ? "mt-7 max-h-24 opacity-100"
@@ -162,6 +238,7 @@ export default function LandingPage() {
         navigation={navigation}
         primaryButtonClass={primaryButtonClass}
         isHomeVisible={isHomeVisible}
+        activeSection={activeSection}
       />
 
       <section id="home-section" className={sectionPadClass}>
@@ -231,42 +308,124 @@ export default function LandingPage() {
           </ScrollReveal>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {capabilityCards.map((card, index) => (
-              <ScrollReveal
-                as="article"
-                key={card.title}
-                delay={index * 90}
-                className="group w-full max-w-[24rem] overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--border-strong)] md:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)]"
-              >
-                <div
-                  className="relative h-52 overflow-hidden sm:h-56"
-                  role="img"
-                  aria-label={card.imageAlt}
-                  style={{
-                    backgroundImage: `linear-gradient(180deg, rgba(6, 12, 24, 0.08) 0%, rgba(6, 12, 24, 0.4) 100%), url('${card.image}')`,
-                    backgroundPosition: card.imagePosition ?? "center center",
-                    backgroundSize: "cover",
-                  }}
+            {capabilityCards.map((card, index) => {
+              const isFlipped = activeFeatureCard === card.title;
+
+              return (
+                <ScrollReveal
+                  as="article"
+                  key={card.title}
+                  delay={index * 90}
+                  className={`group w-full max-w-[24rem] rounded-[20px] md:w-[calc(50%-0.5rem)] sm:rounded-[26px] lg:w-[calc(33.333%-0.75rem)] lg:rounded-[30px] 2xl:w-[calc(20%-0.8rem)] ${
+                    isFlipped
+                      ? "shadow-[0_20px_48px_var(--shadow-soft)]"
+                      : ""
+                  }`}
+                  style={{ perspective: "1600px" }}
                 >
-                  <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-4 sm:p-5">
-                    <p className="rounded-full border border-white/35 bg-black/35 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white backdrop-blur-sm">
-                      {card.tag}
-                    </p>
-                    <span className="rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                      0{index + 1}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5 text-center sm:p-6">
-                  <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)]">
-                    {card.description}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
+                  <button
+                    type="button"
+                    aria-pressed={isFlipped}
+                    aria-label={`${isFlipped ? "Show image for" : "Show details for"} ${card.title}`}
+                    onClick={() => {
+                      if (!supportsFeatureHover) {
+                        setActiveFeatureCard((current) =>
+                          current === card.title ? null : card.title
+                        );
+                      }
+                    }}
+                    onMouseEnter={() => {
+                      if (supportsFeatureHover) {
+                        setActiveFeatureCard(card.title);
+                      }
+                    }}
+                    onMouseLeave={(event) => {
+                      if (
+                        supportsFeatureHover &&
+                        !event.currentTarget.contains(document.activeElement)
+                      ) {
+                        setActiveFeatureCard(null);
+                      }
+                    }}
+                    onFocus={() => setActiveFeatureCard(card.title)}
+                    onBlur={(event) => {
+                      if (
+                        supportsFeatureHover &&
+                        !event.currentTarget.contains(event.relatedTarget)
+                      ) {
+                        setActiveFeatureCard(null);
+                      }
+                    }}
+                    className={`relative block h-[21rem] w-full rounded-[20px] text-left outline-none transition duration-300 motion-reduce:transition-none sm:h-[22rem] sm:rounded-[26px] lg:h-[23rem] lg:rounded-[30px] ${
+                      isFlipped
+                        ? "-translate-y-1"
+                        : "hover:-translate-y-1 focus-visible:-translate-y-1"
+                    }`}
+                  >
+                    <div
+                      className="relative h-full w-full rounded-[20px] [transform-style:preserve-3d] transition-transform duration-[900ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:rounded-[26px] lg:rounded-[30px]"
+                      style={{
+                        transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0 overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--panel-shadow)] [backface-visibility:hidden] sm:rounded-[26px] lg:rounded-[30px]"
+                        role="img"
+                        aria-label={card.imageAlt}
+                      >
+                        <div
+                          className="absolute inset-0 transition duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:transform-none"
+                          style={{
+                            backgroundImage: `url('${card.image}')`,
+                            backgroundPosition: card.imagePosition ?? "center center",
+                            backgroundSize: "cover",
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,16,28,0.08)_0%,rgba(8,16,28,0.18)_35%,rgba(8,16,28,0.78)_100%)]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(107,255,209,0.14),transparent_28%)]" />
+                        <div className="absolute inset-x-0 top-0 flex items-start justify-end p-4 sm:p-5">
+                          <span className="rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                            0{index + 1}
+                          </span>
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                          <div className="flex min-h-[4.5rem] max-w-[13rem] items-center rounded-[18px] border border-white/12 bg-[rgba(7,17,31,0.52)] px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-md sm:max-w-[13.5rem] sm:px-4.5 sm:py-3.5">
+                            <h3 className="text-[0.98rem] font-semibold leading-tight tracking-tight text-white sm:text-[1.18rem]">
+                              {card.shortTitle ?? card.title}
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        className="absolute inset-0 overflow-hidden rounded-[20px] border border-[var(--border-strong)] bg-[linear-gradient(180deg,var(--surface-strong)_0%,var(--surface)_100%)] p-5 shadow-[0_20px_48px_var(--shadow-soft)] [backface-visibility:hidden] sm:rounded-[26px] sm:p-6 lg:rounded-[30px] [transform:rotateY(180deg)]"
+                      >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--glow),transparent_34%)] opacity-80" />
+                        <div className="relative flex h-full flex-col">
+                          <div className="flex items-start justify-between gap-3">
+                            <p className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--accent-strong)] shadow-[var(--panel-shadow)]">
+                              {card.tag}
+                            </p>
+                            <span className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-semibold text-[var(--foreground-muted)]">
+                              0{index + 1}
+                            </span>
+                          </div>
+
+                          <div className="mt-6">
+                            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)] sm:text-2xl">
+                              {card.title}
+                            </h3>
+                            <p className="mt-4 text-sm leading-7 text-[var(--foreground-muted)] sm:text-[0.95rem]">
+                              {card.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>

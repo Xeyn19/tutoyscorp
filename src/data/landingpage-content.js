@@ -25,6 +25,7 @@ export const featuredSignals = [
 export const capabilityCards = [
   {
     title: "Unified Role-Based User System",
+    shortTitle: "User Access",
     description:
       "Secure login for admins, staff, students, and customers with role-based access.",
     tag: "Access",
@@ -34,6 +35,7 @@ export const capabilityCards = [
   },
   {
     title: "Centralized Smart Dashboard",
+    shortTitle: "Smart Dashboard",
     description:
       "Real-time overview of savings, inventory, orders, and bookings.",
     tag: "Dashboard",
@@ -43,6 +45,7 @@ export const capabilityCards = [
   },
   {
     title: "Booking and Order Management",
+    shortTitle: "Bookings",
     description:
       "Tour and transport reservation, scheduling, and order tools.",
     tag: "Scheduling",
@@ -52,6 +55,7 @@ export const capabilityCards = [
   },
   {
     title: "Inventory and Record Management",
+    shortTitle: "Inventory",
     description:
       "Real-time inventory and financial record monitoring.",
     tag: "Records",
@@ -61,6 +65,7 @@ export const capabilityCards = [
   },
   {
     title: "Goal Tracking and Business Analytics",
+    shortTitle: "Analytics",
     description:
       "Savings goals, inventory reports, and booking analytics.",
     tag: "Analytics",

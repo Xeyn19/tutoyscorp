@@ -21,6 +21,7 @@ function createInitialForm() {
 
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 const turnstileAction = "contact_form";
+const turnstileLanguage = "en";
 
 export default function InquiryForm({ services }) {
   const [form, setForm] = useState(createInitialForm);
@@ -161,6 +162,7 @@ export default function InquiryForm({ services }) {
         {
           sitekey: turnstileSiteKey,
           action: turnstileAction,
+          language: turnstileLanguage,
           theme: "auto",
           size: "flexible",
           retry: "auto",
@@ -420,7 +422,11 @@ export default function InquiryForm({ services }) {
         <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
             <div className="overflow-x-auto">
-              <div ref={turnstileContainerRef} />
+              <div
+                ref={turnstileContainerRef}
+                translate="no"
+                className="notranslate"
+              />
             </div>
             <p
               className={`mt-3 text-xs ${
